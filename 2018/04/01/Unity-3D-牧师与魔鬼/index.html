@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title>[404] · Xungerrrr&#39;s Blog</title>
+    <title>Unity 3D - 牧师与魔鬼 · Xungerrrr&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -65,6 +65,8 @@
 
     <link rel="preload" href= /css/style.css?v=20180317 as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" type="text/css" href= /css/mobile.css?v=20180317 media="(max-width: 980px)"/>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         
     <link rel="icon" href= /assets/Xungerrrr.ico>
     <script>
@@ -175,7 +177,7 @@
 </head>
 
     
-        <body class="four-zero-four-body">
+        <body class="post-body">
     
     
 <header class="header">
@@ -183,6 +185,15 @@
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Xungerrrr&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Unity 3D - 牧师与魔鬼</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Xungerrrr's Blog</a>
 </header>
@@ -196,32 +207,67 @@
 
 
 
+height:70vh;
+
 >
     
     <!-- 主页  -->
     
     
-    <!-- about页 -->
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/intro/404-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            [404]
-            <!-- about -->
+            Unity 3D - 牧师与魔鬼
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-                May the Force be with you :&#41;
+            
+            <!-- 404 -->
             
         </p>
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Unity">Unity</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2018/04/01</span>
+                
+                <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                    <span class="iconfont-archer">&#xe602;</span>
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+                
+                <span class="shareWrapper">
+                    <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                    <span class="shareText">Share</span>
+                    <ul class="shareList">
+                        <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                            <div class="share-qrcode"></div>
+                        </li>
+                        <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                        <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                        <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                        <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                    </ul>
+                </span>
+            </div>
         
     </div>
 </div>
@@ -305,8 +351,78 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <!-- 不可以删除，否则会调用post的layout  -->
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="游戏脚本"><a href="#游戏脚本" class="headerlink" title="游戏脚本"></a>游戏脚本</h2><blockquote>
+<p>Priests and Devils</p>
+<p>Priests and Devils is a puzzle game in which you will help the Priests and Devils to cross the river within the time limit. There are 3 priests and 3 devils at one side of the river. They all want to get to the other side of this river, but there is only one boat and this boat can only carry two persons each time. And there must be one person steering the boat from one side to the other side. In the flash game, you can click on them to move them and click the go button to move the boat to the other direction. If the priests are out numbered by the devils on either side of the river, they get killed and the game is over. You can try it in many ways. Keep all priests alive! Good luck!</p>
+</blockquote>
+<h2 id="程序需要满足的要求"><a href="#程序需要满足的要求" class="headerlink" title="程序需要满足的要求"></a>程序需要满足的要求</h2><ul>
+<li>play the game ( <a href="http://www.flash-game.net/game/2535/priests-and-devils.html" target="_blank" rel="noopener">http://www.flash-game.net/game/2535/priests-and-devils.html</a> )</li>
+<li>列出游戏中提及的事物（Objects）</li>
+<li>用表格列出玩家动作表（规则表），注意，动作越少越好</li>
+<li>请将游戏中对象做成预制</li>
+<li>在 GenGameObjects 中创建 长方形、正方形、球 及其色彩代表游戏中的对象。</li>
+<li>使用 C# 集合类型 有效组织对象</li>
+<li>整个游戏仅 主摄像机 和 一个 Empty 对象， <strong>其他对象必须代码动态生成！！！</strong> 。 整个游戏不许出现 Find 游戏对象， SendMessage 这类突破程序结构的 通讯耦合 语句。 <strong>违背本条准则，不给分</strong></li>
+<li>请使用课件架构图编程，<strong>不接受非 MVC 结构程序</strong></li>
+<li>注意细节，例如：船未靠岸，牧师与魔鬼上下船运动中，均不能接受用户事件！</li>
+</ul>
+<h2 id="游戏中提及的事物（Object）"><a href="#游戏中提及的事物（Object）" class="headerlink" title="游戏中提及的事物（Object）"></a>游戏中提及的事物（Object）</h2><blockquote>
+<p>牧师、魔鬼、船、go 按钮、开始岸、结束岸</p>
+</blockquote>
+<h2 id="玩家动作表"><a href="#玩家动作表" class="headerlink" title="玩家动作表"></a>玩家动作表</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">动作</th>
+<th style="text-align:left">规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">开船</td>
+<td style="text-align:left">船停靠在岸边且船上至少有一人</td>
+</tr>
+<tr>
+<td style="text-align:left">上船</td>
+<td style="text-align:left">船停靠在岸边，船上有空位并且岸上有人</td>
+</tr>
+<tr>
+<td style="text-align:left">下船</td>
+<td style="text-align:left">船停靠在岸边且船上有人</td>
+</tr>
+</tbody>
+</table>
 
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/03/31/Unity-3D-太阳系/" title= Unity 3D - 太阳系 >
+                    <div class="prevTitle">Unity 3D - 太阳系</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!--PC版-->
+
+    <!--PC版-->
+
+
+    
+    <!-- 评论 -->
+</main>
             <!-- profile -->
             
         </div>
@@ -386,6 +502,24 @@
 
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:70vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏脚本"><span class="toc-number">1.</span> <span class="toc-text">游戏脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序需要满足的要求"><span class="toc-number">2.</span> <span class="toc-text">程序需要满足的要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏中提及的事物（Object）"><span class="toc-number">3.</span> <span class="toc-text">游戏中提及的事物（Object）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#玩家动作表"><span class="toc-number">4.</span> <span class="toc-text">玩家动作表</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -541,6 +675,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
     
     </body>
 </html>
