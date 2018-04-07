@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title>Unity 3D - 牧师与魔鬼 · Xungerrrr&#39;s Blog</title>
+    <title>基于稀疏表示的人脸识别 · Xungerrrr&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -191,7 +191,7 @@
                 <a href="/" >Xungerrrr&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Unity 3D - 牧师与魔鬼</a>
+                <a href="#" class="post-name">基于稀疏表示的人脸识别</a>
             </div>
     </div>
     
@@ -216,14 +216,14 @@ height:70vh;
     
     <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/intro/unity.png)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Unity 3D - 牧师与魔鬼
+            基于稀疏表示的人脸识别
             <!-- 404 -->
             
         </h1>
@@ -231,8 +231,6 @@ height:70vh;
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-                3D 游戏编程与设计 第四周游戏
             
             <!-- 404 -->
             
@@ -243,13 +241,13 @@ height:70vh;
             
                 <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Unity">Unity</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Face Recognition">Face Recognition</a>
     
 </div>
             
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2018/04/01</span>
+                <span class="post-intro-time">2018/04/06</span>
                 
                 <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                     <span class="iconfont-archer">&#xe602;</span>
@@ -355,76 +353,28 @@ height:70vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="游戏脚本"><a href="#游戏脚本" class="headerlink" title="游戏脚本"></a>游戏脚本</h2><blockquote>
-<p>Priests and Devils is a puzzle game in which you will help the Priests and Devils to cross the river within the time limit. There are 3 priests and 3 devils at one side of the river. They all want to get to the other side of this river, but there is only one boat and this boat can only carry two persons each time. And there must be one person steering the boat from one side to the other side. In the flash game, you can click on them to move them and click the go button to move the boat to the other direction. If the priests are out numbered by the devils on either side of the river, they get killed and the game is over. You can try it in many ways. Keep all priests alive! Good luck!</p>
-</blockquote>
-<h2 id="程序需要满足的要求"><a href="#程序需要满足的要求" class="headerlink" title="程序需要满足的要求"></a>程序需要满足的要求</h2><ul>
-<li><a href="http://www.flash-game.net/game/2535/priests-and-devils.html" target="_blank" rel="noopener">play the game</a></li>
-<li>列出游戏中提及的事物（Objects）</li>
-<li>用表格列出玩家动作表（规则表），注意，动作越少越好</li>
-<li>请将游戏中对象做成预制</li>
-<li>在 GenGameObjects 中创建 长方形、正方形、球 及其色彩代表游戏中的对象。</li>
-<li>使用 C# 集合类型 有效组织对象</li>
-<li>整个游戏仅 主摄像机 和 一个 Empty 对象， <strong>其他对象必须代码动态生成！！！</strong> 。 整个游戏不许出现 Find 游戏对象， SendMessage 这类突破程序结构的 通讯耦合 语句。 <strong>违背本条准则，不给分</strong></li>
-<li>请使用课件架构图编程，<strong>不接受非 MVC 结构程序</strong></li>
-<li>注意细节，例如：船未靠岸，牧师与魔鬼上下船运动中，均不能接受用户事件！</li>
-</ul>
-<h2 id="游戏中提及的事物（Object）"><a href="#游戏中提及的事物（Object）" class="headerlink" title="游戏中提及的事物（Object）"></a>游戏中提及的事物（Object）</h2><blockquote>
-<p>牧师、魔鬼、船、go 按钮、开始岸、结束岸、水</p>
-</blockquote>
-<h2 id="玩家动作表"><a href="#玩家动作表" class="headerlink" title="玩家动作表"></a>玩家动作表</h2><table>
-<thead>
-<tr>
-<th style="text-align:left">动作</th>
-<th style="text-align:left">规则</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">开船</td>
-<td style="text-align:left">船停靠在岸边且船上至少有一人</td>
-</tr>
-<tr>
-<td style="text-align:left">上船</td>
-<td style="text-align:left">船停靠在岸边，船上有空位并且岸上有人</td>
-</tr>
-<tr>
-<td style="text-align:left">下船</td>
-<td style="text-align:left">船停靠在岸边且船上有人</td>
-</tr>
-</tbody>
-</table>
-<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><h3 id="MVC架构"><a href="#MVC架构" class="headerlink" title="MVC架构"></a>MVC架构</h3><ul>
-<li>Model：游戏中的 GameObject。</li>
-<li>View: UserGUI，ClickGUI。</li>
-<li>Controller: SSDirector（最高级别的 Controller），FirstController，以及其他基础的 Controller (BoatController, MyCharacterController, ShoreController)。</li>
-</ul>
-<h3 id="游戏接口定义"><a href="#游戏接口定义" class="headerlink" title="游戏接口定义"></a>游戏接口定义</h3><p>游戏中定义了两个接口类型，分别负责游戏场景控制和用户交互。这两个接口不能直接实例化，而是要通过继承这两个接口来实现相应的功能。<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">SceneController</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">loadResources</span> (<span class="params"></span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pause</span> (<span class="params"></span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">resume</span> (<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IUserAction</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">moveBoat</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">characterIsClicked</span>(<span class="params">MyCharacterController characterCtrl</span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">restart</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="View-定义"><a href="#View-定义" class="headerlink" title="View 定义"></a>View 定义</h3><h4 id="ClickGUI"><a href="#ClickGUI" class="headerlink" title="ClickGUI"></a>ClickGUI</h4><p>ClickGUI 类用来监测用户的点击行为，并利用 SceneController 中的方法进行处理。<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ClickGUI</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    IUserAction action;</span><br><span class="line">    MyCharacterController characterController;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setController</span>(<span class="params">MyCharacterController characterCtrl</span>) </span>&#123;</span><br><span class="line">        characterController = characterCtrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        action = SSDirector.getInstance().currentSceneController <span class="keyword">as</span> IUserAction;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">OnMouseDown</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (SSDirector.getInstance().state == State.START) &#123;</span><br><span class="line">            <span class="keyword">if</span> (gameObject.name == <span class="string">"boat"</span>) &#123;</span><br><span class="line">            	action.moveBoat ();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                action.characterIsClicked (characterController);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="UserGUI"><a href="#UserGUI" class="headerlink" title="UserGUI"></a>UserGUI</h4><p>UserGUI 类用来显示游戏中的开始/暂停按钮、游戏状态和倒计时等元素，也是用户控制游戏开始和暂停的入口。</p>
-<p>UserGUI 类定义参见 <a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/master/Homework%202/Priests%20and%20Devils" target="_blank" rel="noopener">GitHub</a>。</p>
-<h3 id="Controller-定义"><a href="#Controller-定义" class="headerlink" title="Controller 定义"></a>Controller 定义</h3><h4 id="SSDirector-类定义"><a href="#SSDirector-类定义" class="headerlink" title="SSDirector 类定义"></a>SSDirector 类定义</h4><p>SSDirector 类是最高层的控制器，在游戏过程中只有一个实例，控制游戏的开始、暂停以及资源的加载。其中 state 是一个自定义的枚举型变量，记录游戏的四种状态，以实现游戏的暂停功能。CountDown 方法实现了游戏的倒计时功能。<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> State &#123; WIN, LOSE, PAUSE, START &#125;;</span><br><span class="line"></span><br><span class="line">public class SSDirector : System.Object &#123;</span><br><span class="line">    <span class="keyword">public</span> State state = State.PAUSE;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> totalSeconds = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> leaveSeconds;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> countDownTitle = <span class="string">"Start"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SSDirector _instance;</span><br><span class="line">    <span class="keyword">public</span> SceneController currentSceneController &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SSDirector <span class="title">getInstance</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (_instance == <span class="literal">null</span>) &#123;</span><br><span class="line">        	_instance = <span class="keyword">new</span> SSDirector ();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> _instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getFPS</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Application.targetFrameRate;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFPS</span>(<span class="params"><span class="keyword">int</span> fps</span>) </span>&#123;</span><br><span class="line">        Application.targetFrameRate = fps;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> IEnumerator <span class="title">CountDown</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (leaveSeconds &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="function"><span class="keyword">yield</span> return new <span class="title">WaitForSeconds</span>(<span class="params"><span class="number">1</span>f</span>)</span>;</span><br><span class="line">            leaveSeconds--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="其他-Controller-类定义"><a href="#其他-Controller-类定义" class="headerlink" title="其他 Controller 类定义"></a>其他 Controller 类定义</h4><p>其他 Controller 类定义参见 <a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/master/Homework%202/Priests%20and%20Devils" target="_blank" rel="noopener">GitHub</a>。</p>
-<h2 id="游戏效果预览"><a href="#游戏效果预览" class="headerlink" title="游戏效果预览"></a>游戏效果预览</h2><img src="/2018/04/01/Unity-3D-牧师与魔鬼/Priests%20and%20Devils.gif" title="Priests and Devils">
-<h2 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h2><p>[1] <a href="https://www.jianshu.com/p/07028b3da573" target="_blank" rel="noopener">学习 Unity(5) 小游戏实例——牧师与魔鬼</a></p>
-<p>[2] <a href="https://blog.csdn.net/H12590400327/article/details/70037805" target="_blank" rel="noopener">Unity3D 学习——牧师与恶魔过河游戏 (组合模式、单实例模式)</a></p>
+        <p>最近一周阅读了题为 Robust Face Recognition via Sparse Representation 的论文，了解到了一种基于稀疏表示的人脸识别技术。这里简要概括了论文的内容，给出了我个人对论文的基本理解。</p>
+<p>这篇论文考虑的问题是，在不同的人物表情、照明条件或者是在失真、遮挡条件下，如何从正面自动识别出特定的人脸。基于通过计算向量1-范数最小值得到的稀疏表示，论文提出了一种用于物体（人脸）识别的通用分类算法。这种算法不仅很好地实现了理想条件下的人脸识别，还能够有效应对实际中的复杂情况，例如物体遮挡和照片失真，并且在与各种常见的特征提取方法结合时，都有着较高的识别率。</p>
+<p>人脸识别的问题，可以概括为，利用多个来自不同类别的训练样本，来判断一个给定的测试样本属于哪一个类别。在人脸识别中，一个人脸就是一个类别，不同的人脸照片就是不同的样本。</p>
+<p>考虑k个类别，设每一个分辨率为 w×h 的样本都可以用一个 m(m = wh) 维向量v来表示，类别 i 有 n_i 个训练样本，则类别 i 可以表示为一个 m×n_i 的矩阵 A_i=[v_(i,1),v_(i,2),…,v_(i,n_i)]。在训练样本充足的情况下，一个属于类别 i 的新测试样本 y∈R^m 可以表示为 A_i 的列向量的线性组合。但是，在识别的过程中，我们无法得知测试样本所属的类别，因此可以构建一个表示所有类别的矩阵 A=[A_1,A_2,…,A_k]∈R^(m×n)，将新测试样本表示成矩阵A的列向量的线性组合，即 y=Ax_0 。其中 x_0∈R^n ，是线性组合的系数向量，其非零元素是与类别 i 有关的系数项。通过求方程 y=Ax 的解，可以推断出样本 y 所属的类别。</p>
+<p>然而，在现实条件下， m 往往小于 n ，因此方程有无穷多个解。为了找到最佳的识别类别，需要求出最稀疏的解（即x大部分元素为零）。论文提出了通过求向量 x 的1-范数的最小值，来得到y的最稀疏表示。其证明过程，我仍未完全理解。总的来说，只要 x_0 中非零元素的比例足够小，求出1-范数的最小值就等价于求出所需的稀疏表示向量。<br>接下来，论文考虑到在实际应用中，照片可能出现细微的噪声，测试样本可能无法准确表示为训练样本的线性组合，因此加入了一个噪声因子z，来表示可以接受的噪声范围，得到方程 y=Ax_0+z 。根据 z 的范围，可以求出对应的最小1-范数，求出所需的稀疏表示。</p>
+<p>得到了测试样本的稀疏表示后，需要一种方法来确定它所属的类别。分别只考虑稀疏表示向量中每个类别对应的系数，而令其他无关系数都为0，近似地计算出不同的估计样本 y ̂_i ，再将真实的测试样本y与估计样本 y ̂_i 相减，可以得到估计样本和真实样本之间的差距。差值最小的类别，就是最接近真实测试样本的类别，因此可以将测试样本归入这个类别中。</p>
+<p>除了分类问题，算法还应该具有排除外来样本的能力。论文定义了 SCI ，来表示稀疏表示中非零项的集中程度。只要 SCI 小于某一给定值，则说明测试样本不属于给定的任何类别，就应该被拒绝。</p>
+<p>人脸识别有两个需要重点解决的问题：特征提取和对遮挡、失真问题的健壮性。特征提取的目的是减少样本特征的维度，以便减少运算量，提升识别速度。论文研究发现，只要样本数量足够多，特征提取的具体方法就不能对识别结果产生明显的影响。这样就可以利用基于正态分布的随机脸（Randomfaces）来快速提取特征，降低计算量，并且保证识别的准确性。对遮挡、失真问题的健壮性，与前面提到的噪声问题类似，可以通过引入误差向量，一起参与稀疏表示的求解，从而一并将稀疏表示和误差向量算出。得到误差向量后，用测试样本减去误差来重新构建样本，再通过上面提到的分类方法和排除方法，可以对样本进行分类和排除。这种处理误差的方法同样适用于上面提到的噪声问题。</p>
+<p>最后，论文通过综合考虑不同的人脸数据库、不同的失真和遮挡情形，进行了不同的实验，用不同情况下的识别率来说明这种SRC算法的有效性和先进性。在多种复杂情况下，SRC算法要优于传统的人脸识别方法，但在大面积遮挡的情况下，SRC算法的识别率仍然较低，需要采取分区识别等方法来进行优化。</p>
+<p>以上是我对论文的一些基本理解。论文中的一些内容，如2.2和3.2中的一些证明过程，我还不能完全理解，仍需要继续进行相关知识的学习。</p>
 
     </article>
     <!-- 前后页  -->
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/04/06/基于稀疏表示的人脸识别/" title= 基于稀疏表示的人脸识别 >
-                    <div class="nextTitle">基于稀疏表示的人脸识别</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2018/03/31/Unity-3D-太阳系/" title= Unity 3D - 太阳系 >
-                    <div class="prevTitle">Unity 3D - 太阳系</div>
+                <a href= "/2018/04/01/Unity-3D-牧师与魔鬼/" title= Unity 3D - 牧师与魔鬼 >
+                    <div class="prevTitle">Unity 3D - 牧师与魔鬼</div>
                 </a>
             
         </li>
@@ -538,7 +488,7 @@ top:70vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏脚本"><span class="toc-number">1.</span> <span class="toc-text">游戏脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序需要满足的要求"><span class="toc-number">2.</span> <span class="toc-text">程序需要满足的要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏中提及的事物（Object）"><span class="toc-number">3.</span> <span class="toc-text">游戏中提及的事物（Object）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#玩家动作表"><span class="toc-number">4.</span> <span class="toc-text">玩家动作表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现思路"><span class="toc-number">5.</span> <span class="toc-text">实现思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC架构"><span class="toc-number">5.1.</span> <span class="toc-text">MVC架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏接口定义"><span class="toc-number">5.2.</span> <span class="toc-text">游戏接口定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#View-定义"><span class="toc-number">5.3.</span> <span class="toc-text">View 定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ClickGUI"><span class="toc-number">5.3.1.</span> <span class="toc-text">ClickGUI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UserGUI"><span class="toc-number">5.3.2.</span> <span class="toc-text">UserGUI</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Controller-定义"><span class="toc-number">5.4.</span> <span class="toc-text">Controller 定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SSDirector-类定义"><span class="toc-number">5.4.1.</span> <span class="toc-text">SSDirector 类定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他-Controller-类定义"><span class="toc-number">5.4.2.</span> <span class="toc-text">其他 Controller 类定义</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏效果预览"><span class="toc-number">6.</span> <span class="toc-text">游戏效果预览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考博客"><span class="toc-number">7.</span> <span class="toc-text">参考博客</span></a></li></ol>
+        
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
