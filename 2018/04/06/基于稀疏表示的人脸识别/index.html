@@ -232,6 +232,8 @@ height:70vh;
             <!-- 主页副标题  -->
             
             
+                Robust Face Recognition via Sparse Representation 论文理解
+            
             <!-- 404 -->
             
         </p>
@@ -353,7 +355,7 @@ height:70vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>最近一周阅读了题为 Robust Face Recognition via Sparse Representation 的论文，了解到了一种基于稀疏表示的人脸识别技术。这里简要概括了论文的内容，给出了我个人对论文的基本理解。</p>
+        <p>最近一周阅读了题为 <a href="https://ieeexplore.ieee.org/document/4483511/" target="_blank" rel="noopener">Robust Face Recognition via Sparse Representation</a> 的论文，了解到了一种基于稀疏表示的人脸识别技术。这里简要概括了论文的内容，给出了我个人对论文的基本理解。</p>
 <p>这篇论文考虑的问题是，在不同的人物表情、照明条件或者是在失真、遮挡条件下，如何从正面自动识别出特定的人脸。基于通过计算向量1-范数最小值得到的稀疏表示，论文提出了一种用于物体（人脸）识别的通用分类算法。这种算法不仅很好地实现了理想条件下的人脸识别，还能够有效应对实际中的复杂情况，例如物体遮挡和照片失真，并且在与各种常见的特征提取方法结合时，都有着较高的识别率。</p>
 <p>人脸识别的问题，可以概括为，利用多个来自不同类别的训练样本，来判断一个给定的测试样本属于哪一个类别。在人脸识别中，一个人脸就是一个类别，不同的人脸照片就是不同的样本。</p>
 <p>考虑k个类别，设每一个分辨率为 w×h 的样本都可以用一个 m(m = wh) 维向量v来表示，类别 i 有 n_i 个训练样本，则类别 i 可以表示为一个 m×n_i 的矩阵 A_i=[v_(i,1),v_(i,2),…,v_(i,n_i)]。在训练样本充足的情况下，一个属于类别 i 的新测试样本 y∈R^m 可以表示为 A_i 的列向量的线性组合。但是，在识别的过程中，我们无法得知测试样本所属的类别，因此可以构建一个表示所有类别的矩阵 A=[A_1,A_2,…,A_k]∈R^(m×n)，将新测试样本表示成矩阵A的列向量的线性组合，即 y=Ax_0 。其中 x_0∈R^n ，是线性组合的系数向量，其非零元素是与类别 i 有关的系数项。通过求方程 y=Ax 的解，可以推断出样本 y 所属的类别。</p>
