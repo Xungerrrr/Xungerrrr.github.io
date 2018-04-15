@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title>Hello World · Xungerrrr&#39;s Blog</title>
+    <title>Vi, Java, Ant 和 JUnit 的学习报告 · Xungerrrr&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -191,7 +191,7 @@
                 <a href="/" >Xungerrrr&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Hello World</a>
+                <a href="#" class="post-name">Vi, Java, Ant 和 JUnit 的学习报告</a>
             </div>
     </div>
     
@@ -223,7 +223,7 @@ height:70vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Hello World
+            Vi, Java, Ant 和 JUnit 的学习报告
             <!-- 404 -->
             
         </h1>
@@ -231,6 +231,8 @@ height:70vh;
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+                2018 中级实训 阶段一学习报告
             
             <!-- 404 -->
             
@@ -241,13 +243,17 @@ height:70vh;
             
                 <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "blog">blog</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "实训">实训</a>
     
 </div>
             
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2018/03/30</span>
+                <span class="post-intro-time">2018/04/15</span>
                 
                 <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                     <span class="iconfont-archer">&#xe602;</span>
@@ -353,28 +359,86 @@ height:70vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="Vi-编辑器"><a href="#Vi-编辑器" class="headerlink" title="Vi 编辑器"></a>Vi 编辑器</h1><p>Vi 编辑器是 Linux 和 Unix 系统中的标准文本编辑器，功能强大，使用方便。在这次实训中，我掌握了 Vi 编辑器的一些基本用法。</p>
+<h2 id="进入-Vi-的方法"><a href="#进入-Vi-的方法" class="headerlink" title="进入 Vi 的方法"></a>进入 Vi 的方法</h2><p>在系统提示符后输入 vi filename 即可进入 vi 编辑器编辑对应的文件。</p>
+<h2 id="Vi-的基本概念和使用方法"><a href="#Vi-的基本概念和使用方法" class="headerlink" title="Vi 的基本概念和使用方法"></a>Vi 的基本概念和使用方法</h2><p>在 Vi 编辑器中，有三种模式，分别是命令模式、插入模式和底行模式。为了简化，一般将底行模式归入命令模式中。</p>
+<ul>
+<li><p>命令模式 (Command Mode)</p>
+<p>这是进入 Vi 的默认模式。在命令模式中，可以控制光标移动，对字符和段落进行删除、复制和移动等操作。在命令模式中按 “i”, “a” 或 “o” 键可以进入插入模式，按 “:” 键进入底行模式。</p>
+</li>
+<li><p>插入模式 (Insert Mode)</p>
+<p>在插入模式中，可以输入文字，编辑文本内容。在插入模式中按 Esc 键可以回到命令模式。</p>
+</li>
+<li><p>底行模式 (Last Line Mode)</p>
+<p>在底行模式中，可以保存文件 (w)，退出 Vi (q)，也可以对编辑界面做基本的设置和操作，如列出行号 (set nu)、跳到某一行和查找字符。</p>
+</li>
+</ul>
+<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><p>Java 是一种完全面向对象的编程语言，与 C++ 语言有许多相近之处。相比于 C++，Java 移除了一些容易出错的特征，例如指针和多重继承，而提高了垃圾自动回收的能力。下面是在自学过程中学到的一些 Java 与 C++ 的不同之处。</p>
+<ul>
+<li><p>与 C++ 一样，Java 程序同样以 main 函数作为执行入口，但 Java 中的 main 函数需要写在程序的一个主类中，作为类的一个静态方法。</p>
+</li>
+<li><p>除了 class (类)，Java 还提供 interface (接口) 语法，方便程序员将接口从类的具体定义中剥离出来，成为独立的接口概念。在接口中，不需要定义方法的主体和可见性，因为接口需要由具体的类来实现，而且根据接口的定义，接口的可见性都为 public。</p>
+</li>
+<li><p>类的继承要使用 extends 语句，接口的实现要使用 implements 语句。</p>
+</li>
+<li><p>Java 中有包 (package) 的概念，可以更好地组织和使用项目中的 Java 程序，也提高了程序的可移植性。包的名字与程序的路径相对应。在程序的开始用 package 建立包，用 import 调用包。</p>
+</li>
+<li><p>C++ 中类可以多重继承，而 Java 中只有接口能够多重继承。</p>
+</li>
+</ul>
+<h1 id="Ant"><a href="#Ant" class="headerlink" title="Ant"></a>Ant</h1><p>Ant 是一个跨平台的构建工具，它可以实现项目的自动构建和部署等功能，通常用来构建 Java 程序。</p>
+<p>Ant 的构建文件是 xml 文件，非常便于阅读和组织。</p>
+<h2 id="Ant-的基础元素"><a href="#Ant-的基础元素" class="headerlink" title="Ant 的基础元素"></a>Ant 的基础元素</h2><ul>
+<li><p>project</p>
+<p>project 元素是 Ant 构建文件的根元素。project 元素中包含 target 元素。project 元素有许多属性，例如 name 属性指定 project 的名称，default 属性指定默认的 target，basedir 属性指定基路径的位置。</p>
+</li>
+<li><p>target</p>
+<p>target 元素是 Ant 的基本执行单元，可以包含一个或多个任务。target 之间可以有依赖关系。target 元素也有不同的属性，如 name 属性指定 target 的名称，depends 属性描述 target 之间的依赖关系，if 属性验证指定的属性是否存在，description 属性用来描述 target 的功能。</p>
+</li>
+<li><p>property</p>
+<p>property 元素是参数的定义，可以用作其他元素的属性。通过${name}可以获取 property 元素的值。</p>
+</li>
+</ul>
+<h2 id="Ant-的常用功能"><a href="#Ant-的常用功能" class="headerlink" title="Ant 的常用功能"></a>Ant 的常用功能</h2><p>利用 Ant 可以自动完成许多基本功能，如复制、删除、创建和移动目录、文件。利用 Ant 也可以使用 javac、java 和 jar 等命令自动化构建和部署 Java 项目。Ant 与 JUnit 结合使用，可以十分方便地对程序进行测试。</p>
+<h2 id="Ant-构建文件示例"><a href="#Ant-构建文件示例" class="headerlink" title="Ant 构建文件示例"></a>Ant 构建文件示例</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">name</span>=<span class="string">"Calculator"</span> <span class="attr">default</span>=<span class="string">"jar"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"clean"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">delete</span> <span class="attr">dir</span>=<span class="string">"bin"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"compile"</span> <span class="attr">depends</span>=<span class="string">"clean"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">mkdir</span> <span class="attr">dir</span>=<span class="string">"bin/classes"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">javac</span> <span class="attr">srcdir</span>=<span class="string">"src"</span> <span class="attr">destdir</span>=<span class="string">"bin/classes"</span> <span class="attr">includeAntRuntime</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"run"</span> <span class="attr">depends</span>=<span class="string">"compile"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">java</span> <span class="attr">classname</span>=<span class="string">"Calculator"</span> <span class="attr">fork</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">classpath</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">pathelement</span> <span class="attr">path</span>=<span class="string">"bin/classes"</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">classpath</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">java</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"jar"</span> <span class="attr">depends</span>=<span class="string">"run"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">jar</span> <span class="attr">destfile</span>=<span class="string">"calculator.jar"</span> <span class="attr">basedir</span>=<span class="string">"bin/classes"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">manifest</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">attribute</span> <span class="attr">name</span>=<span class="string">"Main-class"</span> <span class="attr">value</span>=<span class="string">"Calculator"</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">jar</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>执行命令 ant，可以自动完成 Calculator 程序的清理、编译、运行和打包。</p>
+<h1 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h1><p>Junit 是一款功能强大的单元测试工具，它简化了开发人员执行单元测试的难度，而 JUnit 4 中使用了 Java 5 的注解 (Annotation)，使测试用例的编写变得更加简单。</p>
+<h2 id="JUnit-4-使用的-Annotation"><a href="#JUnit-4-使用的-Annotation" class="headerlink" title="JUnit 4 使用的 Annotation"></a>JUnit 4 使用的 Annotation</h2><ul>
+<li><p>@Before</p>
+<p>使用这个注解的方法只能有一个，并且要在每个测试方法执行之前都执行一次。</p>
+</li>
+<li><p>@After</p>
+<p>使用这个注解的方法只能有一个，并且要在每个测试方法执行之后都执行一次。</p>
+</li>
+<li><p>@Test</p>
+<p>使用这个注解的方法为测试方法。</p>
+</li>
+<li><p>@Test(expected=*.class)</p>
+<p>expected 属性的值是一个异常类型，使用这个注解可以测试程序运行中的错误。</p>
+</li>
+<li><p>@Test(timeout=xxx)</p>
+<p>这个注解可以给测试设定最大执行时间。只有在规定时间内执行完成才算成功。</p>
+</li>
+<li><p>@Ignore</p>
+<p>使用这个注解的方法会被忽略。可以应用于暂时不用或者是没有实现的测试方法。</p>
+</li>
+</ul>
+<h2 id="使用-Junit-测试-HelloWorld"><a href="#使用-Junit-测试-HelloWorld" class="headerlink" title="使用 Junit 测试 HelloWorld"></a>使用 Junit 测试 HelloWorld</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">---HelloWorld 类---</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(str);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		str = <span class="string">"Hello Junit!"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getStr</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> str;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String str = <span class="string">"Hello World!"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">---HelloWorldTest 类---</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldTest</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> HelloWorld helloworld = <span class="keyword">new</span> HelloWorld();</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testHelloWorld</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		helloworld.hello();</span><br><span class="line">		assertEquals(<span class="string">"Hello Junit!"</span>, helloworld.getStr());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译并运行测试程序，可以对 HelloWorld 类进行测试。</p>
 
     </article>
     <!-- 前后页  -->
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/03/30/Unity-3D-Learning/" title= Unity 3D Learning >
-                    <div class="nextTitle">Unity 3D Learning</div>
-                </a>
-            
         </li>
         <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/04/12/用于图像分类的深度稀疏编码网络/" title= 用于图像分类的深度稀疏编码网络 >
+                    <div class="prevTitle">用于图像分类的深度稀疏编码网络</div>
+                </a>
             
         </li>
     </ul>
@@ -487,7 +551,7 @@ top:70vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Vi-编辑器"><span class="toc-number">1.</span> <span class="toc-text">Vi 编辑器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#进入-Vi-的方法"><span class="toc-number">1.1.</span> <span class="toc-text">进入 Vi 的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vi-的基本概念和使用方法"><span class="toc-number">1.2.</span> <span class="toc-text">Vi 的基本概念和使用方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java"><span class="toc-number">2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ant"><span class="toc-number">3.</span> <span class="toc-text">Ant</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ant-的基础元素"><span class="toc-number">3.1.</span> <span class="toc-text">Ant 的基础元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ant-的常用功能"><span class="toc-number">3.2.</span> <span class="toc-text">Ant 的常用功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ant-构建文件示例"><span class="toc-number">3.3.</span> <span class="toc-text">Ant 构建文件示例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JUnit"><span class="toc-number">4.</span> <span class="toc-text">JUnit</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JUnit-4-使用的-Annotation"><span class="toc-number">4.1.</span> <span class="toc-text">JUnit 4 使用的 Annotation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-Junit-测试-HelloWorld"><span class="toc-number">4.2.</span> <span class="toc-text">使用 Junit 测试 HelloWorld</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
