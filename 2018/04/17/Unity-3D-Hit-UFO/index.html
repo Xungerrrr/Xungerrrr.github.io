@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title>用于图像分类的深度稀疏编码网络 · Xungerrrr&#39;s Blog</title>
+    <title>Unity 3D - Hit UFO · Xungerrrr&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -191,7 +191,7 @@
                 <a href="/" >Xungerrrr&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">用于图像分类的深度稀疏编码网络</a>
+                <a href="#" class="post-name">Unity 3D - Hit UFO</a>
             </div>
     </div>
     
@@ -216,14 +216,14 @@ height:70vh;
     
     <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/intro/face.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/unity.png)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            用于图像分类的深度稀疏编码网络
+            Unity 3D - Hit UFO
             <!-- 404 -->
             
         </h1>
@@ -231,8 +231,6 @@ height:70vh;
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-                Constructing Deep Sparse Coding Network for image classification 论文理解
             
             <!-- 404 -->
             
@@ -243,15 +241,13 @@ height:70vh;
             
                 <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Pattern Recognition">Pattern Recognition</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Image Understanding">Image Understanding</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Unity">Unity</a>
     
 </div>
             
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2018/04/12</span>
+                <span class="post-intro-time">2018/04/17</span>
                 
                 <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                     <span class="iconfont-archer">&#xe602;</span>
@@ -357,31 +353,35 @@ height:70vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="模型优势"><a href="#模型优势" class="headerlink" title="模型优势"></a>模型优势</h2><p>Combine the advantages of Convolutional Neural Network (CNN) and sparse-coding techniques for image feature representation.</p>
-<h2 id="四个基本层："><a href="#四个基本层：" class="headerlink" title="四个基本层："></a>四个基本层：</h2><ul>
-<li>Sparse-coding layer</li>
-<li>Pooling layer</li>
-<li>Normalization layer</li>
-<li>Map reduction layer</li>
+        <h1 id="编写一个简单的鼠标打飞碟（Hit-UFO）游戏"><a href="#编写一个简单的鼠标打飞碟（Hit-UFO）游戏" class="headerlink" title="编写一个简单的鼠标打飞碟（Hit UFO）游戏"></a>编写一个简单的鼠标打飞碟（Hit UFO）游戏</h1><ul>
+<li>游戏内容要求：<ul>
+<li>游戏有 n 个 round，每个 round 都包括 10 次 trial；</li>
+<li>每个 trial 的飞碟的色彩、大小、发射位置、速度、角度、同时出现的个数都可能不同。它们由该 round 的 ruler 控制；</li>
+<li>每个 trial 的飞碟有随机性，总体难度随 round 上升；</li>
+<li>鼠标点中得分，得分规则按色彩、大小、速度不同计算，规则可自由设定。</li>
 </ul>
-<h3 id="Sparse-coding-layer"><a href="#Sparse-coding-layer" class="headerlink" title="Sparse-coding layer"></a>Sparse-coding layer</h3><p>取测试图片位置 (i, j) 的局部区域，得到一个 D 维的特征向量，D = C <em> w </em> w，其中 C 是特征类型的数量，w 是区域的宽度。结合训练向量，求出向量2-范数的最小值，得到每个区域在给定字典中的稀疏编码。</p>
-<h3 id="Pooling-layer"><a href="#Pooling-layer" class="headerlink" title="Pooling layer"></a>Pooling layer</h3><h3 id="Normalization-layer"><a href="#Normalization-layer" class="headerlink" title="Normalization layer"></a>Normalization layer</h3><h3 id="Map-reduction-layer"><a href="#Map-reduction-layer" class="headerlink" title="Map reduction layer"></a>Map reduction layer</h3>
+</li>
+<li>游戏的要求：<ul>
+<li>使用带缓存的工厂模式管理不同飞碟的生产与回收，该工厂必须是场景单实例的！</li>
+<li>尽可能使用前面 MVC 结构实现人机交互与游戏模型分离。</li>
+</ul>
+</li>
+</ul>
+<h1 id="游戏预览"><a href="#游戏预览" class="headerlink" title="游戏预览"></a>游戏预览</h1><img src="/2018/04/17/Unity-3D-Hit-UFO/UFO.PNG" title="UFO">
+<h1 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h1><p><a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/master/Homework%204/Hit%20UFO" target="_blank" rel="noopener">https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/master/Homework%204/Hit%20UFO</a></p>
+<h1 id="游戏视频"><a href="#游戏视频" class="headerlink" title="游戏视频"></a>游戏视频</h1><p><a href="http://v.youku.com/v_show/id_XMzU0NTU3OTg5Ng==.html?spm=a2hzp.8244740.0.0" target="_blank" rel="noopener">http://v.youku.com/v_show/id_XMzU0NTU3OTg5Ng==.html?spm=a2hzp.8244740.0.0</a></p>
+
     </article>
     <!-- 前后页  -->
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/04/15/Vi-Java-Ant-和-JUnit-的学习报告/" title= Vi, Java, Ant 和 JUnit 的学习报告 >
-                    <div class="nextTitle">Vi, Java, Ant 和 JUnit 的学习报告</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2018/04/10/Unity-3D-牧师与魔鬼-2-0/" title= Unity 3D - 牧师与魔鬼 2.0 >
-                    <div class="prevTitle">Unity 3D - 牧师与魔鬼 2.0</div>
+                <a href= "/2018/04/15/Vi-Java-Ant-和-JUnit-的学习报告/" title= Vi, Java, Ant 和 JUnit 的学习报告 >
+                    <div class="prevTitle">Vi, Java, Ant 和 JUnit 的学习报告</div>
                 </a>
             
         </li>
@@ -495,7 +495,7 @@ top:70vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模型优势"><span class="toc-number">1.</span> <span class="toc-text">模型优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四个基本层："><span class="toc-number">2.</span> <span class="toc-text">四个基本层：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sparse-coding-layer"><span class="toc-number">2.1.</span> <span class="toc-text">Sparse-coding layer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pooling-layer"><span class="toc-number">2.2.</span> <span class="toc-text">Pooling layer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Normalization-layer"><span class="toc-number">2.3.</span> <span class="toc-text">Normalization layer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-reduction-layer"><span class="toc-number">2.4.</span> <span class="toc-text">Map reduction layer</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#编写一个简单的鼠标打飞碟（Hit-UFO）游戏"><span class="toc-number">1.</span> <span class="toc-text">编写一个简单的鼠标打飞碟（Hit UFO）游戏</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#游戏预览"><span class="toc-number">2.</span> <span class="toc-text">游戏预览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#项目地址"><span class="toc-number">3.</span> <span class="toc-text">项目地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#游戏视频"><span class="toc-number">4.</span> <span class="toc-text">游戏视频</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
