@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+    <!-- title -->
+
+
+
+
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <title>Unity 3D - Hit UFO 2.0 · Xungerrrr&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.7);
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s 1;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= /css/style.css?v=20180317 as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" type="text/css" href= /css/mobile.css?v=20180317 media="(max-width: 980px)"/>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        
+    <link rel="icon" href= /assets/Xungerrrr.ico>
+    <script>
+        (function (w) {
+            "use strict";
+            // rel=preload support test
+            if (!w.loadCSS) {
+                w.loadCSS = function () { };
+            }
+            // define on the loadCSS obj
+            var rp = loadCSS.relpreload = {};
+            // rel=preload feature support test
+            // runs once and returns a function for compat purposes
+            rp.support = (function () {
+                var ret;
+                try {
+                    ret = w.document.createElement("link").relList.supports("preload");
+                } catch (e) {
+                    ret = false;
+                }
+                return function () {
+                    return ret;
+                };
+            })();
+
+            // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+            // then change that media back to its intended value on load
+            rp.bindMediaToggle = function (link) {
+                // remember existing media attr for ultimate state, or default to 'all'
+                var finalMedia = link.media || "all";
+
+                function enableStylesheet() {
+                    link.media = finalMedia;
+                }
+
+                // bind load handlers to enable media
+                if (link.addEventListener) {
+                    link.addEventListener("load", enableStylesheet);
+                } else if (link.attachEvent) {
+                    link.attachEvent("onload", enableStylesheet);
+                }
+
+                // Set rel and non-applicable media type to start an async request
+                // note: timeout allows this to happen async to let rendering continue in IE
+                setTimeout(function () {
+                    link.rel = "stylesheet";
+                    link.media = "only x";
+                });
+                // also enable media after 3 seconds,
+                // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+                setTimeout(enableStylesheet, 3000);
+            };
+
+            // loop through link elements in DOM
+            rp.poly = function () {
+                // double check this to prevent external calls from running
+                if (rp.support()) {
+                    return;
+                }
+                var links = w.document.getElementsByTagName("link");
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    // qualify links to those with rel=preload and as=style attrs
+                    if (link.rel === "preload" && link.getAttribute("as") === "style" && !link.getAttribute("data-loadcss")) {
+                        // prevent rerunning on link
+                        link.setAttribute("data-loadcss", true);
+                        // bind listeners to toggle media back
+                        rp.bindMediaToggle(link);
+                    }
+                }
+            };
+
+            // if unsupported, run the polyfill
+            if (!rp.support()) {
+                // run once at least
+                rp.poly();
+
+                // rerun poly on an interval until onload
+                var run = w.setInterval(rp.poly, 500);
+                if (w.addEventListener) {
+                    w.addEventListener("load", function () {
+                        rp.poly();
+                        w.clearInterval(run);
+                    });
+                } else if (w.attachEvent) {
+                    w.attachEvent("onload", function () {
+                        rp.poly();
+                        w.clearInterval(run);
+                    });
+                }
+            }
+            // commonjs
+            if (typeof exports !== "undefined") {
+                exports.loadCSS = loadCSS;
+            }
+            else {
+                w.loadCSS = loadCSS;
+            }
+        }(typeof global !== "undefined" ? global : this));
+    </script>
+    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
+    <script src="/scripts/main.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Xungerrrr&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Unity 3D - Hit UFO 2.0</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Xungerrrr's Blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style=
+
+
+
+
+
+
+
+
+height:70vh;
+
+>
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-img" style="background-image: url(/intro/unity.png)"></div>
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Unity 3D - Hit UFO 2.0
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+                3D 游戏编程与设计 第七周作业
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Unity">Unity</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2018/04/24</span>
+                
+                <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                    <span class="iconfont-archer">&#xe602;</span>
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+                
+                <span class="shareWrapper">
+                    <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                    <span class="shareText">Share</span>
+                    <ul class="shareList">
+                        <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                            <div class="share-qrcode"></div>
+                        </li>
+                        <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                        <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                        <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                        <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                    </ul>
+                </span>
+            </div>
+        
+    </div>
+</div>
+        <script>
+  // load webfont-loader async, and add callback function
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+  
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntroTags = document.getElementsByClassName('post-intro-tags')[0],
+        postIntroMeat = document.getElementsByClassName('post-intro-meta')[0];
+      if (postIntroTags) {
+        postIntroTags.classList.add('post-fade-in');
+      }
+      if (postIntroMeat) {
+        postIntroMeat.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  async("https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", asyncCb)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="改进飞碟（Hit-UFO）游戏："><a href="#改进飞碟（Hit-UFO）游戏：" class="headerlink" title="改进飞碟（Hit UFO）游戏："></a>改进飞碟（Hit UFO）游戏：</h1><ul>
+<li>游戏内容要求：<ul>
+<li>按 adapter 模式设计图修改飞碟游戏</li>
+<li>使它同时支持物理运动与运动学（变换）运动</li>
+</ul>
+</li>
+</ul>
+<h2 id="适配器（adapter）模式"><a href="#适配器（adapter）模式" class="headerlink" title="适配器（adapter）模式"></a>适配器（adapter）模式</h2><p>在<a href="/2018/04/17/Unity-3D-Hit-UFO/" title="上一版游戏">上一版游戏</a>的基础上，我们希望加入飞碟的物理运动，使游戏能在运动学运动和物理运动这两种模式下运行。为了重用代码，我们需要增加一个适配器，来完成从通用接口（飞碟运动）到两个不同的类（物理运动和运动学运动）的转换。在这里，我采用了<a href="https://blog.csdn.net/zxt0601/article/details/52848004#t4" target="_blank" rel="noopener">对象的适配器模式</a>，在适配器中包含两个不同类的实例，来完成特定飞碟运动接口的转换。</p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><h3 id="实现物理运动"><a href="#实现物理运动" class="headerlink" title="实现物理运动"></a>实现物理运动</h3><p>参考运动学飞行的实现方式，定义一个物理运动的类 PhysicsAction，实现飞碟的物理运动。在 Start() 方法中，用 Rigidbody 组件设定初速度并添加重力，模拟物理运动。由于需要处理 Rigidbody 的物理运动，这里应使用FixedUpdate()方法进行更新，防止受到游戏帧率的影响。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> PhysicsAction.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PhysicsAction</span> : <span class="title">Action</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Vector3 startDirection;                     <span class="comment">// 初速度方向</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> power;                                <span class="comment">// 控制飞碟速度的变量</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> PhysicsAction <span class="title">GetAction</span>(<span class="params">Vector3 direction, <span class="keyword">float</span> angle, <span class="keyword">float</span> power</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 初始化飞碟的初速度方向</span></span><br><span class="line">        PhysicsAction action = CreateInstance&lt;PhysicsAction&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (direction.x == <span class="number">-1</span>) &#123;</span><br><span class="line">            action.startDirection = Quaternion.Euler(<span class="keyword">new</span> Vector3(<span class="number">0</span>, <span class="number">0</span>, -angle)) * Vector3.left * power;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            action.startDirection = Quaternion.Euler(<span class="keyword">new</span> Vector3(<span class="number">0</span>, <span class="number">0</span>, angle)) * Vector3.right * power;</span><br><span class="line">        &#125;</span><br><span class="line">        action.power = power;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> action;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设定初速度并添加重力</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        gameObject.GetComponent&lt;Rigidbody&gt;().velocity = startDirection * power / <span class="number">10</span>;</span><br><span class="line">        gameObject.GetComponent&lt;Rigidbody&gt;().useGravity = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">FixedUpdate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.transform.position.y &lt; <span class="number">-20</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.destroy = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">this</span>.enable = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">this</span>.callback.ActionEvent(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了能够重写上面的 FixedUpdate() 方法，需要在 Action 类中添加方法原型：<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> Action.cs</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">FixedUpdate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> System.NotImplementedException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同时，还需要在 ActionManager 中添加 FixedUpdate() 方法，来调用 Action 的 FixedUpdate() 方法：<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> ActionManager.cs</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">FixedUpdate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span> (Action action <span class="keyword">in</span> waitingAdd) &#123;</span><br><span class="line">        actions[action.GetInstanceID()] = action;</span><br><span class="line">    &#125;</span><br><span class="line">    waitingAdd.Clear();</span><br><span class="line">    <span class="keyword">foreach</span> (KeyValuePair&lt;<span class="keyword">int</span>, Action&gt; kv <span class="keyword">in</span> actions) &#123;</span><br><span class="line">        Action action = kv.Value;</span><br><span class="line">        <span class="keyword">if</span> (action.enable) &#123;</span><br><span class="line">            action.FixedUpdate(); <span class="comment">// fix update action</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (action.destroy) &#123;</span><br><span class="line">            waitingDelete.Add(action.GetInstanceID()); <span class="comment">// release action</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">int</span> key <span class="keyword">in</span> waitingDelete) &#123;</span><br><span class="line">        Action action = actions[key];</span><br><span class="line">        actions.Remove(key);</span><br><span class="line">        DestroyObject(action);</span><br><span class="line">    &#125;</span><br><span class="line">    waitingDelete.Clear();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="定义物理运动的管理器"><a href="#定义物理运动的管理器" class="headerlink" title="定义物理运动的管理器"></a>定义物理运动的管理器</h3><p>参考 FlyActionManager，定义物理运动的管理器，来管理和执行物理运动。<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> PhysicsActionManager.cs</span></span><br><span class="line">public class PhysicsActionManager : ActionManager, ActionCallback &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> PhysicsAction physics; <span class="comment">// 物理动作</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 管理飞行</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Fly</span>(<span class="params">GameObject disk, <span class="keyword">float</span> angle, <span class="keyword">float</span> power</span>) </span>&#123;</span><br><span class="line">        physics = PhysicsAction.GetAction(disk.GetComponent&lt;DiskData&gt;().direction, angle, power);</span><br><span class="line">        <span class="keyword">this</span>.RunAction(disk, physics, <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ActionEvent</span>(<span class="params">Action source, ActionEventType events = ActionEventType.Completed,</span></span></span><br><span class="line"><span class="function"><span class="params">                            <span class="keyword">int</span> intParam = <span class="number">0</span>, <span class="keyword">string</span> strParam = <span class="literal">null</span>, <span class="keyword">object</span> objectParam = <span class="literal">null</span></span>) </span>&#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改原有的飞行运动管理器"><a href="#修改原有的飞行运动管理器" class="headerlink" title="修改原有的飞行运动管理器"></a>修改原有的飞行运动管理器</h3><p>删除飞行管理器中的 SceneController 实例。实现方法与上面的物理运动管理器类似。<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> FlyActionManager.cs</span></span><br><span class="line">public class FlyActionManager : ActionManager, ActionCallback &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> FlyAction fly; <span class="comment">// 飞行动作</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 管理飞行</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Fly</span> (<span class="params">GameObject disk, <span class="keyword">float</span> angle, <span class="keyword">float</span> power</span>) </span>&#123;</span><br><span class="line">        fly = FlyAction.GetAction(disk.GetComponent&lt;DiskData&gt;().direction, angle, power);</span><br><span class="line">        <span class="keyword">this</span>.RunAction(disk, fly, <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ActionEvent</span>(<span class="params">Action source, ActionEventType events = ActionEventType.Completed,</span></span></span><br><span class="line"><span class="function"><span class="params">                            <span class="keyword">int</span> intParam = <span class="number">0</span>, <span class="keyword">string</span> strParam = <span class="literal">null</span>, <span class="keyword">object</span> objectParam = <span class="literal">null</span></span>) </span>&#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="定义通用接口"><a href="#定义通用接口" class="headerlink" title="定义通用接口"></a>定义通用接口</h3><p>添加一个飞碟运动管理的通用接口。适配器继承这个接口来进行运动的适配。<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> Interfaces.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IActionManager</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Fly</span>(<span class="params">GameObject disk, <span class="keyword">float</span> angle, <span class="keyword">float</span> power, <span class="keyword">bool</span> physics</span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="实现适配器"><a href="#实现适配器" class="headerlink" title="实现适配器"></a>实现适配器</h3><p>适配器中包含两个运动管理器的实例，根据变量 physics 来调用不同的运动管理器，实现不同的运动模式。<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> ActionManagerAdapter.cs</span></span><br><span class="line">public class ActionManagerAdapter : MonoBehaviour, IActionManager &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> FlyActionManager flyActionManager;</span><br><span class="line">    <span class="keyword">public</span> PhysicsActionManager physicsActionManager;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        flyActionManager = (FlyActionManager)gameObject.AddComponent&lt;FlyActionManager&gt;();</span><br><span class="line">        physicsActionManager = (PhysicsActionManager)gameObject.AddComponent&lt;PhysicsActionManager&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Fly</span>(<span class="params">GameObject disk, <span class="keyword">float</span> angle, <span class="keyword">float</span> power, <span class="keyword">bool</span> physics</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 物理运动</span></span><br><span class="line">        <span class="keyword">if</span> (physics) &#123;</span><br><span class="line">            physicsActionManager.Fly(disk, angle, power);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 运动学运动</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            flyActionManager.Fly(disk, angle, power);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改-FirstSceneController"><a href="#修改-FirstSceneController" class="headerlink" title="修改 FirstSceneController"></a>修改 FirstSceneController</h3><ol>
+<li>将原有的 FlyActionManager 实例修改为 ActionManagerAdapter 实例；</li>
+<li>修改 ThrowDisk() 方法，调用通用接口提供的 Fly 方法，利用 physics 变量来控制不同的运动模式；</li>
+<li>修改 Pause() 和 Begin() 方法，利用 Time.timeScale 实现物理运动的暂停（可恢复）。<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> FirstSceneController.cs</span></span><br><span class="line">public class FirstSceneController : MonoBehaviour, SceneController, UserAction &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">public</span> ActionManagerAdapter actionManager;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> physics = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 场景初始化</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">        actionManager = gameObject.AddComponent&lt;ActionManagerAdapter&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 抛出飞碟</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ThrowDisk</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">float</span> position_x = <span class="number">16</span>;</span><br><span class="line">        <span class="keyword">if</span> (diskQueue.Count != <span class="number">0</span>) &#123;</span><br><span class="line">            diskNumber--;</span><br><span class="line">            GameObject disk = diskQueue.Dequeue(); <span class="comment">// 取出飞碟</span></span><br><span class="line">            diskNotshot.Add(disk);</span><br><span class="line">            disk.SetActive(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 设置飞碟的随机位置</span></span><br><span class="line">            <span class="keyword">float</span> ran_y = Random.Range(<span class="number">1</span>f, <span class="number">4</span>f);</span><br><span class="line">            <span class="keyword">float</span> ran_x = Random.Range(<span class="number">-1</span>f, <span class="number">1</span>f) &lt; <span class="number">0</span> ? <span class="number">-1</span> : <span class="number">1</span>;</span><br><span class="line">            disk.GetComponent&lt;DiskData&gt;().direction = <span class="keyword">new</span> Vector3(ran_x, ran_y, <span class="number">0</span>);</span><br><span class="line">            Vector3 position = <span class="keyword">new</span> Vector3(-disk.GetComponent&lt;DiskData&gt;().direction.x * position_x, ran_y, <span class="number">0</span>);</span><br><span class="line">            disk.transform.position = position;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 设置飞碟初始所受的力和角度</span></span><br><span class="line">            <span class="keyword">float</span> power = Random.Range(<span class="number">10</span>f, <span class="number">15</span>f);</span><br><span class="line">            <span class="keyword">float</span> angle = Random.Range(<span class="number">15</span>f, <span class="number">28</span>f);</span><br><span class="line">            <span class="comment">// 通过 physics 变量控制运动模式</span></span><br><span class="line">            actionManager.Fly(disk, angle, power, physics);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; diskNotshot.Count; i++) &#123;</span><br><span class="line">            GameObject temp = diskNotshot[i];</span><br><span class="line">            <span class="comment">//飞碟飞出摄像机视野也没被打中</span></span><br><span class="line">            <span class="keyword">if</span> (temp.transform.position.y &lt; <span class="number">-20</span> &amp;&amp; temp.gameObject.activeSelf == <span class="literal">true</span>) &#123;</span><br><span class="line">                diskFactory.FreeDisk(diskNotshot[i]);</span><br><span class="line">                diskNotshot.Remove(diskNotshot[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 暂停游戏</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Pause</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        gameState = GameState.PAUSE;</span><br><span class="line">        Time.timeScale = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 开始游戏</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Begin</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        gameState = GameState.START;</span><br><span class="line">        Time.timeScale = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="游戏运行方法"><a href="#游戏运行方法" class="headerlink" title="游戏运行方法"></a>游戏运行方法</h2><ol>
+<li>在飞碟预制上添加 Rigidbody 组件，取消勾选重力（运动学运动不需要重力）；<img src="/2018/04/24/Unity-3D-Hit-UFO-2-0/rigidbody.png" title="rigidbody"></li>
+<li>将 FirstSceneController.cs、DiskFactory.cs 和 ScoreRecorder.cs 挂在 Main Camera 上，利用 First Scene Controller 的 Physics 属性控制运动模式。运行后结果：<img src="/2018/04/24/Unity-3D-Hit-UFO-2-0/physics.png" title="physics">
+</li>
+</ol>
+<h2 id="游戏视频"><a href="#游戏视频" class="headerlink" title="游戏视频"></a>游戏视频</h2><p>物理运动</p>
+<iframe height="400" width="768" src="http://player.youku.com/embed/XMzU2MjMxMDgyOA==" frameborder="0" 'allowfullscreen'=""></iframe>
+
+<p>运动学运动</p>
+<iframe height="400" width="768" src="http://player.youku.com/embed/XMzU0NTU3OTg5Ng==" frameborder="0" 'allowfullscreen'=""></iframe>
+
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><p> <a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/master/Homework%205/Hit%20UFO%20(Physics)" target="_blank" rel="noopener">https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/master/Homework%205/Hit%20UFO%20(Physics)</a></p>
+<a href="/2018/03/30/Unity-3D-Learning/" title="返回 Unity 3D Learning">返回 Unity 3D Learning</a>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/04/17/Unity-3D-Hit-UFO/" title= Unity 3D - Hit UFO >
+                    <div class="prevTitle">Unity 3D - Hit UFO</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!--PC版-->
+
+    <!--PC版-->
+
+
+    
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:hellolixy@icloud.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Xungerrrr" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/wechat.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.facebook.com/profile.php?id=100025222894249" class="iconfont-archer facebook" target="_blank" title=facebook></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span>© 2018 Xungerrrr</span>
+    </div>
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+        <span id="busuanzi_container_site_pv">Page Views: <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+    
+</footer>
+
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:70vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#改进飞碟（Hit-UFO）游戏："><span class="toc-number">1.</span> <span class="toc-text">改进飞碟（Hit UFO）游戏：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#适配器（adapter）模式"><span class="toc-number">1.1.</span> <span class="toc-text">适配器（adapter）模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现思路"><span class="toc-number">1.2.</span> <span class="toc-text">实现思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现物理运动"><span class="toc-number">1.2.1.</span> <span class="toc-text">实现物理运动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义物理运动的管理器"><span class="toc-number">1.2.2.</span> <span class="toc-text">定义物理运动的管理器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改原有的飞行运动管理器"><span class="toc-number">1.2.3.</span> <span class="toc-text">修改原有的飞行运动管理器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义通用接口"><span class="toc-number">1.2.4.</span> <span class="toc-text">定义通用接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现适配器"><span class="toc-number">1.2.5.</span> <span class="toc-text">实现适配器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改-FirstSceneController"><span class="toc-number">1.2.6.</span> <span class="toc-text">修改 FirstSceneController</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏运行方法"><span class="toc-number">1.3.</span> <span class="toc-text">游戏运行方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏视频"><span class="toc-number">1.4.</span> <span class="toc-text">游戏视频</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目地址"><span class="toc-number">1.5.</span> <span class="toc-text">项目地址</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 11 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span><a class="archive-post-title" href= "/2018/04/24/Unity-3D-Hit-UFO-2-0/" >Unity 3D - Hit UFO 2.0</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/17</span><a class="archive-post-title" href= "/2018/04/17/Unity-3D-Hit-UFO/" >Unity 3D - Hit UFO</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href= "/2018/04/15/Vi-Java-Ant-和-JUnit-的学习报告/" >Vi, Java, Ant 和 JUnit 的学习报告</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/12</span><a class="archive-post-title" href= "/2018/04/12/用于图像分类的深度稀疏编码网络/" >用于图像分类的深度稀疏编码网络</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2018/04/10/Unity-3D-牧师与魔鬼-2-0/" >Unity 3D - 牧师与魔鬼 2.0</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/06</span><a class="archive-post-title" href= "/2018/04/06/基于稀疏表示的人脸识别/" >基于稀疏表示的人脸识别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/Unity-3D-牧师与魔鬼/" >Unity 3D - 牧师与魔鬼</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span><a class="archive-post-title" href= "/2018/03/31/Unity-3D-太阳系/" >Unity 3D - 太阳系</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span><a class="archive-post-title" href= "/2018/03/31/Unity-3D-基础概念/" >Unity 3D - 基础概念</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2018/03/30/Unity-3D-Learning/" >Unity 3D Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2018/03/30/hello-world/" >Hello World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="Unity"><span class="iconfont-archer">&#xe606;</span>Unity</span>
+    
+        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+    
+        <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="实训"><span class="iconfont-archer">&#xe606;</span>实训</span>
+    
+        <span class="sidebar-tag-name" data-tags="Face Recognition"><span class="iconfont-archer">&#xe606;</span>Face Recognition</span>
+    
+        <span class="sidebar-tag-name" data-tags="Image Understanding"><span class="iconfont-archer">&#xe606;</span>Image Understanding</span>
+    
+        <span class="sidebar-tag-name" data-tags="Pattern Recognition"><span class="iconfont-archer">&#xe606;</span>Pattern Recognition</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Unity"><span class="iconfont-archer">&#xe60a;</span>Unity</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: '/',
+        author: 'Xunyan Li'
+    }
+</script>
+    <!-- busuanzi  -->
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+    
+    </body>
+</html>
+
+
