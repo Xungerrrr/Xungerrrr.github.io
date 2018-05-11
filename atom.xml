@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xungerrrr.github.io/"/>
-  <updated>2018-04-24T15:24:11.881Z</updated>
+  <updated>2018-05-11T10:57:16.588Z</updated>
   <id>http://xungerrrr.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Unity 3D - 智能巡逻兵</title>
+    <link href="http://xungerrrr.github.io/2018/05/11/Unity-3D-%E6%99%BA%E8%83%BD%E5%B7%A1%E9%80%BB%E5%85%B5/"/>
+    <id>http://xungerrrr.github.io/2018/05/11/Unity-3D-智能巡逻兵/</id>
+    <published>2018-05-11T09:34:38.000Z</published>
+    <updated>2018-05-11T10:57:16.588Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="游戏要求"><a href="#游戏要求" class="headerlink" title="游戏要求"></a>游戏要求</h1><ul><li><p>游戏设计要求： </p><ul><li>创建一个地图和若干巡逻兵(使用动画)；</li><li>每个巡逻兵走一个3~5个边的凸多边型，位置数据是相对地址。即每次确定下一个目标位置，用自己当前位置为原点计算；</li><li>巡逻兵碰撞到障碍物，则会自动选下一个点为目标；</li><li>巡逻兵在设定范围内感知到玩家，会自动追击玩家；</li><li>失去玩家目标后，继续巡逻；</li><li>计分：玩家每次甩掉一个巡逻兵计一分，与巡逻兵碰撞游戏结束；</li></ul></li><li><p>程序设计要求： </p><ul><li>必须使用订阅与发布模式传消息<br>  subject：OnLostGoal<br>  Publisher: ?<br>  Subscriber: ?</li><li>工厂模式生产巡逻兵</li></ul></li></ul><h1 id="订阅与发布模式"><a href="#订阅与发布模式" class="headerlink" title="订阅与发布模式"></a>订阅与发布模式</h1><h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><a href="/2018/03/30/Unity-3D-Learning/" title="返回 Unity 3D Learning">返回 Unity 3D Learning</a>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;游戏要求&quot;&gt;&lt;a href=&quot;#游戏要求&quot; class=&quot;headerlink&quot; title=&quot;游戏要求&quot;&gt;&lt;/a&gt;游戏要求&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;游戏设计要求： &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;创建一个地图和若干巡逻兵(使用动画)；&lt;/li&gt;
+&lt;li&gt;每个
+      
+    
+    </summary>
+    
+      <category term="Unity" scheme="http://xungerrrr.github.io/categories/Unity/"/>
+    
+    
+      <category term="Unity" scheme="http://xungerrrr.github.io/tags/Unity/"/>
+    
+  </entry>
   
   <entry>
     <title>Unity 3D - Hit UFO 2.0</title>
@@ -251,9 +280,9 @@
     <link href="http://xungerrrr.github.io/2018/03/30/Unity-3D-Learning/"/>
     <id>http://xungerrrr.github.io/2018/03/30/Unity-3D-Learning/</id>
     <published>2018-03-30T13:42:17.000Z</published>
-    <updated>2018-04-24T12:10:21.899Z</updated>
+    <updated>2018-05-11T09:51:17.745Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Unity-3D编程-学习博客"><a href="#Unity-3D编程-学习博客" class="headerlink" title="Unity 3D编程 学习博客"></a>Unity 3D编程 学习博客</h1><blockquote><p>这是中山大学2018春季学期「3D 游戏编程与设计」的课程博客。以此系列博客记录本人3D编程学习的过程和结果。</p></blockquote><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="Homework-1"><a href="#Homework-1" class="headerlink" title="Homework 1"></a>Homework 1</h3><ul><li><a href="/2018/03/31/Unity-3D-基础概念/" title="Unity 3D - 基础概念">Unity 3D - 基础概念</a></li><li><a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/master/Homework%201/2.%20Tic-Tac-Toe" target="_blank" rel="noopener">Unity 3D - 井字棋</a></li></ul><h3 id="Homework-2"><a href="#Homework-2" class="headerlink" title="Homework 2"></a>Homework 2</h3><ul><li><a href="/2018/03/31/Unity-3D-太阳系/" title="Unity 3D - 太阳系">Unity 3D - 太阳系</a></li><li><a href="/2018/04/01/Unity-3D-牧师与魔鬼/" title="Unity 3D - 牧师与魔鬼">Unity 3D - 牧师与魔鬼</a></li></ul><h3 id="Homework-3"><a href="#Homework-3" class="headerlink" title="Homework 3"></a>Homework 3</h3><ul><li><a href="/2018/04/10/Unity-3D-牧师与魔鬼-2-0/" title="Unity 3D - 牧师与魔鬼 2.0">Unity 3D - 牧师与魔鬼 2.0</a></li></ul><h3 id="Homework-4"><a href="#Homework-4" class="headerlink" title="Homework 4"></a>Homework 4</h3><ul><li><a href="/2018/04/17/Unity-3D-Hit-UFO/" title="Unity 3D - Hit UFO">Unity 3D - Hit UFO</a></li></ul><h3 id="Homework-5"><a href="#Homework-5" class="headerlink" title="Homework 5"></a>Homework 5</h3><ul><li><a href="/2018/04/24/Unity-3D-Hit-UFO-2-0/" title="Unity 3D - Hit UFO 2.0">Unity 3D - Hit UFO 2.0</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="Unity-3D编程-学习博客"><a href="#Unity-3D编程-学习博客" class="headerlink" title="Unity 3D编程 学习博客"></a>Unity 3D编程 学习博客</h1><blockquote><p>这是中山大学2018春季学期「3D 游戏编程与设计」的课程博客。以此系列博客记录本人3D编程学习的过程和结果。</p></blockquote><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="Homework-1"><a href="#Homework-1" class="headerlink" title="Homework 1"></a>Homework 1</h3><ul><li><a href="/2018/03/31/Unity-3D-基础概念/" title="Unity 3D - 基础概念">Unity 3D - 基础概念</a></li><li><a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/master/Homework%201/2.%20Tic-Tac-Toe" target="_blank" rel="noopener">Unity 3D - 井字棋</a></li></ul><h3 id="Homework-2"><a href="#Homework-2" class="headerlink" title="Homework 2"></a>Homework 2</h3><ul><li><a href="/2018/03/31/Unity-3D-太阳系/" title="Unity 3D - 太阳系">Unity 3D - 太阳系</a></li><li><a href="/2018/04/01/Unity-3D-牧师与魔鬼/" title="Unity 3D - 牧师与魔鬼">Unity 3D - 牧师与魔鬼</a></li></ul><h3 id="Homework-3"><a href="#Homework-3" class="headerlink" title="Homework 3"></a>Homework 3</h3><ul><li><a href="/2018/04/10/Unity-3D-牧师与魔鬼-2-0/" title="Unity 3D - 牧师与魔鬼 2.0">Unity 3D - 牧师与魔鬼 2.0</a></li></ul><h3 id="Homework-4"><a href="#Homework-4" class="headerlink" title="Homework 4"></a>Homework 4</h3><ul><li><a href="/2018/04/17/Unity-3D-Hit-UFO/" title="Unity 3D - Hit UFO">Unity 3D - Hit UFO</a></li></ul><h3 id="Homework-5"><a href="#Homework-5" class="headerlink" title="Homework 5"></a>Homework 5</h3><ul><li><a href="/2018/04/24/Unity-3D-Hit-UFO-2-0/" title="Unity 3D - Hit UFO 2.0">Unity 3D - Hit UFO 2.0</a></li></ul><h3 id="Homework-6"><a href="#Homework-6" class="headerlink" title="Homework 6"></a>Homework 6</h3><ul><li><a href="/2018/05/11/Unity-3D-智能巡逻兵/" title="Unity 3D - 智能巡逻兵">Unity 3D - 智能巡逻兵</a></li></ul>]]></content>
     
     <summary type="html">
     
