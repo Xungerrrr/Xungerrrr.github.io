@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xungerrrr.github.io/"/>
-  <updated>2018-05-14T12:13:05.703Z</updated>
+  <updated>2018-05-14T14:09:02.556Z</updated>
   <id>http://xungerrrr.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://xungerrrr.github.io/2018/05/11/Unity-3D-%E6%99%BA%E8%83%BD%E5%B7%A1%E9%80%BB%E5%85%B5/"/>
     <id>http://xungerrrr.github.io/2018/05/11/Unity-3D-智能巡逻兵/</id>
     <published>2018-05-11T09:34:38.000Z</published>
-    <updated>2018-05-14T12:13:05.703Z</updated>
+    <updated>2018-05-14T14:09:02.556Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="游戏要求"><a href="#游戏要求" class="headerlink" title="游戏要求"></a>游戏要求</h1><ul><li><p>游戏设计要求： </p><ul><li>创建一个地图和若干巡逻兵(使用动画)；</li><li>每个巡逻兵走一个3~5个边的凸多边型，位置数据是相对地址。即每次确定下一个目标位置，用自己当前位置为原点计算；</li><li>巡逻兵碰撞到障碍物，则会自动选下一个点为目标；</li><li>巡逻兵在设定范围内感知到玩家，会自动追击玩家；</li><li>失去玩家目标后，继续巡逻；</li><li>计分：玩家每次甩掉一个巡逻兵计一分，与巡逻兵碰撞游戏结束；</li></ul></li><li><p>程序设计要求： </p><ul><li>必须使用订阅与发布模式传消息 </li><li>工厂模式生产巡逻兵</li></ul></li></ul><h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><h2 id="游戏地图"><a href="#游戏地图" class="headerlink" title="游戏地图"></a>游戏地图</h2><p>利用 Plane, Cube 和下载的栅栏资源，设计一个具有九个正方形区域的地图。在每个区域中，添加一个 Box Collider，用于检测玩家或巡逻兵进出区域。<br><img src="/2018/05/11/Unity-3D-智能巡逻兵/plane.png" title="地图"></p><h2 id="巡逻兵"><a href="#巡逻兵" class="headerlink" title="巡逻兵"></a>巡逻兵</h2><p>在 Asset Store 中搜索 soldier，找到了一个骨骼、动画和贴图都不错的士兵模型包。其中有三种士兵可以选择。</p><img src="/2018/05/11/Unity-3D-智能巡逻兵/asset%20store.png" title="巡逻兵模型"><p>巡逻兵预制的结构如下，由头部和身体两大部分组成：</p><img src="/2018/05/11/Unity-3D-智能巡逻兵/patrol.png" title="巡逻兵结构"><p>在 Patrol 上添加一个 Capsule Collider，用于检测巡逻兵与障碍物、玩家的碰撞。在 Bip001 上添加一个 Capsule Collider，用于感知玩家。自定义 Collider 的形状，使巡逻兵具有一定视线范围，只能发现前方区域的玩家。如下图：</p><img src="/2018/05/11/Unity-3D-智能巡逻兵/patrol%20collider.png" title="巡逻兵搜索范围"><h1 id="游戏视频"><a href="#游戏视频" class="headerlink" title="游戏视频"></a>游戏视频</h1><p>完整游戏项目见 <a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/Homework-6" target="_blank" rel="noopener">GitHub</a>.</p><p><em><a href="/2018/03/30/Unity-3D-Learning/" title="返回 Unity 3D Learning">返回 Unity 3D Learning</a></em></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="游戏要求"><a href="#游戏要求" class="headerlink" title="游戏要求"></a>游戏要求</h1><ul><li><p>游戏设计要求： </p><ul><li>创建一个地图和若干巡逻兵(使用动画)；</li><li>每个巡逻兵走一个3~5个边的凸多边型，位置数据是相对地址。即每次确定下一个目标位置，用自己当前位置为原点计算；</li><li>巡逻兵碰撞到障碍物，则会自动选下一个点为目标；</li><li>巡逻兵在设定范围内感知到玩家，会自动追击玩家；</li><li>失去玩家目标后，继续巡逻；</li><li>计分：玩家每次甩掉一个巡逻兵计一分，与巡逻兵碰撞游戏结束；</li></ul></li><li><p>程序设计要求： </p><ul><li>必须使用订阅与发布模式传消息 </li><li>工厂模式生产巡逻兵</li></ul></li></ul><h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><h2 id="游戏地图"><a href="#游戏地图" class="headerlink" title="游戏地图"></a>游戏地图</h2><p>利用 Plane, Cube 和下载的栅栏资源，设计一个具有九个正方形区域的地图。在每个区域中，添加一个 Box Collider，用于检测玩家或巡逻兵进出区域。<br><img src="/2018/05/11/Unity-3D-智能巡逻兵/plane.png" title="地图"></p><h2 id="巡逻兵"><a href="#巡逻兵" class="headerlink" title="巡逻兵"></a>巡逻兵</h2><p>在 Asset Store 中搜索 soldier，找到了一个骨骼、动画和贴图都不错的士兵模型包。其中有三种士兵可以选择。</p><img src="/2018/05/11/Unity-3D-智能巡逻兵/asset%20store.png" title="巡逻兵模型"><p>巡逻兵预制的结构如下，由头部和身体两大部分组成：</p><img src="/2018/05/11/Unity-3D-智能巡逻兵/patrol.png" title="巡逻兵结构"><p>在 Patrol 上添加一个 Capsule Collider，用于检测巡逻兵与障碍物、玩家的碰撞。在 Bip001 上添加一个 Capsule Collider，用于感知玩家。自定义 Collider 的形状，使巡逻兵具有一定视线范围，只能发现前方区域的玩家。如下图：</p><img src="/2018/05/11/Unity-3D-智能巡逻兵/patrol%20collider.png" title="巡逻兵搜索范围"><h1 id="游戏视频"><a href="#游戏视频" class="headerlink" title="游戏视频"></a>游戏视频</h1><iframe height="498" width="510" src="http://player.youku.com/embed/XMzYwNTg1OTA1Mg==" frameborder="0" 'allowfullscreen'=""></iframe><p>完整游戏项目见 <a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/Homework-6" target="_blank" rel="noopener">GitHub</a>.</p><p><em><a href="/2018/03/30/Unity-3D-Learning/" title="返回 Unity 3D Learning">返回 Unity 3D Learning</a></em></p>]]></content>
     
     <summary type="html">
     
@@ -142,9 +142,9 @@
     </summary>
     
     
-      <category term="Image Understanding" scheme="http://xungerrrr.github.io/tags/Image-Understanding/"/>
-    
       <category term="Pattern Recognition" scheme="http://xungerrrr.github.io/tags/Pattern-Recognition/"/>
+    
+      <category term="Image Understanding" scheme="http://xungerrrr.github.io/tags/Image-Understanding/"/>
     
   </entry>
   
@@ -192,9 +192,9 @@
     </summary>
     
     
-      <category term="Face Recognition" scheme="http://xungerrrr.github.io/tags/Face-Recognition/"/>
-    
       <category term="Image Understanding" scheme="http://xungerrrr.github.io/tags/Image-Understanding/"/>
+    
+      <category term="Face Recognition" scheme="http://xungerrrr.github.io/tags/Face-Recognition/"/>
     
   </entry>
   
