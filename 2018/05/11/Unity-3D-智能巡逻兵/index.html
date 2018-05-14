@@ -355,7 +355,7 @@ height:70vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="游戏要求"><a href="#游戏要求" class="headerlink" title="游戏要求"></a>游戏要求</h2><ul>
+        <h1 id="游戏要求"><a href="#游戏要求" class="headerlink" title="游戏要求"></a>游戏要求</h1><ul>
 <li><p>游戏设计要求： </p>
 <ul>
 <li>创建一个地图和若干巡逻兵(使用动画)；</li>
@@ -368,14 +368,19 @@ height:70vh;
 </li>
 <li><p>程序设计要求： </p>
 <ul>
-<li>必须使用订阅与发布模式传消息<br>  subject：OnLostGoal<br>  Publisher: ?<br>  Subscriber: ?</li>
+<li>必须使用订阅与发布模式传消息 </li>
 <li>工厂模式生产巡逻兵</li>
 </ul>
 </li>
 </ul>
-<h2 id="订阅与发布模式"><a href="#订阅与发布模式" class="headerlink" title="订阅与发布模式"></a>订阅与发布模式</h2><p>Continues…</p>
-<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>Continues…</p>
-<h2 id="游戏视频"><a href="#游戏视频" class="headerlink" title="游戏视频"></a>游戏视频</h2><p>完整游戏项目见 <a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/Homework-6" target="_blank" rel="noopener">GitHub</a>.</p>
+<h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><h2 id="游戏地图"><a href="#游戏地图" class="headerlink" title="游戏地图"></a>游戏地图</h2><p>利用 Plane, Cube 和下载的栅栏资源，设计一个具有九个正方形区域的地图。在每个区域中，添加一个 Box Collider，用于检测玩家或巡逻兵进出区域。<br><img src="/2018/05/11/Unity-3D-智能巡逻兵/plane.png" title="地图"></p>
+<h2 id="巡逻兵"><a href="#巡逻兵" class="headerlink" title="巡逻兵"></a>巡逻兵</h2><p>在 Asset Store 中搜索 soldier，找到了一个骨骼、动画和贴图都不错的士兵模型包。其中有三种士兵可以选择。</p>
+<img src="/2018/05/11/Unity-3D-智能巡逻兵/asset%20store.png" title="巡逻兵模型">
+<p>巡逻兵预制的结构如下，由头部和身体两大部分组成：</p>
+<img src="/2018/05/11/Unity-3D-智能巡逻兵/patrol.png" title="巡逻兵结构">
+<p>在 Patrol 上添加一个 Capsule Collider，用于检测巡逻兵与障碍物、玩家的碰撞。在 Bip001 上添加一个 Capsule Collider，用于感知玩家。自定义 Collider 的形状，使巡逻兵具有一定视线范围，只能发现前方区域的玩家。如下图：</p>
+<img src="/2018/05/11/Unity-3D-智能巡逻兵/patrol%20collider.png" title="巡逻兵搜索范围">
+<h1 id="游戏视频"><a href="#游戏视频" class="headerlink" title="游戏视频"></a>游戏视频</h1><p>完整游戏项目见 <a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/Homework-6" target="_blank" rel="noopener">GitHub</a>.</p>
 <p><em><a href="/2018/03/30/Unity-3D-Learning/" title="返回 Unity 3D Learning">返回 Unity 3D Learning</a></em></p>
 
     </article>
@@ -502,7 +507,7 @@ top:70vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏要求"><span class="toc-number">1.</span> <span class="toc-text">游戏要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#订阅与发布模式"><span class="toc-number">2.</span> <span class="toc-text">订阅与发布模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现思路"><span class="toc-number">3.</span> <span class="toc-text">实现思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏视频"><span class="toc-number">4.</span> <span class="toc-text">游戏视频</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#游戏要求"><span class="toc-number">1.</span> <span class="toc-text">游戏要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现思路"><span class="toc-number">2.</span> <span class="toc-text">实现思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏地图"><span class="toc-number">2.1.</span> <span class="toc-text">游戏地图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#巡逻兵"><span class="toc-number">2.2.</span> <span class="toc-text">巡逻兵</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#游戏视频"><span class="toc-number">3.</span> <span class="toc-text">游戏视频</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
