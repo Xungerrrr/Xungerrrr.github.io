@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title>Xungerrrr&#39;s Blog</title>
+    <title>Unity 3D - 人机坦克大战 · Xungerrrr&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -65,6 +65,8 @@
 
     <link rel="preload" href= /css/style.css?v=20180317 as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" type="text/css" href= /css/mobile.css?v=20180317 media="(max-width: 980px)"/>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         
     <link rel="icon" href= /assets/Xungerrrr.ico>
     <script>
@@ -175,12 +177,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Xungerrrr&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Unity 3D - 人机坦克大战</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Xungerrrr's Blog</a>
 </header>
@@ -194,24 +207,69 @@
 
 
 
+height:70vh;
+
 >
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/tank.png)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            Unity 3D - 人机坦克大战
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+                3D 游戏编程与设计 第十五周作业
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Unity">Unity</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2018/06/19</span>
+                
+                <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                    <span class="iconfont-archer">&#xe602;</span>
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+                
+                <span class="shareWrapper">
+                    <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                    <span class="shareText">Share</span>
+                    <ul class="shareList">
+                        <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                            <div class="share-qrcode"></div>
+                        </li>
+                        <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                        <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                        <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                        <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                    </ul>
+                </span>
+            </div>
         
     </div>
 </div>
@@ -295,62 +353,48 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="游戏要求"><a href="#游戏要求" class="headerlink" title="游戏要求"></a>游戏要求</h2><ul>
+<li>使用 “感知 - 思考 - 行为” 模型，建模 AI 坦克</li>
+<li>场景中要放置一些障碍阻挡对手视线</li>
+<li>坦克需要放置一个矩阵包围盒触发器，以保证 AI 坦克能使用射线探测对手方位</li>
+<li>AI 坦克必须在有目标条件下使用导航，并能绕过障碍。（失去目标时策略自己思考）</li>
+<li>实现人机对战</li>
+</ul>
+<h2 id="游戏实现"><a href="#游戏实现" class="headerlink" title="游戏实现"></a>游戏实现</h2><p>未完待续……</p>
+<h2 id="游戏视频"><a href="#游戏视频" class="headerlink" title="游戏视频"></a>游戏视频</h2><h2 id="游戏项目"><a href="#游戏项目" class="headerlink" title="游戏项目"></a>游戏项目</h2><p><a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/Homework-9" target="_blank" rel="noopener">传送门</a></p>
+<h2 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h2><p>[1] <a href="http://www.chenxd59.cn/?p=213" target="_blank" rel="noopener">Unity3D Note8——使用 NavMesh 实现坦克大战游戏</a></p>
+<p><em><a href="/2018/03/30/Unity-3D-Learning/" title="返回 Unity 3D Learning">返回 Unity 3D Learning</a></em></p>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/05/29/Unity-3D-汽车尾气模拟/" title= Unity 3D - 汽车尾气模拟 >
+                    <div class="prevTitle">Unity 3D - 汽车尾气模拟</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
     
+    <!--PC版-->
+
+    <!--PC版-->
+
+
     
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/29/Unity-3D-汽车尾气模拟/" >
-                
-                    <span>Unity 3D - 汽车尾气模拟</span>
-            </a>
-            <div class="abstract-content">
-                3D 游戏编程与设计 第十二周作业
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/29</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Unity">Unity</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/11/Unity-3D-智能巡逻兵/" >
-                
-                    <span>Unity 3D - 智能巡逻兵</span>
-            </a>
-            <div class="abstract-content">
-                3D 游戏编程与设计 第九周作业
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/11</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Unity">Unity</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    <!-- paginator  -->
-    
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -435,6 +479,24 @@
 
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:70vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏要求"><span class="toc-number">1.</span> <span class="toc-text">游戏要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏实现"><span class="toc-number">2.</span> <span class="toc-text">游戏实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏视频"><span class="toc-number">3.</span> <span class="toc-text">游戏视频</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏项目"><span class="toc-number">4.</span> <span class="toc-text">游戏项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考博客"><span class="toc-number">5.</span> <span class="toc-text">参考博客</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -778,6 +840,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
     
     </body>
 </html>
