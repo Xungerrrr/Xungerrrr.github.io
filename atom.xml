@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xungerrrr.github.io/"/>
-  <updated>2018-06-19T15:34:55.340Z</updated>
+  <updated>2018-06-20T01:26:50.984Z</updated>
   <id>http://xungerrrr.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://xungerrrr.github.io/2018/06/19/Unity-3D-%E4%BA%BA%E6%9C%BA%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98/"/>
     <id>http://xungerrrr.github.io/2018/06/19/Unity-3D-人机坦克大战/</id>
     <published>2018-06-19T15:22:32.000Z</published>
-    <updated>2018-06-19T15:34:55.340Z</updated>
+    <updated>2018-06-20T01:26:50.984Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="游戏要求"><a href="#游戏要求" class="headerlink" title="游戏要求"></a>游戏要求</h2><ul><li>使用 “感知 - 思考 - 行为” 模型，建模 AI 坦克</li><li>场景中要放置一些障碍阻挡对手视线</li><li>坦克需要放置一个矩阵包围盒触发器，以保证 AI 坦克能使用射线探测对手方位</li><li>AI 坦克必须在有目标条件下使用导航，并能绕过障碍。（失去目标时策略自己思考）</li><li>实现人机对战</li></ul><h2 id="游戏实现"><a href="#游戏实现" class="headerlink" title="游戏实现"></a>游戏实现</h2><p>未完待续……</p><h2 id="游戏视频"><a href="#游戏视频" class="headerlink" title="游戏视频"></a>游戏视频</h2><p>审核中</p><h2 id="游戏项目"><a href="#游戏项目" class="headerlink" title="游戏项目"></a>游戏项目</h2><p><a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/Homework-9" target="_blank" rel="noopener">传送门</a></p><h2 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h2><p>[1] <a href="http://www.chenxd59.cn/?p=213" target="_blank" rel="noopener">Unity3D Note8——使用 NavMesh 实现坦克大战游戏</a></p><p><em><a href="/2018/03/30/Unity-3D-Learning/" title="返回 Unity 3D Learning">返回 Unity 3D Learning</a></em></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="游戏要求"><a href="#游戏要求" class="headerlink" title="游戏要求"></a>游戏要求</h2><ul><li>使用 “感知 - 思考 - 行为” 模型，建模 AI 坦克</li><li>场景中要放置一些障碍阻挡对手视线</li><li>坦克需要放置一个矩阵包围盒触发器，以保证 AI 坦克能使用射线探测对手方位</li><li>AI 坦克必须在有目标条件下使用导航，并能绕过障碍。（失去目标时策略自己思考）</li><li>实现人机对战</li></ul><h2 id="游戏实现"><a href="#游戏实现" class="headerlink" title="游戏实现"></a>游戏实现</h2><p>未完待续……</p><h2 id="游戏视频"><a href="#游戏视频" class="headerlink" title="游戏视频"></a>游戏视频</h2><p><a href="http://www.iqiyi.com/w_19ryzvaf0t.html" target="_blank" rel="noopener">http://www.iqiyi.com/w_19ryzvaf0t.html</a></p><h2 id="游戏项目"><a href="#游戏项目" class="headerlink" title="游戏项目"></a>游戏项目</h2><p><a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/Homework-9" target="_blank" rel="noopener">传送门</a></p><h2 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h2><p>[1] <a href="http://www.chenxd59.cn/?p=213" target="_blank" rel="noopener">Unity3D Note8——使用 NavMesh 实现坦克大战游戏</a></p><p><em><a href="/2018/03/30/Unity-3D-Learning/" title="返回 Unity 3D Learning">返回 Unity 3D Learning</a></em></p>]]></content>
     
     <summary type="html">
     
