@@ -5,9 +5,9 @@
   <subtitle>Every Little Counts.</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://xungerrrr.github.io/"/>
+  <link href="https://xungerrrr.github.io/"/>
   <updated>2019-03-13T09:21:17.326Z</updated>
-  <id>http://xungerrrr.github.io/</id>
+  <id>https://xungerrrr.github.io/</id>
   
   <author>
     <name>Xunyan Li</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>GUI and Draw Simple Graphics</title>
-    <link href="http://xungerrrr.github.io/2019/03/11/GUI-and-Draw-Simple-Graphics/"/>
-    <id>http://xungerrrr.github.io/2019/03/11/GUI-and-Draw-Simple-Graphics/</id>
+    <link href="https://xungerrrr.github.io/2019/03/11/GUI-and-Draw-Simple-Graphics/"/>
+    <id>https://xungerrrr.github.io/2019/03/11/GUI-and-Draw-Simple-Graphics/</id>
     <published>2019-03-11T12:45:12.000Z</published>
     <updated>2019-03-13T09:21:17.326Z</updated>
     
@@ -35,14 +35,14 @@
     </summary>
     
     
-      <category term="Computer Graphics" scheme="http://xungerrrr.github.io/tags/Computer-Graphics/"/>
+      <category term="Computer Graphics" scheme="https://xungerrrr.github.io/tags/Computer-Graphics/"/>
     
   </entry>
   
   <entry>
     <title>Learn About CG</title>
-    <link href="http://xungerrrr.github.io/2019/03/04/Learn-About-CG/"/>
-    <id>http://xungerrrr.github.io/2019/03/04/Learn-About-CG/</id>
+    <link href="https://xungerrrr.github.io/2019/03/04/Learn-About-CG/"/>
+    <id>https://xungerrrr.github.io/2019/03/04/Learn-About-CG/</id>
     <published>2019-03-04T06:18:30.000Z</published>
     <updated>2019-03-13T06:23:52.941Z</updated>
     
@@ -58,14 +58,14 @@
     </summary>
     
     
-      <category term="Computer Graphics" scheme="http://xungerrrr.github.io/tags/Computer-Graphics/"/>
+      <category term="Computer Graphics" scheme="https://xungerrrr.github.io/tags/Computer-Graphics/"/>
     
   </entry>
   
   <entry>
     <title>软件的本质与软件工程科学</title>
-    <link href="http://xungerrrr.github.io/2019/03/03/%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%A7%91%E5%AD%A6/"/>
-    <id>http://xungerrrr.github.io/2019/03/03/软件的本质与软件工程科学/</id>
+    <link href="https://xungerrrr.github.io/2019/03/03/%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%A7%91%E5%AD%A6/"/>
+    <id>https://xungerrrr.github.io/2019/03/03/软件的本质与软件工程科学/</id>
     <published>2019-03-03T05:04:15.000Z</published>
     <updated>2019-03-13T09:22:36.519Z</updated>
     
@@ -82,14 +82,14 @@
     </summary>
     
     
-      <category term="SE" scheme="http://xungerrrr.github.io/tags/SE/"/>
+      <category term="SE" scheme="https://xungerrrr.github.io/tags/SE/"/>
     
   </entry>
   
   <entry>
     <title>Unity 3D - 人机坦克大战</title>
-    <link href="http://xungerrrr.github.io/2018/06/19/Unity-3D-%E4%BA%BA%E6%9C%BA%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98/"/>
-    <id>http://xungerrrr.github.io/2018/06/19/Unity-3D-人机坦克大战/</id>
+    <link href="https://xungerrrr.github.io/2018/06/19/Unity-3D-%E4%BA%BA%E6%9C%BA%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98/"/>
+    <id>https://xungerrrr.github.io/2018/06/19/Unity-3D-人机坦克大战/</id>
     <published>2018-06-19T15:22:32.000Z</published>
     <updated>2018-06-20T01:26:52.000Z</updated>
     
@@ -106,17 +106,17 @@
     
     </summary>
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/categories/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/categories/Unity/"/>
     
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/tags/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/tags/Unity/"/>
     
   </entry>
   
   <entry>
     <title>Unity 3D - 汽车尾气模拟</title>
-    <link href="http://xungerrrr.github.io/2018/05/29/Unity-3D-%E6%B1%BD%E8%BD%A6%E5%B0%BE%E6%B0%94%E6%A8%A1%E6%8B%9F/"/>
-    <id>http://xungerrrr.github.io/2018/05/29/Unity-3D-汽车尾气模拟/</id>
+    <link href="https://xungerrrr.github.io/2018/05/29/Unity-3D-%E6%B1%BD%E8%BD%A6%E5%B0%BE%E6%B0%94%E6%A8%A1%E6%8B%9F/"/>
+    <id>https://xungerrrr.github.io/2018/05/29/Unity-3D-汽车尾气模拟/</id>
     <published>2018-05-29T15:06:53.000Z</published>
     <updated>2018-06-19T15:25:12.000Z</updated>
     
@@ -132,17 +132,17 @@
     
     </summary>
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/categories/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/categories/Unity/"/>
     
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/tags/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/tags/Unity/"/>
     
   </entry>
   
   <entry>
     <title>Unity 3D - 智能巡逻兵</title>
-    <link href="http://xungerrrr.github.io/2018/05/11/Unity-3D-%E6%99%BA%E8%83%BD%E5%B7%A1%E9%80%BB%E5%85%B5/"/>
-    <id>http://xungerrrr.github.io/2018/05/11/Unity-3D-智能巡逻兵/</id>
+    <link href="https://xungerrrr.github.io/2018/05/11/Unity-3D-%E6%99%BA%E8%83%BD%E5%B7%A1%E9%80%BB%E5%85%B5/"/>
+    <id>https://xungerrrr.github.io/2018/05/11/Unity-3D-智能巡逻兵/</id>
     <published>2018-05-11T09:34:38.000Z</published>
     <updated>2018-05-29T15:09:04.000Z</updated>
     
@@ -161,17 +161,17 @@
     
     </summary>
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/categories/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/categories/Unity/"/>
     
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/tags/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/tags/Unity/"/>
     
   </entry>
   
   <entry>
     <title>Unity 3D - Hit UFO 2.0</title>
-    <link href="http://xungerrrr.github.io/2018/04/24/Unity-3D-Hit-UFO-2-0/"/>
-    <id>http://xungerrrr.github.io/2018/04/24/Unity-3D-Hit-UFO-2-0/</id>
+    <link href="https://xungerrrr.github.io/2018/04/24/Unity-3D-Hit-UFO-2-0/"/>
+    <id>https://xungerrrr.github.io/2018/04/24/Unity-3D-Hit-UFO-2-0/</id>
     <published>2018-04-24T10:55:43.000Z</published>
     <updated>2018-05-16T14:48:10.000Z</updated>
     
@@ -187,17 +187,17 @@
     
     </summary>
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/categories/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/categories/Unity/"/>
     
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/tags/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/tags/Unity/"/>
     
   </entry>
   
   <entry>
     <title>Unity 3D - Hit UFO</title>
-    <link href="http://xungerrrr.github.io/2018/04/17/Unity-3D-Hit-UFO/"/>
-    <id>http://xungerrrr.github.io/2018/04/17/Unity-3D-Hit-UFO/</id>
+    <link href="https://xungerrrr.github.io/2018/04/17/Unity-3D-Hit-UFO/"/>
+    <id>https://xungerrrr.github.io/2018/04/17/Unity-3D-Hit-UFO/</id>
     <published>2018-04-17T15:14:54.000Z</published>
     <updated>2018-05-16T14:48:04.000Z</updated>
     
@@ -212,17 +212,17 @@
     
     </summary>
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/categories/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/categories/Unity/"/>
     
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/tags/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/tags/Unity/"/>
     
   </entry>
   
   <entry>
     <title>Vi, Java, Ant 和 JUnit 的学习报告</title>
-    <link href="http://xungerrrr.github.io/2018/04/15/Vi-Java-Ant-%E5%92%8C-JUnit-%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/"/>
-    <id>http://xungerrrr.github.io/2018/04/15/Vi-Java-Ant-和-JUnit-的学习报告/</id>
+    <link href="https://xungerrrr.github.io/2018/04/15/Vi-Java-Ant-%E5%92%8C-JUnit-%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/"/>
+    <id>https://xungerrrr.github.io/2018/04/15/Vi-Java-Ant-和-JUnit-的学习报告/</id>
     <published>2018-04-15T14:10:17.000Z</published>
     <updated>2018-04-15T14:36:36.000Z</updated>
     
@@ -238,18 +238,18 @@
     </summary>
     
     
-      <category term="Java" scheme="http://xungerrrr.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://xungerrrr.github.io/tags/Java/"/>
     
-      <category term="Linux" scheme="http://xungerrrr.github.io/tags/Linux/"/>
+      <category term="Linux" scheme="https://xungerrrr.github.io/tags/Linux/"/>
     
-      <category term="实训" scheme="http://xungerrrr.github.io/tags/%E5%AE%9E%E8%AE%AD/"/>
+      <category term="实训" scheme="https://xungerrrr.github.io/tags/%E5%AE%9E%E8%AE%AD/"/>
     
   </entry>
   
   <entry>
     <title>Unity 3D - 牧师与魔鬼 2.0</title>
-    <link href="http://xungerrrr.github.io/2018/04/10/Unity-3D-%E7%89%A7%E5%B8%88%E4%B8%8E%E9%AD%94%E9%AC%BC-2-0/"/>
-    <id>http://xungerrrr.github.io/2018/04/10/Unity-3D-牧师与魔鬼-2-0/</id>
+    <link href="https://xungerrrr.github.io/2018/04/10/Unity-3D-%E7%89%A7%E5%B8%88%E4%B8%8E%E9%AD%94%E9%AC%BC-2-0/"/>
+    <id>https://xungerrrr.github.io/2018/04/10/Unity-3D-牧师与魔鬼-2-0/</id>
     <published>2018-04-10T05:41:23.000Z</published>
     <updated>2018-04-10T13:06:02.000Z</updated>
     
@@ -264,17 +264,17 @@
     
     </summary>
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/categories/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/categories/Unity/"/>
     
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/tags/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/tags/Unity/"/>
     
   </entry>
   
   <entry>
     <title>基于稀疏表示的人脸识别</title>
-    <link href="http://xungerrrr.github.io/2018/04/06/%E5%9F%BA%E4%BA%8E%E7%A8%80%E7%96%8F%E8%A1%A8%E7%A4%BA%E7%9A%84%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/"/>
-    <id>http://xungerrrr.github.io/2018/04/06/基于稀疏表示的人脸识别/</id>
+    <link href="https://xungerrrr.github.io/2018/04/06/%E5%9F%BA%E4%BA%8E%E7%A8%80%E7%96%8F%E8%A1%A8%E7%A4%BA%E7%9A%84%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/"/>
+    <id>https://xungerrrr.github.io/2018/04/06/基于稀疏表示的人脸识别/</id>
     <published>2018-04-06T13:18:21.000Z</published>
     <updated>2018-05-16T14:23:22.000Z</updated>
     
@@ -290,16 +290,16 @@
     </summary>
     
     
-      <category term="Face-Recognition" scheme="http://xungerrrr.github.io/tags/Face-Recognition/"/>
+      <category term="Face-Recognition" scheme="https://xungerrrr.github.io/tags/Face-Recognition/"/>
     
-      <category term="Image-Understanding" scheme="http://xungerrrr.github.io/tags/Image-Understanding/"/>
+      <category term="Image-Understanding" scheme="https://xungerrrr.github.io/tags/Image-Understanding/"/>
     
   </entry>
   
   <entry>
     <title>Unity 3D - 牧师与魔鬼</title>
-    <link href="http://xungerrrr.github.io/2018/04/01/Unity-3D-%E7%89%A7%E5%B8%88%E4%B8%8E%E9%AD%94%E9%AC%BC/"/>
-    <id>http://xungerrrr.github.io/2018/04/01/Unity-3D-牧师与魔鬼/</id>
+    <link href="https://xungerrrr.github.io/2018/04/01/Unity-3D-%E7%89%A7%E5%B8%88%E4%B8%8E%E9%AD%94%E9%AC%BC/"/>
+    <id>https://xungerrrr.github.io/2018/04/01/Unity-3D-牧师与魔鬼/</id>
     <published>2018-04-01T03:55:20.000Z</published>
     <updated>2018-05-16T05:20:34.000Z</updated>
     
@@ -315,17 +315,17 @@
     
     </summary>
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/categories/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/categories/Unity/"/>
     
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/tags/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/tags/Unity/"/>
     
   </entry>
   
   <entry>
     <title>Unity 3D - 太阳系</title>
-    <link href="http://xungerrrr.github.io/2018/03/31/Unity-3D-%E5%A4%AA%E9%98%B3%E7%B3%BB/"/>
-    <id>http://xungerrrr.github.io/2018/03/31/Unity-3D-太阳系/</id>
+    <link href="https://xungerrrr.github.io/2018/03/31/Unity-3D-%E5%A4%AA%E9%98%B3%E7%B3%BB/"/>
+    <id>https://xungerrrr.github.io/2018/03/31/Unity-3D-太阳系/</id>
     <published>2018-03-31T09:41:38.000Z</published>
     <updated>2018-04-10T13:04:04.000Z</updated>
     
@@ -341,17 +341,17 @@
     
     </summary>
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/categories/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/categories/Unity/"/>
     
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/tags/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/tags/Unity/"/>
     
   </entry>
   
   <entry>
     <title>Unity 3D - 基础概念</title>
-    <link href="http://xungerrrr.github.io/2018/03/31/Unity-3D-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"/>
-    <id>http://xungerrrr.github.io/2018/03/31/Unity-3D-基础概念/</id>
+    <link href="https://xungerrrr.github.io/2018/03/31/Unity-3D-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"/>
+    <id>https://xungerrrr.github.io/2018/03/31/Unity-3D-基础概念/</id>
     <published>2018-03-31T04:24:38.000Z</published>
     <updated>2018-04-10T13:04:08.000Z</updated>
     
@@ -366,17 +366,17 @@
     
     </summary>
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/categories/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/categories/Unity/"/>
     
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/tags/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/tags/Unity/"/>
     
   </entry>
   
   <entry>
     <title>Unity 3D Learning</title>
-    <link href="http://xungerrrr.github.io/2018/03/30/Unity-3D-Learning/"/>
-    <id>http://xungerrrr.github.io/2018/03/30/Unity-3D-Learning/</id>
+    <link href="https://xungerrrr.github.io/2018/03/30/Unity-3D-Learning/"/>
+    <id>https://xungerrrr.github.io/2018/03/30/Unity-3D-Learning/</id>
     <published>2018-03-30T13:42:17.000Z</published>
     <updated>2019-03-11T16:56:56.446Z</updated>
     
@@ -392,17 +392,17 @@
     
     </summary>
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/categories/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/categories/Unity/"/>
     
     
-      <category term="Unity" scheme="http://xungerrrr.github.io/tags/Unity/"/>
+      <category term="Unity" scheme="https://xungerrrr.github.io/tags/Unity/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://xungerrrr.github.io/2018/03/30/hello-world/"/>
-    <id>http://xungerrrr.github.io/2018/03/30/hello-world/</id>
+    <link href="https://xungerrrr.github.io/2018/03/30/hello-world/"/>
+    <id>https://xungerrrr.github.io/2018/03/30/hello-world/</id>
     <published>2018-03-30T12:00:00.000Z</published>
     <updated>2018-03-31T07:58:30.000Z</updated>
     
@@ -418,7 +418,7 @@
     </summary>
     
     
-      <category term="blog" scheme="http://xungerrrr.github.io/tags/blog/"/>
+      <category term="blog" scheme="https://xungerrrr.github.io/tags/blog/"/>
     
   </entry>
   
