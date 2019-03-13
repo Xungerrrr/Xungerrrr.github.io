@@ -7,9 +7,9 @@
 
 
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Xungerrrr&#39;s Blog</title>
+    <title>Learn About CG · Xungerrrr&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -65,6 +65,8 @@
 
     <link rel="preload" href="/css/style.css?v=20180317" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" type="text/css" href="/css/mobile.css?v=20180317" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         
     <link rel="icon" href="/assets/Xungerrrr.ico">
     <script>
@@ -170,39 +172,88 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
     <!-- 百度统计  -->
     
-    <!-- 谷歌统计  -->
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 </head>
 
     
+        <body class="post-body">
     
-<header class="header">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
     
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Xungerrrr&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Learn About CG</a>
+            </div>
+    </div>
+    
     <a class="home-link" href="/">Xungerrrr's Blog</a>
 </header>
     <div class="wrapper">
-        <div class="site-intro" style>
+        <div class="site-intro" style="height:50vh;">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/2080ti.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            Learn About CG
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+                Compute Graphics - Homework 1
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Computer Graphics">Computer Graphics</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2019/03/04</span>
+                
+                <span class="shareWrapper">
+                    <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                    <span class="shareText">Share</span>
+                    <ul class="shareList">
+                        <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                            <div class="share-qrcode"></div>
+                        </li>
+                        <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                        <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                        <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                        <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                    </ul>
+                </span>
+            </div>
         
     </div>
 </div>
@@ -286,282 +337,57 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="谈谈自己对计算机图形学的理解。"><a href="#谈谈自己对计算机图形学的理解。" class="headerlink" title="谈谈自己对计算机图形学的理解。"></a>谈谈自己对计算机图形学的理解。</h2><p>我对计算机图形学的理解是，计算机图形学是一门利用计算机对二维或三维图形进行表示、处理、计算、显示和交互的学科。通过各种建模方法，在计算机中建立几何图形的模型，这是图形的表示过程。通过渲染技术，将图形模型转换成显示器的栅格形式，或者是转换成全息图像形式，这是图形的处理、计算和显示过程。通过各种输入工具，改变图形的状态，这是交互过程。这些都是计算机图形学研究的范畴。</p>
+<h2 id="什么是OpenGL？OpenGL-ES？Web-GL？Vulkan？DirectX？"><a href="#什么是OpenGL？OpenGL-ES？Web-GL？Vulkan？DirectX？" class="headerlink" title="什么是OpenGL？OpenGL ES？Web GL？Vulkan？DirectX？"></a>什么是OpenGL？OpenGL ES？Web GL？Vulkan？DirectX？</h2><ul>
+<li>OpenGL是一个API（Application Programming Interface，应用程序编程接口），是跨编程语言及跨平台的接口，包含了一系列可以操作图形、图像的函数，用于渲染2D和3D图形。更确切地说，OpenGL是一个规范，规定了每个函数的用法和输出值，具体的实现一般由显卡厂商完成。</li>
+<li>OpenGL ES（OpenGL for Embedded Systems）是OpenGL规范的子集，用于嵌入式设备的图形渲染。相比于OpenGL，OpenGL ES去除了一些非必要的特性，是OpenGL的简化版本。</li>
+<li>WebGL是一种绘图标准，将JavaScript和OpenGL ES结合在一起，使得网页可以调用系统显卡进行硬件加速渲染，从而在浏览器中流畅地显示3D图形。</li>
+<li>Vulkan是另一种跨平台的绘图应用程序接口，提供了许多比OpenGL更加先进的特性，性能比OpenGL要更好，是OpenGL的替代者。</li>
+<li>DirectX是由微软开发的多媒体编程接口，提供了显示、声音、输入、网络等API，功能十分丰富，不只是一个图形编程接口，用于Windows系统多媒体应用开发。</li>
+</ul>
+<h2 id="gl-h-glu-h-glew-h的作用分别是什么？"><a href="#gl-h-glu-h-glew-h的作用分别是什么？" class="headerlink" title="gl.h glu.h glew.h的作用分别是什么？"></a>gl.h glu.h glew.h的作用分别是什么？</h2><ul>
+<li>gl.h是OpenGL 1.1的基础头文件，包含了OpenGL 1.1的功能。如果需要使用新功能，需要添加OpenGL的扩展库。</li>
+<li>glu.h是OpenGL Utilities库，包含了一些方便的函数，但是已经过时，现在一般不用。</li>
+<li>glew.h是OpenGL Extension Wrangler Library，用于使用OpenGL的扩展功能，其中包含了gl.h。OpenGL版本众多，因此编译的时候无法将函数的位置确定下来，需要在运行时查询。借助glew.h，可以在运行时根据硬件方便地管理OpenGL的函数指针，定位函数的位置。</li>
+</ul>
+<h2 id="使用GLFW和freeglut的目的是什么？"><a href="#使用GLFW和freeglut的目的是什么？" class="headerlink" title="使用GLFW和freeglut的目的是什么？"></a>使用GLFW和freeglut的目的是什么？</h2><p>创建OpenGL上下文、创建显示窗口和处理用户输入，在每个系统上都有不一样的操作。作为一个跨平台API，OpenGL将这部分功能抽象出去，因此需要我们去手动处理。使用GLFW或者freeglut，可以方便地创建OpenGL上下文、定义窗口参数和处理用户输入，而不需要使用操作系统复杂的API，节省编程时间和难度。</p>
+<h2 id="结合上述参考链接，选择一个SIGGRAPH-2017-2018上你最喜欢的专题，介绍该专题是做什么的，使用了什么CG技术？"><a href="#结合上述参考链接，选择一个SIGGRAPH-2017-2018上你最喜欢的专题，介绍该专题是做什么的，使用了什么CG技术？" class="headerlink" title="结合上述参考链接，选择一个SIGGRAPH 2017/2018上你最喜欢的专题，介绍该专题是做什么的，使用了什么CG技术？"></a>结合上述参考链接，选择一个SIGGRAPH 2017/2018上你最喜欢的专题，介绍该专题是做什么的，使用了什么CG技术？</h2><p>我对SIGGRAPH 2018中的Computational photos and videos专题比较感兴趣。这个专题做的是计算摄影方面的研究，目的是利用有限的图片信息，计算出场景的深度信息，也就是生成三维的场景。这个专题中有两篇研究论文。第一篇是<a href="http://delivery.acm.org/10.1145/3210000/3201329/a64-wadhwa.pdf?ip=120.236.174.139&amp;id=3201329&amp;acc=OPENTOC&amp;key=BF85BBA5741FDC6E%2E3D07CFA6C3F555EA%2E4D4702B0C3E38B35%2E383ADA7593775D6F&amp;__acm__=1551716722_7848def64dc95e9252115c00fad0b02f" target="_blank" rel="noopener"><em>Synthetic Depth-of-Field with a Single-Camera Mobile Phone</em></a>，实现了利用单个手机摄像头计算出照片的景深信息，得到类似于单反镜头的背景虚化效果，由Google Research团队发表，目前已用于Google Pixel系列手机中的人像模式功能。第二篇是<a href="http://delivery.acm.org/10.1145/3210000/3201323/a65-zhou.pdf?ip=120.236.174.139&amp;id=3201323&amp;acc=OPENTOC&amp;key=BF85BBA5741FDC6E%2E3D07CFA6C3F555EA%2E4D4702B0C3E38B35%2E383ADA7593775D6F&amp;__acm__=1551716806_39a7933ec8e03f668f238b0fc39fe828" target="_blank" rel="noopener"><em>Stereo Magnification: Learning view synthesis using multiplane images</em></a>，利用双镜头拍摄的两张照片，就可以生成一个动画，模拟出在三维场景中运动的场景。该专题运用了CG中的建模和渲染技术，都是先计算出场景的景深信息，构建出场景的模型，然后渲染成高真实度的照片和动画。两篇论文都涉及到基于图像的渲染技术（Image-based rendering）。</p>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2019/03/11/GUI-and-Draw-Simple-Graphics/" title="GUI" and draw simple graphics>
+                    <div class="nextTitle">GUI and Draw Simple Graphics</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/03/03/软件的本质与软件工程科学/" title="软件的本质与软件工程科学">
+                    <div class="prevTitle">软件的本质与软件工程科学</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
     
+    <!--PC版-->
+
+    <!--PC版-->
+
+
     
-        <article class="index-post">
-            <a class="abstract-title" href="/2018/06/19/Unity-3D-人机坦克大战/">
-                
-                    <span>Unity 3D - 人机坦克大战</span>
-            </a>
-            <div class="abstract-content">
-                3D 游戏编程与设计 第十五周作业
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/19</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Unity">Unity</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href="/2018/05/29/Unity-3D-汽车尾气模拟/">
-                
-                    <span>Unity 3D - 汽车尾气模拟</span>
-            </a>
-            <div class="abstract-content">
-                3D 游戏编程与设计 第十二周作业
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/29</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Unity">Unity</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href="/2018/05/11/Unity-3D-智能巡逻兵/">
-                
-                    <span>Unity 3D - 智能巡逻兵</span>
-            </a>
-            <div class="abstract-content">
-                3D 游戏编程与设计 第九周作业
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/11</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Unity">Unity</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href="/2018/04/24/Unity-3D-Hit-UFO-2-0/">
-                
-                    <span>Unity 3D - Hit UFO 2.0</span>
-            </a>
-            <div class="abstract-content">
-                3D 游戏编程与设计 第七周作业
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/24</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Unity">Unity</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href="/2018/04/17/Unity-3D-Hit-UFO/">
-                
-                    <span>Unity 3D - Hit UFO</span>
-            </a>
-            <div class="abstract-content">
-                3D 游戏编程与设计 第六周作业
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/17</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Unity">Unity</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href="/2018/04/15/Vi-Java-Ant-和-JUnit-的学习报告/">
-                
-                    <span>Vi, Java, Ant 和 JUnit 的学习报告</span>
-            </a>
-            <div class="abstract-content">
-                2018 中级实训 阶段一学习报告
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/15</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="实训">实训</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href="/2018/04/12/用于图像分类的深度稀疏编码网络/">
-                
-                    <span>用于图像分类的深度稀疏编码网络</span>
-            </a>
-            <div class="abstract-content">
-                Constructing Deep Sparse Coding Network for image classification 论文理解
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/12</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Image-Understanding">Image-Understanding</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Pattern-Recognition">Pattern-Recognition</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href="/2018/04/10/Unity-3D-牧师与魔鬼-2-0/">
-                
-                    <span>Unity 3D - 牧师与魔鬼 2.0</span>
-            </a>
-            <div class="abstract-content">
-                3D 游戏编程与设计 第五周作业
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/10</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Unity">Unity</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href="/2018/04/06/基于稀疏表示的人脸识别/">
-                
-                    <span>基于稀疏表示的人脸识别</span>
-            </a>
-            <div class="abstract-content">
-                Robust Face Recognition via Sparse Representation 论文理解
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/06</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Face-Recognition">Face-Recognition</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Image-Understanding">Image-Understanding</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href="/2018/04/01/Unity-3D-牧师与魔鬼/">
-                
-                    <span>Unity 3D - 牧师与魔鬼</span>
-            </a>
-            <div class="abstract-content">
-                3D 游戏编程与设计 第四周游戏
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/01</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Unity">Unity</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/page/2/">NEXT &#62;</a>
-    </nav>
-    
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -641,6 +467,24 @@
 
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#谈谈自己对计算机图形学的理解。"><span class="toc-number">1.</span> <span class="toc-text">谈谈自己对计算机图形学的理解。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是OpenGL？OpenGL-ES？Web-GL？Vulkan？DirectX？"><span class="toc-number">2.</span> <span class="toc-text">什么是OpenGL？OpenGL ES？Web GL？Vulkan？DirectX？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gl-h-glu-h-glew-h的作用分别是什么？"><span class="toc-number">3.</span> <span class="toc-text">gl.h glu.h glew.h的作用分别是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用GLFW和freeglut的目的是什么？"><span class="toc-number">4.</span> <span class="toc-text">使用GLFW和freeglut的目的是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结合上述参考链接，选择一个SIGGRAPH-2017-2018上你最喜欢的专题，介绍该专题是做什么的，使用了什么CG技术？"><span class="toc-number">5.</span> <span class="toc-text">结合上述参考链接，选择一个SIGGRAPH 2017/2018上你最喜欢的专题，介绍该专题是做什么的，使用了什么CG技术？</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1043,6 +887,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->    
     
     </body>
 </html>

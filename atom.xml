@@ -40,6 +40,29 @@
   </entry>
   
   <entry>
+    <title>Learn About CG</title>
+    <link href="http://xungerrrr.github.io/2019/03/04/Learn-About-CG/"/>
+    <id>http://xungerrrr.github.io/2019/03/04/Learn-About-CG/</id>
+    <published>2019-03-04T06:18:30.000Z</published>
+    <updated>2019-03-13T06:23:52.941Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="谈谈自己对计算机图形学的理解。"><a href="#谈谈自己对计算机图形学的理解。" class="headerlink" title="谈谈自己对计算机图形学的理解。"></a>谈谈自己对计算机图形学的理解。</h2><p>我对计算机图形学的理解是，计算机图形学是一门利用计算机对二维或三维图形进行表示、处理、计算、显示和交互的学科。通过各种建模方法，在计算机中建立几何图形的模型，这是图形的表示过程。通过渲染技术，将图形模型转换成显示器的栅格形式，或者是转换成全息图像形式，这是图形的处理、计算和显示过程。通过各种输入工具，改变图形的状态，这是交互过程。这些都是计算机图形学研究的范畴。</p><h2 id="什么是OpenGL？OpenGL-ES？Web-GL？Vulkan？DirectX？"><a href="#什么是OpenGL？OpenGL-ES？Web-GL？Vulkan？DirectX？" class="headerlink" title="什么是OpenGL？OpenGL ES？Web GL？Vulkan？DirectX？"></a>什么是OpenGL？OpenGL ES？Web GL？Vulkan？DirectX？</h2><ul><li>OpenGL是一个API（Application Programming Interface，应用程序编程接口），是跨编程语言及跨平台的接口，包含了一系列可以操作图形、图像的函数，用于渲染2D和3D图形。更确切地说，OpenGL是一个规范，规定了每个函数的用法和输出值，具体的实现一般由显卡厂商完成。</li><li>OpenGL ES（OpenGL for Embedded Systems）是OpenGL规范的子集，用于嵌入式设备的图形渲染。相比于OpenGL，OpenGL ES去除了一些非必要的特性，是OpenGL的简化版本。</li><li>WebGL是一种绘图标准，将JavaScript和OpenGL ES结合在一起，使得网页可以调用系统显卡进行硬件加速渲染，从而在浏览器中流畅地显示3D图形。</li><li>Vulkan是另一种跨平台的绘图应用程序接口，提供了许多比OpenGL更加先进的特性，性能比OpenGL要更好，是OpenGL的替代者。</li><li>DirectX是由微软开发的多媒体编程接口，提供了显示、声音、输入、网络等API，功能十分丰富，不只是一个图形编程接口，用于Windows系统多媒体应用开发。</li></ul><h2 id="gl-h-glu-h-glew-h的作用分别是什么？"><a href="#gl-h-glu-h-glew-h的作用分别是什么？" class="headerlink" title="gl.h glu.h glew.h的作用分别是什么？"></a>gl.h glu.h glew.h的作用分别是什么？</h2><ul><li>gl.h是OpenGL 1.1的基础头文件，包含了OpenGL 1.1的功能。如果需要使用新功能，需要添加OpenGL的扩展库。</li><li>glu.h是OpenGL Utilities库，包含了一些方便的函数，但是已经过时，现在一般不用。</li><li>glew.h是OpenGL Extension Wrangler Library，用于使用OpenGL的扩展功能，其中包含了gl.h。OpenGL版本众多，因此编译的时候无法将函数的位置确定下来，需要在运行时查询。借助glew.h，可以在运行时根据硬件方便地管理OpenGL的函数指针，定位函数的位置。</li></ul><h2 id="使用GLFW和freeglut的目的是什么？"><a href="#使用GLFW和freeglut的目的是什么？" class="headerlink" title="使用GLFW和freeglut的目的是什么？"></a>使用GLFW和freeglut的目的是什么？</h2><p>创建OpenGL上下文、创建显示窗口和处理用户输入，在每个系统上都有不一样的操作。作为一个跨平台API，OpenGL将这部分功能抽象出去，因此需要我们去手动处理。使用GLFW或者freeglut，可以方便地创建OpenGL上下文、定义窗口参数和处理用户输入，而不需要使用操作系统复杂的API，节省编程时间和难度。</p><h2 id="结合上述参考链接，选择一个SIGGRAPH-2017-2018上你最喜欢的专题，介绍该专题是做什么的，使用了什么CG技术？"><a href="#结合上述参考链接，选择一个SIGGRAPH-2017-2018上你最喜欢的专题，介绍该专题是做什么的，使用了什么CG技术？" class="headerlink" title="结合上述参考链接，选择一个SIGGRAPH 2017/2018上你最喜欢的专题，介绍该专题是做什么的，使用了什么CG技术？"></a>结合上述参考链接，选择一个SIGGRAPH 2017/2018上你最喜欢的专题，介绍该专题是做什么的，使用了什么CG技术？</h2><p>我对SIGGRAPH 2018中的Computational photos and videos专题比较感兴趣。这个专题做的是计算摄影方面的研究，目的是利用有限的图片信息，计算出场景的深度信息，也就是生成三维的场景。这个专题中有两篇研究论文。第一篇是<a href="http://delivery.acm.org/10.1145/3210000/3201329/a64-wadhwa.pdf?ip=120.236.174.139&amp;id=3201329&amp;acc=OPENTOC&amp;key=BF85BBA5741FDC6E%2E3D07CFA6C3F555EA%2E4D4702B0C3E38B35%2E383ADA7593775D6F&amp;__acm__=1551716722_7848def64dc95e9252115c00fad0b02f" target="_blank" rel="noopener"><em>Synthetic Depth-of-Field with a Single-Camera Mobile Phone</em></a>，实现了利用单个手机摄像头计算出照片的景深信息，得到类似于单反镜头的背景虚化效果，由Google Research团队发表，目前已用于Google Pixel系列手机中的人像模式功能。第二篇是<a href="http://delivery.acm.org/10.1145/3210000/3201323/a65-zhou.pdf?ip=120.236.174.139&amp;id=3201323&amp;acc=OPENTOC&amp;key=BF85BBA5741FDC6E%2E3D07CFA6C3F555EA%2E4D4702B0C3E38B35%2E383ADA7593775D6F&amp;__acm__=1551716806_39a7933ec8e03f668f238b0fc39fe828" target="_blank" rel="noopener"><em>Stereo Magnification: Learning view synthesis using multiplane images</em></a>，利用双镜头拍摄的两张照片，就可以生成一个动画，模拟出在三维场景中运动的场景。该专题运用了CG中的建模和渲染技术，都是先计算出场景的景深信息，构建出场景的模型，然后渲染成高真实度的照片和动画。两篇论文都涉及到基于图像的渲染技术（Image-based rendering）。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;谈谈自己对计算机图形学的理解。&quot;&gt;&lt;a href=&quot;#谈谈自己对计算机图形学的理解。&quot; class=&quot;headerlink&quot; title=&quot;谈谈自己对计算机图形学的理解。&quot;&gt;&lt;/a&gt;谈谈自己对计算机图形学的理解。&lt;/h2&gt;&lt;p&gt;我对计算机图形学的理解是，计算机图形
+      
+    
+    </summary>
+    
+    
+      <category term="Computer Graphics" scheme="http://xungerrrr.github.io/tags/Computer-Graphics/"/>
+    
+  </entry>
+  
+  <entry>
     <title>软件的本质与软件工程科学</title>
     <link href="http://xungerrrr.github.io/2019/03/03/%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%A7%91%E5%AD%A6/"/>
     <id>http://xungerrrr.github.io/2019/03/03/软件的本质与软件工程科学/</id>
