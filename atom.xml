@@ -232,6 +232,55 @@
   </entry>
   
   <entry>
+    <title>UWP - Media Player</title>
+    <link href="https://xungerrrr.github.io/2018/05/05/UWP-Media-Player/"/>
+    <id>https://xungerrrr.github.io/2018/05/05/UWP-Media-Player/</id>
+    <published>2018-05-05T07:31:38.000Z</published>
+    <updated>2019-03-14T17:31:37.077Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><ol><li>在Visual Studio中新建Media Player项目，创建Player页面；</li><li>在Player页面中使用Grid布局页面，第一行放置MediaPlayerElement以及包含歌曲标题和封面的StrollViewer等元素，第二行放置自行设计的媒体控制栏，其中包含媒体进度条、开始暂停按钮、停止按钮、选取文件按钮、全屏按钮等元素。</li><li>在cs文件中，使用MediaPlayer和MediaTimelineController控制媒体播放，并在相关函数中实现读取文件、提取媒体信息、绑定媒体位置与进度条位置、控制封面旋转动画等功能。</li></ol><h2 id="关键步骤截图"><a href="#关键步骤截图" class="headerlink" title="关键步骤截图"></a>关键步骤截图</h2><p>图1. 音乐播放器启动界面:</p><img src="/2018/05/05/UWP-Media-Player/1.png" title="demo1"><p>图2. 音乐播放示例:</p><img src="/2018/05/05/UWP-Media-Player/2.png" title="demo2"><p>图3. 视频播放示例:</p><img src="/2018/05/05/UWP-Media-Player/3.png" title="demo3"><h2 id="亮点与改进"><a href="#亮点与改进" class="headerlink" title="亮点与改进"></a>亮点与改进</h2><ol><li><p>选择本地媒体的功能</p><p>媒体播放器实现了选择本地媒体的功能，能够打开本地的音乐和视频进行播放。</p></li><li><p>美化界面</p><p>设计上，加入了很有质感的Acrylic材质，使应用透明化。在媒体播放器中播放音乐时，专辑封面会做毛玻璃模糊处理，使应用背景能够根据专辑封面动态改变。另外，用Acrylic材质实现了媒体控制栏颜色自动跟随系统主题颜色。</p><p>注：要实现此效果，必须使用最新版Windows 10 SDK（版本16299）生成解决方案，否则会提示找不到相关资源，无法运行。</p><img src="/2018/05/05/UWP-Media-Player/4.png" title="demo4"><img src="/2018/05/05/UWP-Media-Player/5.png" title="demo5"></li><li><p>实现封面旋转</p><p>在播放音乐时，封面旋转；播放结束时，封面复位；暂停时，封面的旋转动作暂停；在播放视频时，封面隐藏。</p></li><li><p>显示媒体的缩略图、标题、艺术家、专辑等信息</p><p>实现了媒体信息的提取，能够根据媒体动态显示标题等信息。</p></li><li><p>显示媒体时间进度</p><p>在媒体控制栏中实现了媒体当前时间和总时间的显示。</p></li><li><p>实现了应用的真正全屏效果</p><p>点击全屏按钮，应用能够真正全屏显示，而不只是将视频元素填满当前窗口。</p></li><li><p>播放音乐时，音乐信息能动态显示在磁贴上</p><img src="/2018/05/05/UWP-Media-Player/6.png" title="demo6"></li></ol><h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul><li><p>问题：请求返回的XML存在中文乱码的问题</p><p>  解决方案：查阅相关资料后，将命名空间Windows.Web.Http更改为命名空间System.Net.Http，成功解决问题。</p></li></ul><h2 id="思考与总结"><a href="#思考与总结" class="headerlink" title="思考与总结"></a>思考与总结</h2><p>在本次实验中，我实现了UWP应用的媒体播放功能，能够播放本地的媒体资源。</p><p>在实验中，我学到了许多有趣而实用的知识，例如控制媒体播放，并且参考了一些成熟的媒体播放器的设计，对播放器进行了多重美化，很好地锻炼了UI设计的能力。经过这次实验，我的应用摆脱了简单的本地文本内容，进入了多媒体的世界，具有了更好的实用性和可扩展性。</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://docs.microsoft.com/zh-cn/windows/uwp/design/style/acrylic" target="_blank" rel="noopener">亚克力材料</a></li><li><a href="https://docs.microsoft.com/en-us/uwp/api/Windows.Media.Playback.MediaPlayer" target="_blank" rel="noopener">MediaPlayer类</a></li><li><a href="https://docs.microsoft.com/zh-cn/uwp/api/Windows.UI.Xaml.Controls.MediaPlayerElement" target="_blank" rel="noopener">MediaPlayerElement类</a></li><li><a href="https://docs.microsoft.com/en-us/uwp/api/windows.storage.fileproperties.musicproperties" target="_blank" rel="noopener">MusicProperties类</a></li><li><a href="https://stackoverflow.com/questions/18807320/get-albumart-in-mp3-file-for-windows-store-app?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa" target="_blank" rel="noopener">Get Albumart in .mp3 file for Windows Store App</a></li><li><a href="https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.media.rotatetransform" target="_blank" rel="noopener">RotateTransform类</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;实验步骤&quot;&gt;&lt;a href=&quot;#实验步骤&quot; class=&quot;headerlink&quot; title=&quot;实验步骤&quot;&gt;&lt;/a&gt;实验步骤&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;在Visual Studio中新建Media Player项目，创建Player页面；&lt;/li&gt;
+&lt;li&gt;在Pl
+      
+    
+    </summary>
+    
+    
+      <category term="UWP" scheme="https://xungerrrr.github.io/tags/UWP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UWP - Networking</title>
+    <link href="https://xungerrrr.github.io/2018/05/05/UWP-Networking/"/>
+    <id>https://xungerrrr.github.io/2018/05/05/UWP-Networking/</id>
+    <published>2018-05-05T06:54:11.000Z</published>
+    <updated>2019-03-14T17:32:03.337Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><ol><li>在Visual Studio中新建Networking项目，创建MainPage、Weather和Finance三个空白页面。在MainPage中放置两个AppBarButton，分别导航到Weather和Finance页面；</li><li>在Weather页面上放置TextBox控件用于输入城市名称，并添加两个AppBarButton，分别进行JSON查询和XML查询；在Finance页面，放置两个ComboBox，用于选择需要查询汇率的两种货币，并添加两个AppBarButton，分别进行JSON查询和XML查询；</li><li>在cs文件中，使用HttpClient请求url“<a href="http://api.k780.com”，完成对天气或汇率的查询，再用系统自带解析器分别解析收到的JSON和XML，将信息呈现在页面上。" target="_blank" rel="noopener">http://api.k780.com”，完成对天气或汇率的查询，再用系统自带解析器分别解析收到的JSON和XML，将信息呈现在页面上。</a></li></ol><h2 id="关键步骤截图"><a href="#关键步骤截图" class="headerlink" title="关键步骤截图"></a>关键步骤截图</h2><p>图1. 天气查询示例</p><img src="/2018/05/05/UWP-Networking/1.png" title="demo1"><p>图2. 汇率查询示例</p><img src="/2018/05/05/UWP-Networking/2.png" title="demo2"><h2 id="亮点与改进"><a href="#亮点与改进" class="headerlink" title="亮点与改进"></a>亮点与改进</h2><ol><li><p>完成了两种API，并且分别完成对JSON和XML的解析</p><p>实现了天气查询和汇率查询两种功能，并且都分别采用了两种解析方式。</p></li></ol><h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul><li><p>问题：请求返回的XML存在中文乱码的问题</p><p>  解决方案：查阅相关资料后，将命名空间Windows.Web.Http更改为命名空间System.Net.Http，成功解决问题。</p></li></ul><h2 id="思考与总结"><a href="#思考与总结" class="headerlink" title="思考与总结"></a>思考与总结</h2><p>在本次实验中，我实现了UWP应用的网络访问功能，能够查询天气和货币汇率。</p><p>在实验中，我学到了许多有趣而实用的知识，例如http请求、XML和JSON解析等等，很好地锻炼了标记语言解析能力。经过这次实验，我的应用摆脱了简单的本地文本内容，进入了互联网世界，具有了更好的实用性和可扩展性。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;实验步骤&quot;&gt;&lt;a href=&quot;#实验步骤&quot; class=&quot;headerlink&quot; title=&quot;实验步骤&quot;&gt;&lt;/a&gt;实验步骤&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;在Visual Studio中新建Networking项目，创建MainPage、Weather和Finance
+      
+    
+    </summary>
+    
+    
+      <category term="UWP" scheme="https://xungerrrr.github.io/tags/UWP/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Unity 3D - Hit UFO 2.0</title>
     <link href="https://xungerrrr.github.io/2018/04/24/Unity-3D-Hit-UFO-2-0/"/>
     <id>https://xungerrrr.github.io/2018/04/24/Unity-3D-Hit-UFO-2-0/</id>
@@ -254,6 +303,29 @@
     
     
       <category term="Unity" scheme="https://xungerrrr.github.io/tags/Unity/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UWP - MyList2</title>
+    <link href="https://xungerrrr.github.io/2018/04/19/UWP-MyList2/"/>
+    <id>https://xungerrrr.github.io/2018/04/19/UWP-MyList2/</id>
+    <published>2018-04-18T17:15:49.000Z</published>
+    <updated>2019-03-14T17:30:22.518Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h3 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a>Week 4</h3><ol><li>修改App类中的OnSuspending和OnLaunched方法，以实现程序挂起时保存应用程序的页面，重新打开程序时加载应用程序挂起钱的页面；</li><li>重写两个页面的OnNavigatedFrom和OnNavigatedTo方法，分别在挂起前后存储和载入页面中的信息。</li></ol><h3 id="Week-5"><a href="#Week-5" class="headerlink" title="Week 5"></a>Week 5</h3><ol><li>新建Tile.xml，用xml文件编写不同大小磁贴的基本内容模板；</li><li>在MainPage类和NewPage类中定义Update()方法，利用标准的处理XML DOM的方式，根据当前ListItemViewModels中的内容，为每个item创建磁贴；</li><li>在增加、删除和更改item时，调用Update()方法，动态更新磁贴；</li><li>在MainPage类的OnNavigationTo方法中添加DataRequested事件处理程序；</li><li>在MainPage中定义一个方法来接收DataRequested事件产生的DataRequest对象，并修改该对象中DataPackage的内容，来定义要共享的内容；</li><li>在MainPage中定义Share方法，实现在点击Share按钮时打开共享的UI界面。</li></ol><h3 id="Week-6"><a href="#Week-6" class="headerlink" title="Week 6"></a>Week 6</h3><ol><li>在App类中定义LoadDatabase方法，使用SQLitePCL API实现在应用打开时创建、打开或读取SQLite数据库，恢复应用的状态；</li><li>修改ListItemViewModels中对ListItem增、删、改的方法，使用SQLitePCL API实现Item内容在数据库中的实时更新；</li><li>修改ListItem中属性completed的get和set方法，使Item的完成状态能在数据库中实时更新；</li><li>在MainPage中添加搜索框和搜索按钮，并定义一个通过点击按钮触发的搜索函数，利用SQL的SELECT语句，实现对item的模糊查找。</li></ol><h2 id="关键步骤截图"><a href="#关键步骤截图" class="headerlink" title="关键步骤截图"></a>关键步骤截图</h2><p>图1. 应用页面:</p><img src="/2018/04/19/UWP-MyList2/6.png" title="UI"><p>图4. 磁贴示例:</p><img src="/2018/04/19/UWP-MyList2/1.png" title="磁贴1"><img src="/2018/04/19/UWP-MyList2/2.png" title="磁贴2"><img src="/2018/04/19/UWP-MyList2/3.png" title="磁贴3"><p>图5. 分享功能示例:</p><img src="/2018/04/19/UWP-MyList2/4.png" title="分享"><p>图6. 搜索功能示例:</p><img src="/2018/04/19/UWP-MyList2/5.png" title="搜索"><h2 id="亮点与改进"><a href="#亮点与改进" class="headerlink" title="亮点与改进"></a>亮点与改进</h2><ol><li>实现图片和item的动态绑定<ul><li>在挂起并关闭应用后，能够恢复item与图片的对应关系，恢复整个页面原本的状态；</li><li>在动态磁贴中，能根据item的图片来动态修改磁贴的背景图片；</li><li>共享item时，能够动态共享item对应的图片；</li><li>加入数据库功能后，能够完整保存item的图片信息（包括用户自定义的图片宽度），实现了应用数据的持久化。</li></ul></li><li><p>修改日期显示格式</p><p>修改日期的存储和显示格式为“yyyy-MM-dd”，去掉日期的具体时间和时区信息，更加简洁。</p></li><li><p>使用可视化工具查看数据库内容</p><p>使用SQLite Expert，可以直观地查看到数据库的内容，方便程序的调试。</p></li></ol><h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul><li><p>问题： 挂起并关闭时，无法将ImageSource类型存入LocalSettings中，导致无法还原图片。</p><p>解决方案：查阅资料后，发现可以将图片文件的路径（类型为string）存入LocalSettings，恢复的时候再通过路径读取图片文件，以达到保存图片的目的，问题解决。</p></li><li><p>问题：更新动态磁贴时，每个item会出现多个磁贴。</p><p>解决方案： 在调用更新磁贴的函数时，会为每个item重新创建一个磁贴，因此出现了重复的磁贴。在函数中使用TileUpdater.Clear()清空当前磁贴，就可以解决问题。</p></li></ul><h2 id="思考与总结"><a href="#思考与总结" class="headerlink" title="思考与总结"></a>思考与总结</h2><p>LocalFolder：存储应用的本地数据，只能在本地访问，存储容量与硬盘容量有关。</p><p>RoamingFolder：存储应用的漫游数据，能够跨设备访问，存储容量比较小。</p><p>TempFolder：存储应用的临时数据，不具有持久性。</p><p>StringBuilder作用：与string不同，StringBuilder是动态的，可以动态调整大小，在拼接字符串时不用频繁申请新的内存空间，有利于提高程序的运行效率。</p><p>在本次实验中，我进一步完善了我的第一个UWP应用，为应用添加了动态磁贴，利用SQLite数据库实现了应用数据的持久化，并且为应用加入了分享和搜索功能。</p><p>在实验中，我学到了许多有趣而实用的知识，例如应用程序的生命周期、利用xml创建动态磁贴、应用间通信等等，并且将刚刚学会的SQL语言应用到了实践中，很好地巩固了数据库的相关知识。经过这次实验，我的应用具有了实用性，能够真正按照应用的设计目的来运行。当然，应用还存在一些小缺陷，仍需要通过进一步的学习来加以优化。</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://docs.microsoft.com/en-us/windows/uwp/design/shell/tiles-and-notifications/create-adaptive-tiles" target="_blank" rel="noopener">Create adaptive tiles</a></li><li><a href="https://docs.microsoft.com/en-us/windows/uwp/design/shell/tiles-and-notifications/sending-a-local-tile-notification" target="_blank" rel="noopener">Send a local tile notification</a></li><li><a href="https://docs.microsoft.com/en-us/windows/uwp/app-to-app/share-data" target="_blank" rel="noopener">Share data</a></li><li><a href="https://docs.microsoft.com/en-us/windows/uwp/data-access/sqlite-databases" target="_blank" rel="noopener">Use a SQLite database in a UWP app</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;实验步骤&quot;&gt;&lt;a href=&quot;#实验步骤&quot; class=&quot;headerlink&quot; title=&quot;实验步骤&quot;&gt;&lt;/a&gt;实验步骤&lt;/h2&gt;&lt;h3 id=&quot;Week-4&quot;&gt;&lt;a href=&quot;#Week-4&quot; class=&quot;headerlink&quot; title=&quot;Week 
+      
+    
+    </summary>
+    
+    
+      <category term="UWP" scheme="https://xungerrrr.github.io/tags/UWP/"/>
     
   </entry>
   
@@ -433,55 +505,6 @@
     
     
       <category term="Unity" scheme="https://xungerrrr.github.io/tags/Unity/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Unity 3D Learning</title>
-    <link href="https://xungerrrr.github.io/2018/03/30/Unity-3D-Learning/"/>
-    <id>https://xungerrrr.github.io/2018/03/30/Unity-3D-Learning/</id>
-    <published>2018-03-30T13:42:17.000Z</published>
-    <updated>2019-03-13T15:45:13.191Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Unity-3D编程-学习博客"><a href="#Unity-3D编程-学习博客" class="headerlink" title="Unity 3D编程 学习博客"></a>Unity 3D编程 学习博客</h1><blockquote><p>这是中山大学2018春季学期「3D 游戏编程与设计」的课程博客。以此系列博客记录本人3D编程学习的过程和结果。</p></blockquote><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="Homework-1"><a href="#Homework-1" class="headerlink" title="Homework 1"></a>Homework 1</h3><ul><li><a href="/2018/03/31/Unity-3D-基础概念/" title="Unity 3D - 基础概念">Unity 3D - 基础概念</a></li><li><a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/master/Homework%201/2.%20Tic-Tac-Toe" target="_blank" rel="noopener">Unity 3D - 井字棋</a></li></ul><h3 id="Homework-2"><a href="#Homework-2" class="headerlink" title="Homework 2"></a>Homework 2</h3><ul><li><a href="/2018/03/31/Unity-3D-太阳系/" title="Unity 3D - 太阳系">Unity 3D - 太阳系</a></li><li><a href="/2018/04/01/Unity-3D-牧师与魔鬼/" title="Unity 3D - 牧师与魔鬼">Unity 3D - 牧师与魔鬼</a></li></ul><h3 id="Homework-3"><a href="#Homework-3" class="headerlink" title="Homework 3"></a>Homework 3</h3><ul><li><a href="/2018/04/10/Unity-3D-牧师与魔鬼-2-0/" title="Unity 3D - 牧师与魔鬼 2.0">Unity 3D - 牧师与魔鬼 2.0</a></li></ul><h3 id="Homework-4"><a href="#Homework-4" class="headerlink" title="Homework 4"></a>Homework 4</h3><ul><li><a href="/2018/04/17/Unity-3D-Hit-UFO/" title="Unity 3D - Hit UFO">Unity 3D - Hit UFO</a></li></ul><h3 id="Homework-5"><a href="#Homework-5" class="headerlink" title="Homework 5"></a>Homework 5</h3><ul><li><a href="/2018/04/24/Unity-3D-Hit-UFO-2-0/" title="Unity 3D - Hit UFO 2.0">Unity 3D - Hit UFO 2.0</a></li></ul><h3 id="Homework-6"><a href="#Homework-6" class="headerlink" title="Homework 6"></a>Homework 6</h3><ul><li><a href="/2018/05/11/Unity-3D-智能巡逻兵/" title="Unity 3D - 智能巡逻兵">Unity 3D - 智能巡逻兵</a></li></ul><h3 id="Homework-7"><a href="#Homework-7" class="headerlink" title="Homework 7"></a>Homework 7</h3><ul><li><a href="/2018/05/29/Unity-3D-汽车尾气模拟/" title="Unity 3D - 汽车尾气模拟">Unity 3D - 汽车尾气模拟</a></li></ul><h3 id="Homework-8"><a href="#Homework-8" class="headerlink" title="Homework 8"></a>Homework 8</h3><ul><li><a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design/tree/master/Homework%208" target="_blank" rel="noopener">Unity 3D - 简单背包系统</a></li></ul><h3 id="Homework-9"><a href="#Homework-9" class="headerlink" title="Homework 9"></a>Homework 9</h3><ul><li><a href="/2018/06/19/Unity-3D-人机坦克大战/" title="Unity 3D - 人机坦克大战">Unity 3D - 人机坦克大战</a></li></ul><h3 id="Homework-10"><a href="#Homework-10" class="headerlink" title="Homework 10"></a>Homework 10</h3><ul><li><a href="https://github.com/Xungerrrr/3D-Game-Programming-and-Design" target="_blank" rel="noopener">Unity 3D - 联机坦克大战</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Unity-3D编程-学习博客&quot;&gt;&lt;a href=&quot;#Unity-3D编程-学习博客&quot; class=&quot;headerlink&quot; title=&quot;Unity 3D编程 学习博客&quot;&gt;&lt;/a&gt;Unity 3D编程 学习博客&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;这是中山大
-      
-    
-    </summary>
-    
-      <category term="Unity" scheme="https://xungerrrr.github.io/categories/Unity/"/>
-    
-    
-      <category term="Unity" scheme="https://xungerrrr.github.io/tags/Unity/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://xungerrrr.github.io/2018/03/30/hello-world/"/>
-    <id>https://xungerrrr.github.io/2018/03/30/hello-world/</id>
-    <published>2018-03-30T12:00:00.000Z</published>
-    <updated>2018-03-31T07:58:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
-    
-    
-      <category term="blog" scheme="https://xungerrrr.github.io/tags/blog/"/>
     
   </entry>
   

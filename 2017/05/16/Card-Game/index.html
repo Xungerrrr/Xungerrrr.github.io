@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Xunyan Li">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Xunyan Li">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Card Game · Xungerrrr&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/Xungerrrr.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Xungerrrr&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Card Game</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">Xungerrrr's Blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Card Game
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="iOS">iOS</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">1.7k</span>Reading time: <span class="post-count reading-time">8 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2017/05/16</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="基于Objective-C的iOS编程报告-Card-Game范例的实现"><a href="#基于Objective-C的iOS编程报告-Card-Game范例的实现" class="headerlink" title="基于Objective-C的iOS编程报告 - Card Game范例的实现"></a>基于Objective-C的iOS编程报告 - Card Game范例的实现</h1><h3 id="基于Stanford-CS193P"><a href="#基于Stanford-CS193P" class="headerlink" title="基于Stanford CS193P"></a>基于Stanford CS193P</h3><img src="/2017/05/16/Card-Game/1.png" title="Xcode 8">
+<h2 id="游戏介绍"><a href="#游戏介绍" class="headerlink" title="游戏介绍"></a>游戏介绍</h2><p>Card Game是一款纸牌匹配游戏。游戏会在一副扑克牌中随机抽取12 张牌，反扣在屏幕上。玩家可以点击扑克牌进行翻转，每次翻转减1分，最多能同时翻开两张牌。若花色匹配，则加4分，若数字匹配，则加16分（这是因为，数字匹配的概率更低）。若两张牌不匹配，则减2分。以此循环，直至没有牌能够匹配为止，最后得出总分。</p>
+<h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><p>iOS下的编程一般采取MVC的思路，即Model-View-Controller。Model包含整个程序的核心算法和功能，View是程序的UI部分，而Controller则负责控制UI和代码的交互。在这个游戏采取面向对象的编程方法，将游戏的核心都放到Model里，其中包括了Card、Deck、PlayingCard、PlayingCardDeck这些基础的类，以及控制游戏逻辑的CardMatchingGame类的声明和实现，并利用Controller实现UI和代码的交互，从而完成整个游戏的制作。游戏制作范例来源于2013年Stanford University的CS193P课程。</p>
+<h2 id="游戏实现"><a href="#游戏实现" class="headerlink" title="游戏实现"></a>游戏实现</h2><h3 id="UI部分"><a href="#UI部分" class="headerlink" title="UI部分"></a>UI部分</h3><img src="/2017/05/16/Card-Game/2.png" title="UI">
+<p>十二张扑克牌、一个分数显示栏和绿色的背景构成了整个游戏的界面。这个部分的实现完全不需要输入代码，因此，没有编程基础的人也能轻松完成界面的设计。</p>
+<p>为了游戏的美观，相对于范例，我做了三点改进：</p>
+<ul>
+<li><p>增加了游戏对横屏的支持。范例中，游戏只考虑了竖屏下的显示效果。如果旋转设备，扑克牌将会显示不全，分数栏也会消失不见。我利用Xcode的stack view功能，将扑克牌和分数栏固定，从而实现横屏游戏。</p>
+<img src="/2017/05/16/Card-Game/6.png" title="UI">
+</li>
+<li><p>增加游戏图标。范例中，游戏缺少图标，在实际设备上安装时，只有一个默认图标。我利用photoshop，制作了中山大学的图标，附加到了游戏上。</p>
+<img src="/2017/05/16/Card-Game/7.png" title="UI">
+</li>
+<li><p>将扑克牌背面的斯坦福大学图标改为中山大学图标</p>
+</li>
+</ul>
+<h3 id="Model部分"><a href="#Model部分" class="headerlink" title="Model部分"></a>Model部分</h3><h4 id="Card类"><a href="#Card类" class="headerlink" title="Card类"></a>Card类</h4><p>Card.h：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Card.h</span></span><br><span class="line"><span class="comment">//  Card Game</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Xungerrrr on 2017/5/7.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 Xungerrrr. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#ifndef Card_h</span></span><br><span class="line"><span class="meta">#define Card_h</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Card</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *contents;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">getter</span>=isChosen) <span class="built_in">BOOL</span> chosen;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">getter</span>=isMatched) <span class="built_in">BOOL</span> matched;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">int</span>)match:(<span class="built_in">NSArray</span> *)otherCards;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#endif /* Card_h */</span></span><br></pre></td></tr></table></figure></p>
+<p>Card.m:<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Card.m</span></span><br><span class="line"><span class="comment">//  Card Game</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Xungerrrr on 2017/5/7.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 Xungerrrr. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Card.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Card</span>()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Card</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">int</span>)match:(<span class="built_in">NSArray</span> *)otherCards</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> score = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (Card *card <span class="keyword">in</span> otherCards) &#123;</span><br><span class="line">        <span class="keyword">if</span> ([card.contents isEqualToString:<span class="keyword">self</span>.contents]) &#123;</span><br><span class="line">            score = <span class="number">1</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> score;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="Deck类"><a href="#Deck类" class="headerlink" title="Deck类"></a>Deck类</h4><p>Deck.h:<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Card+Deck.h</span></span><br><span class="line"><span class="comment">//  Card Game</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Xungerrrr on 2017/5/7.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 Xungerrrr. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Card.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Deck</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)addCard:(Card *)card atTop:(<span class="built_in">BOOL</span>)atTop;</span><br><span class="line">- (<span class="keyword">void</span>)addCard:(Card *)card;</span><br><span class="line"></span><br><span class="line">- (Card *)drawRandomCard;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<p>Deck.m:<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Card+Deck.m</span></span><br><span class="line"><span class="comment">//  Card Game</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Xungerrrr on 2017/5/7.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 Xungerrrr. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Deck.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Deck</span>()</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">NSMutableArray</span> *cards;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Deck</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSMutableArray</span> *)cards</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (!_cards)</span><br><span class="line">        _cards = [[<span class="built_in">NSMutableArray</span> alloc] init];</span><br><span class="line">    <span class="keyword">return</span> _cards;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)addCard:(Card *)card atTop:(<span class="built_in">BOOL</span>)atTop</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (atTop) &#123;</span><br><span class="line">        [<span class="keyword">self</span>.cards insertObject:card atIndex:<span class="number">0</span>];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        [<span class="keyword">self</span>.cards addObject:card];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)addCard:(Card *)card</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="keyword">self</span> addCard:card atTop:<span class="literal">NO</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (Card *)drawRandomCard</span><br><span class="line">&#123;</span><br><span class="line">    Card *randomCard = <span class="literal">nil</span>;</span><br><span class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.cards count]) &#123;</span><br><span class="line">        <span class="keyword">unsigned</span> index = arc4random() % [<span class="keyword">self</span>.cards count];</span><br><span class="line">        randomCard = <span class="keyword">self</span>.cards[index];</span><br><span class="line">        [<span class="keyword">self</span>.cards removeObjectAtIndex:index];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> randomCard;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="PlayingCard类"><a href="#PlayingCard类" class="headerlink" title="PlayingCard类"></a>PlayingCard类</h4><p>PlayingCard.h:<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  PlayingCard.h</span></span><br><span class="line"><span class="comment">//  Card Game</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Xungerrrr on 2017/5/7.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 Xungerrrr. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Card.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">PlayingCard</span> : <span class="title">Card</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *suit;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>) <span class="built_in">NSUInteger</span> rank;</span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">NSArray</span> *)validSuits;</span><br><span class="line">+ (<span class="built_in">NSUInteger</span>)maxRank;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<p>PlayingCard.m:<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  PlayingCard.m</span></span><br><span class="line"><span class="comment">//  Card Game</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Xungerrrr on 2017/5/7.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 Xungerrrr. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"PlayingCard.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">PlayingCard</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">int</span>)match:(<span class="built_in">NSArray</span> *)otherCards</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> score = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([otherCards count] == <span class="number">1</span>) &#123;</span><br><span class="line">        PlayingCard *otherCard = [otherCards firstObject];</span><br><span class="line">        <span class="keyword">if</span> (otherCard.rank == <span class="keyword">self</span>.rank) &#123;</span><br><span class="line">            score = <span class="number">4</span>;</span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> ([otherCard.suit isEqualToString:<span class="keyword">self</span>.suit]) &#123;</span><br><span class="line">            score = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> score;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSString</span> *)contents</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSArray</span> *rankStrings = [PlayingCard rankStrings];</span><br><span class="line">    <span class="keyword">return</span> [rankStrings[<span class="keyword">self</span>.rank] stringByAppendingString:<span class="keyword">self</span>.suit];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@synthesize</span> suit = _suit;</span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">NSArray</span> *)validSuits</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> @[<span class="string">@"♥︎"</span>,<span class="string">@"♦︎"</span>,<span class="string">@"♠︎"</span>,<span class="string">@"♣︎"</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setSuit:(<span class="built_in">NSString</span> *)suit</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ([[PlayingCard validSuits] containsObject:suit]) &#123;</span><br><span class="line">        _suit = suit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSString</span> *)suit</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> _suit ? _suit : <span class="string">@"?"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">NSArray</span> *)rankStrings</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> @[<span class="string">@"?"</span>,<span class="string">@"A"</span>,<span class="string">@"2"</span>,<span class="string">@"3"</span>,<span class="string">@"4"</span>,<span class="string">@"5"</span>,<span class="string">@"6"</span>,<span class="string">@"7"</span>,<span class="string">@"8"</span>,<span class="string">@"9"</span>,<span class="string">@"10"</span>,<span class="string">@"J"</span>,<span class="string">@"Q"</span>,<span class="string">@"K"</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">NSUInteger</span>)maxRank</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> [[<span class="keyword">self</span> rankStrings] count]<span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setRank:(<span class="built_in">NSUInteger</span>)rank</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (rank &lt;= [PlayingCard maxRank]) &#123;</span><br><span class="line">        _rank = rank;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="PlayingCardDeck类"><a href="#PlayingCardDeck类" class="headerlink" title="PlayingCardDeck类"></a>PlayingCardDeck类</h4><p>PlayingCardDeck.h:<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Deck+PlayingCardDeck.h</span></span><br><span class="line"><span class="comment">//  Card Game</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Xungerrrr on 2017/5/7.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 Xungerrrr. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Deck.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">PlayingCardDeck</span> : <span class="title">Deck</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<p>PlayingCardDeck.m:<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Deck+PlayingCardDeck.m</span></span><br><span class="line"><span class="comment">//  Card Game</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Xungerrrr on 2017/5/7.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 Xungerrrr. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"PlayingCardDeck.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"PlayingCard.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">PlayingCardDeck</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">instancetype</span>)init</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">NSString</span> *suit <span class="keyword">in</span> [PlayingCard validSuits]) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="built_in">NSUInteger</span> rank = <span class="number">1</span>; rank &lt;= [PlayingCard maxRank]; rank++) &#123;</span><br><span class="line">                PlayingCard *card = [[PlayingCard alloc] init];</span><br><span class="line">                card.rank = rank;</span><br><span class="line">                card.suit = suit;</span><br><span class="line">                [<span class="keyword">self</span> addCard:card];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="CardMatchingGame类"><a href="#CardMatchingGame类" class="headerlink" title="CardMatchingGame类"></a>CardMatchingGame类</h4><p>CardMatchingGame.h:<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  NSObject+CardMatchingGame.h</span></span><br><span class="line"><span class="comment">//  Card Game</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Xungerrrr on 2017/5/9.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 Xungerrrr. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Deck.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Card.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">CardMatchingGame</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// designated initializer</span></span><br><span class="line">- (<span class="keyword">instancetype</span>)initWithCardCount:(<span class="built_in">NSUInteger</span>)count</span><br><span class="line">                        usingDeck:(Deck *)deck;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)chooseCardAtIndex:(<span class="built_in">NSUInteger</span>)index;</span><br><span class="line">- (Card *)cardAtIndex:(<span class="built_in">NSUInteger</span>)index;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>) <span class="built_in">NSInteger</span> score;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<p>CardMatchingGame.m:<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  NSObject+CardMatchingGame.m</span></span><br><span class="line"><span class="comment">//  Card Game</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Xungerrrr on 2017/5/9.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 Xungerrrr. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"CardMatchingGame.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">CardMatchingGame</span>()</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readwrite</span>) <span class="built_in">NSInteger</span> score;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSMutableArray</span> *cards; <span class="comment">// of Card</span></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">CardMatchingGame</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSMutableArray</span> *)cards</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (!_cards)</span><br><span class="line">        _cards = [[<span class="built_in">NSMutableArray</span> alloc] init];</span><br><span class="line">    <span class="keyword">return</span> _cards;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">instancetype</span>)initWithCardCount:(<span class="built_in">NSUInteger</span>)count</span><br><span class="line">                        usingDeck:(Deck *)deck</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init]; <span class="comment">// super's designated initializer</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">            Card *card = [deck drawRandomCard];</span><br><span class="line">            <span class="keyword">if</span> (card) &#123;</span><br><span class="line">                [<span class="keyword">self</span>.cards addObject:card];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">self</span> = <span class="literal">nil</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (Card *)cardAtIndex:(<span class="built_in">NSUInteger</span>)index</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> (index &lt; [<span class="keyword">self</span>.cards count]) ? <span class="keyword">self</span>.cards[index] : <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> MISMATCH_PENALTY = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> MATCH_BONUS = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> COST_TO_CHOOSE = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)chooseCardAtIndex:(<span class="built_in">NSUInteger</span>)index</span><br><span class="line">&#123;</span><br><span class="line">    Card *card = [<span class="keyword">self</span> cardAtIndex:index];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (!card.isMatched) &#123;</span><br><span class="line">        <span class="keyword">if</span> (card.isChosen) &#123;</span><br><span class="line">            card.chosen = <span class="literal">NO</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// match against other chosen cards</span></span><br><span class="line">            <span class="keyword">for</span> (Card *otherCard <span class="keyword">in</span> <span class="keyword">self</span>.cards) &#123;</span><br><span class="line">                <span class="keyword">if</span> (otherCard.isChosen &amp;&amp; !otherCard.isMatched) &#123;</span><br><span class="line">                    <span class="keyword">int</span> matchScore = [card match:@[otherCard]];</span><br><span class="line">                    <span class="keyword">if</span> (matchScore) &#123;</span><br><span class="line">                        <span class="keyword">self</span>.score += matchScore * MATCH_BONUS;</span><br><span class="line">                        otherCard.matched = <span class="literal">YES</span>;</span><br><span class="line">                        card.matched = <span class="literal">YES</span>;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">self</span>.score -= MISMATCH_PENALTY;</span><br><span class="line">                        otherCard.chosen = <span class="literal">NO</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>; <span class="comment">// can only choose 2 cards for now</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">self</span>.score -= COST_TO_CHOOSE;</span><br><span class="line">            card.chosen = <span class="literal">YES</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Controller部分"><a href="#Controller部分" class="headerlink" title="Controller部分"></a>Controller部分</h3><h4 id="CardGameViewController类"><a href="#CardGameViewController类" class="headerlink" title="CardGameViewController类"></a>CardGameViewController类</h4><p>与按钮交互，是通过变量cardButtons和方法touchCardButton来实现的，而画面以及分数栏的实时更新，则是通过变量scoreLabel和方法updateUI来实现的。这部分相对于Model的设计来说，更加简单，但是却十分重要。</p>
+<p>CardGameViewController.h:<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  ViewController.h</span></span><br><span class="line"><span class="comment">//  Card Game</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Xungerrrr on 2017/5/7.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 Xungerrrr. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> : <span class="title">UIViewController</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<p>CardGameViewController.m:<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  ViewController.m</span></span><br><span class="line"><span class="comment">//  Card Game</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Xungerrrr on 2017/5/7.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 Xungerrrr. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"CardGameViewController.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"PlayingCardDeck.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"CardMatchingGame.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) CardMatchingGame *game;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) IBOutletCollection(<span class="built_in">UIButton</span>) <span class="built_in">NSArray</span> *cardButtons;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">weak</span>, <span class="keyword">nonatomic</span>) <span class="keyword">IBOutlet</span> <span class="built_in">UILabel</span> *scoreLabel;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"></span><br><span class="line">- (CardMatchingGame *)game</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (!_game)</span><br><span class="line">        _game = [[CardMatchingGame alloc] initWithCardCount:[<span class="keyword">self</span>.cardButtons count] usingDeck:[<span class="keyword">self</span> createDeck]];</span><br><span class="line">    <span class="keyword">return</span> _game;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (Deck *)createDeck</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> [[PlayingCardDeck alloc] init];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">IBAction</span>)touchCardButton:(<span class="built_in">UIButton</span> *)sender &#123;</span><br><span class="line">    <span class="built_in">NSUInteger</span> chosenButtonIndex = [<span class="keyword">self</span>.cardButtons indexOfObject:sender];</span><br><span class="line">    [<span class="keyword">self</span>.game chooseCardAtIndex:chosenButtonIndex];</span><br><span class="line">    [<span class="keyword">self</span> updateUI];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)updateUI &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">UIButton</span> *cardButton <span class="keyword">in</span> <span class="keyword">self</span>.cardButtons) &#123;</span><br><span class="line">        <span class="built_in">NSUInteger</span> cardButtonIndex = [<span class="keyword">self</span>.cardButtons indexOfObject:cardButton];</span><br><span class="line">        Card *card = [<span class="keyword">self</span>.game cardAtIndex:cardButtonIndex];</span><br><span class="line">        [cardButton setTitle:[<span class="keyword">self</span> titleForCard:card] forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">        [cardButton setBackgroundImage:[<span class="keyword">self</span> backgroungImageForCard:card] forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">        cardButton.enabled = !card.isMatched;</span><br><span class="line">        <span class="keyword">self</span>.scoreLabel.text = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"Score: %ld"</span>, (<span class="keyword">long</span>)<span class="keyword">self</span>.game.score];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSString</span> *)titleForCard:(Card *)card</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> card.isChosen ? card.contents : <span class="string">@""</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">UIImage</span> *)backgroungImageForCard:(Card *)card</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="built_in">UIImage</span> imageNamed:card.isChosen ? <span class="string">@"cardfront"</span> : <span class="string">@"cardback"</span>];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="运行实例（iPad-Pro-9-7-inch）"><a href="#运行实例（iPad-Pro-9-7-inch）" class="headerlink" title="运行实例（iPad Pro 9.7 inch）"></a>运行实例（iPad Pro 9.7 inch）</h3><img src="/2017/05/16/Card-Game/3.png" title="实例1">
+<img src="/2017/05/16/Card-Game/4.png" title="实例2">
+<img src="/2017/05/16/Card-Game/5.png" title="横屏">
+<h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p><a href="https://github.com/Xungerrrr/Card-Game" target="_blank" rel="noopener">https://github.com/Xungerrrr/Card-Game</a></p>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2018/03/29/UWP-Learning/" title="UWP Learning">
+                    <div class="nextTitle">UWP Learning</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2017/03/30/hello-world/" title="Hello World">
+                    <div class="prevTitle">Hello World</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="https://github.com/Xungerrrr" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="/assets/wechat.jpg">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.facebook.com/profile.php?id=100025222894249" class="iconfont-archer facebook" target="_blank" title="facebook"></a>
+            
+        
+    
+        
+    
+        
+            
+                <a href="https://www.instagram.com/xungerrrr/" class="iconfont-archer instagram" target="_blank" title="instagram"></a>
+            
+        
+    
+        
+            
+                <a href="mailto:hellolixy@icloud.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基于Objective-C的iOS编程报告-Card-Game范例的实现"><span class="toc-number">1.</span> <span class="toc-text">基于Objective-C的iOS编程报告 - Card Game范例的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基于Stanford-CS193P"><span class="toc-number">1.0.1.</span> <span class="toc-text">基于Stanford CS193P</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏介绍"><span class="toc-number">1.1.</span> <span class="toc-text">游戏介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计思路"><span class="toc-number">1.2.</span> <span class="toc-text">设计思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏实现"><span class="toc-number">1.3.</span> <span class="toc-text">游戏实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#UI部分"><span class="toc-number">1.3.1.</span> <span class="toc-text">UI部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Model部分"><span class="toc-number">1.3.2.</span> <span class="toc-text">Model部分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Card类"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">Card类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Deck类"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">Deck类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PlayingCard类"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">PlayingCard类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PlayingCardDeck类"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">PlayingCardDeck类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CardMatchingGame类"><span class="toc-number">1.3.2.5.</span> <span class="toc-text">CardMatchingGame类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Controller部分"><span class="toc-number">1.3.3.</span> <span class="toc-text">Controller部分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CardGameViewController类"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">CardGameViewController类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行实例（iPad-Pro-9-7-inch）"><span class="toc-number">1.3.4.</span> <span class="toc-text">运行实例（iPad Pro 9.7 inch）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub"><span class="toc-number">1.4.</span> <span class="toc-text">GitHub</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 25
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href="/2019/03/11/GUI-and-Draw-Simple-Graphics/">GUI and Draw Simple Graphics</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href="/2019/03/10/软件项目与知识团队管理基础/">软件项目与知识团队管理基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href="/2019/03/04/Learn-About-CG/">Learn About CG</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/03</span><a class="archive-post-title" href="/2019/03/03/软件的本质与软件工程科学/">软件的本质与软件工程科学</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/16</span><a class="archive-post-title" href="/2018/09/16/Git日常使用总结/">Git日常使用总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/10</span><a class="archive-post-title" href="/2018/09/10/Android-Learning/">Android Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/19</span><a class="archive-post-title" href="/2018/06/19/Unity-3D-人机坦克大战/">Unity 3D - 人机坦克大战</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/29</span><a class="archive-post-title" href="/2018/05/29/Unity-3D-汽车尾气模拟/">Unity 3D - 汽车尾气模拟</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href="/2018/05/11/Unity-3D-智能巡逻兵/">Unity 3D - 智能巡逻兵</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href="/2018/05/05/UWP-Media-Player/">UWP - Media Player</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href="/2018/05/05/UWP-Networking/">UWP - Networking</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span><a class="archive-post-title" href="/2018/04/24/Unity-3D-Hit-UFO-2-0/">Unity 3D - Hit UFO 2.0</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/19</span><a class="archive-post-title" href="/2018/04/19/UWP-MyList2/">UWP - MyList2</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/17</span><a class="archive-post-title" href="/2018/04/17/Unity-3D-Hit-UFO/">Unity 3D - Hit UFO</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href="/2018/04/15/Vi-Java-Ant-和-JUnit-的学习报告/">Vi, Java, Ant 和 JUnit 的学习报告</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href="/2018/04/10/Unity-3D-牧师与魔鬼-2-0/">Unity 3D - 牧师与魔鬼 2.0</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/06</span><a class="archive-post-title" href="/2018/04/06/基于稀疏表示的人脸识别/">基于稀疏表示的人脸识别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href="/2018/04/01/Unity-3D-牧师与魔鬼/">Unity 3D - 牧师与魔鬼</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span><a class="archive-post-title" href="/2018/03/31/Unity-3D-太阳系/">Unity 3D - 太阳系</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span><a class="archive-post-title" href="/2018/03/31/Unity-3D-基础概念/">Unity 3D - 基础概念</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href="/2018/03/30/Unity-3D-Learning/">Unity 3D Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href="/2018/03/29/UWP-MyList/">UWP - MyList</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href="/2018/03/29/UWP-Learning/">UWP Learning</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/16</span><a class="archive-post-title" href="/2017/05/16/Card-Game/">Card Game</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href="/2017/03/30/hello-world/">Hello World</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
+    
+        <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
+    
+        <span class="sidebar-tag-name" data-tags="UWP"><span class="iconfont-archer">&#xe606;</span>UWP</span>
+    
+        <span class="sidebar-tag-name" data-tags="Unity"><span class="iconfont-archer">&#xe606;</span>Unity</span>
+    
+        <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="实训"><span class="iconfont-archer">&#xe606;</span>实训</span>
+    
+        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+    
+        <span class="sidebar-tag-name" data-tags="Face-Recognition"><span class="iconfont-archer">&#xe606;</span>Face-Recognition</span>
+    
+        <span class="sidebar-tag-name" data-tags="Image-Understanding"><span class="iconfont-archer">&#xe606;</span>Image-Understanding</span>
+    
+        <span class="sidebar-tag-name" data-tags="SE"><span class="iconfont-archer">&#xe606;</span>SE</span>
+    
+        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Unity"><span class="iconfont-archer">&#xe60a;</span>Unity</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Xunyan Li"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->    
+     
+    </body>
+</html>
+
+
