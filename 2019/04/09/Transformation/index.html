@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Xunyan Li">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Xunyan Li">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Transformation · Xungerrrr&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/Xungerrrr.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Xungerrrr&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Transformation</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">Xungerrrr's Blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/2080ti.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Transformation
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+                Compute Graphics - Homework 4
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Computer Graphics">Computer Graphics</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">2.1k</span>Reading time: <span class="post-count reading-time">9 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/04/09</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="画一个立方体，边长为4，中心位置为-0-0-0"><a href="#画一个立方体，边长为4，中心位置为-0-0-0" class="headerlink" title="画一个立方体，边长为4，中心位置为(0, 0, 0)"></a>画一个立方体，边长为4，中心位置为(0, 0, 0)</h2><p>首先设定立方体的初始顶点位置和颜色。立方体的边长为4，中心位置为(0, 0, 0)，所以三个坐标轴的范围都是[-2, 2]。由于正方体有六个面，每个面由两个三角形构成，因此一共有36个点。同时，我希望用立方体表现出RGB颜色空间，x轴对应红色，y轴对应绿色，z轴对应蓝色，所以要根据点的坐标设置对应的颜色。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> vertices[] = &#123;</span><br><span class="line">    <span class="number">-2.0f</span>, <span class="number">-2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>, <span class="number">-2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>,  <span class="number">2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>,  <span class="number">2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line">    <span class="number">-2.0f</span>,  <span class="number">2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line">    <span class="number">-2.0f</span>, <span class="number">-2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line"></span><br><span class="line">    <span class="number">-2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">-2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">-2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line"></span><br><span class="line">    <span class="number">-2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">-2.0f</span>,  <span class="number">2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line">    <span class="number">-2.0f</span>, <span class="number">-2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line">    <span class="number">-2.0f</span>, <span class="number">-2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line">    <span class="number">-2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">-2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line"></span><br><span class="line">    <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>,  <span class="number">2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>, <span class="number">-2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>, <span class="number">-2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line"></span><br><span class="line">    <span class="number">-2.0f</span>, <span class="number">-2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>, <span class="number">-2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">-2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">-2.0f</span>, <span class="number">-2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line"></span><br><span class="line">    <span class="number">-2.0f</span>,  <span class="number">2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>,  <span class="number">2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">-2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">2.0f</span>,  <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">-2.0f</span>,  <span class="number">2.0f</span>, <span class="number">-2.0f</span>,  <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>为了能够显示出3D图形，需要进行坐标变换。需要相应的变换矩阵，实现从局部坐标到世界坐标、从世界坐标到观察坐标、从观察坐标到裁剪坐标的变换。在顶点着色器中添加这些矩阵作为全局变量，再进行矩阵相乘运算后输出，可以实现这个效果。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">layout (location = <span class="number">0</span>) in vec3 aPos;</span><br><span class="line">layout (location = <span class="number">1</span>) in vec3 aColor;</span><br><span class="line"></span><br><span class="line">uniform mat4 model;</span><br><span class="line">uniform mat4 view;</span><br><span class="line">uniform mat4 projection;</span><br><span class="line">out vec3 ourColor;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    gl_Position = projection * view * model * vec4(aPos, <span class="number">1.0</span>);</span><br><span class="line">    ourColor = aColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要完整显示出立方体，要将摄像机向后移动，这个可以通过glm::translate移动场景来创建平移矩阵。要呈现立方体的真实感，需要进行透视投影，可以通过glm::perspective来创建投影矩阵。下面的代码添加在渲染循环过程内。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">glm::mat4 model = glm::mat4(<span class="number">1.0f</span>);</span><br><span class="line">glm::mat4 view = glm::mat4(<span class="number">1.0f</span>);</span><br><span class="line">glm::mat4 projection = glm::mat4(<span class="number">1.0f</span>);</span><br><span class="line"></span><br><span class="line">view = glm::translate(view, glm::vec3(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">-15.0f</span>));</span><br><span class="line">projection = glm::perspective(glm::radians(<span class="number">45.0f</span>), (<span class="keyword">float</span>)windowWidth / windowHeight, <span class="number">0.1f</span>, <span class="number">100.0f</span>);</span><br><span class="line"></span><br><span class="line">shader.setMat4(<span class="string">"model"</span>, model);</span><br><span class="line">shader.setMat4(<span class="string">"projection"</span>, projection);</span><br><span class="line">shader.setMat4(<span class="string">"view"</span>, view);</span><br></pre></td></tr></table></figure>
+<p>glDisable(GL_DEPTH_TEST)，关闭深度测试，渲染效果如下。这个效果不像是真实的立方体，本该被覆盖的后面被显示了出来。这是因为OpenGL是逐个三角形绘制的，后来绘制的像素有可能会覆盖之前的像素。</p>
+<img src="/2019/04/09/Transformation/1.png" title="关闭深度测试">
+<p>glEnable(GL_DEPTH_TEST) ，启动深度测试，渲染效果如下。这个效果好多了，前面完全覆盖了背面，是一个真实的立方体（虽然这里看上去像正方形）。OpenGL的深度信息存储在Z缓冲中，也叫深度缓冲，GLFW会自动创建这个缓冲。当片段要输出它的颜色时，OpenGL会将它的深度值和z缓冲进行比较，如果当前的片段在其它片段之后，它将会被丢弃，否则将会覆盖。这个过程就是深度测试，由OpenGL自动完成。</p>
+<img src="/2019/04/09/Transformation/2.png" title="启动深度测试">
+<h2 id="平移-Translation-：使画好的cube沿着水平或垂直方向来回移动"><a href="#平移-Translation-：使画好的cube沿着水平或垂直方向来回移动" class="headerlink" title="平移(Translation)：使画好的cube沿着水平或垂直方向来回移动"></a>平移(Translation)：使画好的cube沿着水平或垂直方向来回移动</h2><p>用glm::translate生成平移矩阵，赋给model就可以实现平移。通过三角函数，可以实现立方体沿x轴来回移动。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> time = (<span class="keyword">float</span>)glfwGetTime();</span><br><span class="line">model = glm::translate(model, glm::vec3(<span class="built_in">sin</span>(time) * <span class="number">4</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>));</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<img src="/2019/04/09/Transformation/demo1.gif" title="平移">
+<h2 id="旋转-Rotation-：使画好的cube沿着XoZ平面的x-z轴持续旋转"><a href="#旋转-Rotation-：使画好的cube沿着XoZ平面的x-z轴持续旋转" class="headerlink" title="旋转(Rotation)：使画好的cube沿着XoZ平面的x=z轴持续旋转"></a>旋转(Rotation)：使画好的cube沿着XoZ平面的x=z轴持续旋转</h2><p>用glm::rotate生成旋转矩阵，赋给model就可以实现旋转。坐标设置为(1, 0, 1)，可以沿着x=z轴旋转。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> time = (<span class="keyword">float</span>)glfwGetTime();</span><br><span class="line">model = glm::rotate(model, time * <span class="number">2</span> * glm::radians(<span class="number">50.0f</span>), glm::vec3(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>));</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<img src="/2019/04/09/Transformation/demo2.gif" title="旋转">
+<h2 id="放缩-Scaling-：使画好的cube持续放大缩小"><a href="#放缩-Scaling-：使画好的cube持续放大缩小" class="headerlink" title="放缩(Scaling)：使画好的cube持续放大缩小"></a>放缩(Scaling)：使画好的cube持续放大缩小</h2><p>用glm::scale生成放缩矩阵，赋给model就可以实现放缩。利用三角函数和时间可以实现持续放缩。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> time = (<span class="keyword">float</span>)glfwGetTime();</span><br><span class="line">model = glm::scale(model, glm::vec3(<span class="number">0.5</span> * <span class="built_in">sin</span>(time) + <span class="number">1</span>, <span class="number">0.5</span> * <span class="built_in">sin</span>(time) + <span class="number">1</span>, <span class="number">0.5</span> * <span class="built_in">sin</span>(time) + <span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<img src="/2019/04/09/Transformation/demo3.gif" title="放缩">
+<h2 id="在GUI里添加菜单栏，可以选择各种变换"><a href="#在GUI里添加菜单栏，可以选择各种变换" class="headerlink" title="在GUI里添加菜单栏，可以选择各种变换"></a>在GUI里添加菜单栏，可以选择各种变换</h2><p>用GUI将上述变换整合起来，得到结合的变换。旋转变换一定要放在最后，否则会使立方体偏离位置。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (ImGui::MenuItem(<span class="string">"translate"</span>, <span class="literal">NULL</span>, &amp;translate))</span><br><span class="line">    translateTime = (<span class="keyword">float</span>)glfwGetTime();</span><br><span class="line"><span class="keyword">if</span> (ImGui::MenuItem(<span class="string">"scale"</span>, <span class="literal">NULL</span>, &amp;scale))</span><br><span class="line">    scaleTime = (<span class="keyword">float</span>)glfwGetTime();</span><br><span class="line"><span class="keyword">if</span> (ImGui::MenuItem(<span class="string">"rotate"</span>, <span class="literal">NULL</span>, &amp;rotate))</span><br><span class="line">    rotateTime = (<span class="keyword">float</span>)glfwGetTime();</span><br><span class="line"><span class="keyword">if</span> (translate)</span><br><span class="line">    model = glm::translate(model, glm::vec3(<span class="built_in">sin</span>( (time - translateTime)) * <span class="number">4</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>));</span><br><span class="line"><span class="keyword">if</span> (scale)</span><br><span class="line">    model = glm::scale(model, glm::vec3(<span class="number">0.5</span> * <span class="built_in">sin</span>(time - scaleTime) + <span class="number">1</span>, <span class="number">0.5</span> * <span class="built_in">sin</span>(time - scaleTime) + <span class="number">1</span>, <span class="number">0.5</span> * <span class="built_in">sin</span>(time - scaleTime) + <span class="number">1</span>));</span><br><span class="line"><span class="keyword">if</span> (rotate)</span><br><span class="line">    model = glm::rotate(model, (time - rotateTime) * <span class="number">2</span> * glm::radians(<span class="number">50.0f</span>), glm::vec3(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>));</span><br></pre></td></tr></table></figure></p>
+<p>效果：</p>
+<img src="/2019/04/09/Transformation/demo4.gif" title="GUI">
+<h2 id="结合Shader谈谈对渲染管线的理解"><a href="#结合Shader谈谈对渲染管线的理解" class="headerlink" title="结合Shader谈谈对渲染管线的理解"></a>结合Shader谈谈对渲染管线的理解</h2><p>渲染管线的作用是接受3D坐标，最终将它们转变成屏幕上的有色2D像素。渲染管线可以被划分成几个阶段，这些阶段高度专门化，并且容易并行执行。这些阶段在显卡中有各自对应的小程序，这些小程序就是着色器（Shader）。</p>
+<p>渲染管线的第一个阶段是顶点着色器，它接受一个顶点坐标作为输入，进行坐标变换，处理顶点属性，然后输出变换后的3D坐标和属性。下一个阶段是图元装配，根据图元的类型接受来自顶点着色器的输入，将这些输入的坐标组装成对应的图元形状。几何着色器是第三个阶段，接受来自图元装配阶段的输入，通过产生新的顶点，构造新的图元，产生其他形状的图形。之后，数据会传入光栅化阶段，这个阶段会将图元映射到屏幕空间，生成片段，并且会裁剪出视口以外的像素。下一个阶段是片段着色器，能够计算像素的颜色，用于光照、阴影、颜色等效果。最后是Alpha测试和混合阶段，这个阶段进行深度检测和Alpha值检测，能够判断物体的深度和透明度，实现对象的遮挡和混合，最终输出符合预期的渲染效果。</p>
+<h2 id="Bonus-将以上三种变换相结合，打开你们的脑洞，实现有创意的动画。"><a href="#Bonus-将以上三种变换相结合，打开你们的脑洞，实现有创意的动画。" class="headerlink" title="Bonus: 将以上三种变换相结合，打开你们的脑洞，实现有创意的动画。"></a>Bonus: 将以上三种变换相结合，打开你们的脑洞，实现有创意的动画。</h2><p>将平移和旋转结合起来，实现立方体在水平面上的滚动动画。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (flip) &#123;</span><br><span class="line">    <span class="comment">// 判断旋转周期</span></span><br><span class="line">    <span class="keyword">if</span> (time - flipTime &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; time - flipTime &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        flipTime = time;</span><br><span class="line">        cycle++;</span><br><span class="line">        shift += <span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在不同的旋转周期，实现不同的变换</span></span><br><span class="line">    model = glm::translate(model, glm::vec3((shift + <span class="number">2</span> - <span class="number">20</span>), <span class="number">-2.0f</span>, <span class="number">0.0f</span>));</span><br><span class="line">    model = glm::rotate(model, - (time - flipTime) * glm::radians(<span class="number">90.0f</span>), glm::vec3(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>));</span><br><span class="line">    model = glm::translate(model, glm::vec3(<span class="number">-2.0f</span>, <span class="number">2.0f</span>, <span class="number">0.0f</span>));</span><br><span class="line">    model = glm::rotate(model, -(cycle - <span class="number">1</span>) * glm::radians(<span class="number">90.0f</span>), glm::vec3(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此外，通过滑块调整投射投影的可视角度，能够方便地调节场景可视范围。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ImGui::SliderAngle(<span class="string">"viewing angle"</span>, &amp;viewAngle, <span class="number">10</span>, <span class="number">90</span>);</span><br><span class="line">projection = glm::perspective(viewAngle, (<span class="keyword">float</span>)windowWidth / windowHeight, <span class="number">0.1f</span>, <span class="number">100.0f</span>);</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<img src="/2019/04/09/Transformation/demo5.gif" title="Bonus">
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/03/26/Draw-Line/" title="Draw Line">
+                    <div class="prevTitle">Draw Line</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="https://github.com/Xungerrrr" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="/assets/wechat.jpg">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.facebook.com/profile.php?id=100025222894249" class="iconfont-archer facebook" target="_blank" title="facebook"></a>
+            
+        
+    
+        
+    
+        
+            
+                <a href="https://www.instagram.com/xungerrrr/" class="iconfont-archer instagram" target="_blank" title="instagram"></a>
+            
+        
+    
+        
+            
+                <a href="mailto:hellolixy@icloud.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#画一个立方体，边长为4，中心位置为-0-0-0"><span class="toc-number">1.</span> <span class="toc-text">画一个立方体，边长为4，中心位置为(0, 0, 0)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#平移-Translation-：使画好的cube沿着水平或垂直方向来回移动"><span class="toc-number">2.</span> <span class="toc-text">平移(Translation)：使画好的cube沿着水平或垂直方向来回移动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#旋转-Rotation-：使画好的cube沿着XoZ平面的x-z轴持续旋转"><span class="toc-number">3.</span> <span class="toc-text">旋转(Rotation)：使画好的cube沿着XoZ平面的x=z轴持续旋转</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#放缩-Scaling-：使画好的cube持续放大缩小"><span class="toc-number">4.</span> <span class="toc-text">放缩(Scaling)：使画好的cube持续放大缩小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在GUI里添加菜单栏，可以选择各种变换"><span class="toc-number">5.</span> <span class="toc-text">在GUI里添加菜单栏，可以选择各种变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结合Shader谈谈对渲染管线的理解"><span class="toc-number">6.</span> <span class="toc-text">结合Shader谈谈对渲染管线的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bonus-将以上三种变换相结合，打开你们的脑洞，实现有创意的动画。"><span class="toc-number">7.</span> <span class="toc-text">Bonus: 将以上三种变换相结合，打开你们的脑洞，实现有创意的动画。</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 27
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href="/2019/04/09/Transformation/">Transformation</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/26</span><a class="archive-post-title" href="/2019/03/26/Draw-Line/">Draw Line</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href="/2019/03/11/GUI-and-Draw-Simple-Graphics/">GUI and Draw Simple Graphics</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href="/2019/03/10/软件项目与知识团队管理基础/">软件项目与知识团队管理基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href="/2019/03/04/Learn-About-CG/">Learn About CG</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/03</span><a class="archive-post-title" href="/2019/03/03/软件的本质与软件工程科学/">软件的本质与软件工程科学</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/16</span><a class="archive-post-title" href="/2018/09/16/Git日常使用总结/">Git日常使用总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/10</span><a class="archive-post-title" href="/2018/09/10/Android-Learning/">Android Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/19</span><a class="archive-post-title" href="/2018/06/19/Unity-3D-人机坦克大战/">Unity 3D - 人机坦克大战</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/29</span><a class="archive-post-title" href="/2018/05/29/Unity-3D-汽车尾气模拟/">Unity 3D - 汽车尾气模拟</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href="/2018/05/11/Unity-3D-智能巡逻兵/">Unity 3D - 智能巡逻兵</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href="/2018/05/05/UWP-Media-Player/">UWP - Media Player</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href="/2018/05/05/UWP-Networking/">UWP - Networking</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span><a class="archive-post-title" href="/2018/04/24/Unity-3D-Hit-UFO-2-0/">Unity 3D - Hit UFO 2.0</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/19</span><a class="archive-post-title" href="/2018/04/19/UWP-MyList2/">UWP - MyList2</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/17</span><a class="archive-post-title" href="/2018/04/17/Unity-3D-Hit-UFO/">Unity 3D - Hit UFO</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href="/2018/04/15/Vi-Java-Ant-和-JUnit-的学习报告/">Vi, Java, Ant 和 JUnit 的学习报告</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href="/2018/04/10/Unity-3D-牧师与魔鬼-2-0/">Unity 3D - 牧师与魔鬼 2.0</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/06</span><a class="archive-post-title" href="/2018/04/06/基于稀疏表示的人脸识别/">基于稀疏表示的人脸识别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href="/2018/04/01/Unity-3D-牧师与魔鬼/">Unity 3D - 牧师与魔鬼</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span><a class="archive-post-title" href="/2018/03/31/Unity-3D-太阳系/">Unity 3D - 太阳系</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span><a class="archive-post-title" href="/2018/03/31/Unity-3D-基础概念/">Unity 3D - 基础概念</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href="/2018/03/30/Unity-3D-Learning/">Unity 3D Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href="/2018/03/29/UWP-MyList/">UWP - MyList</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href="/2018/03/29/UWP-Learning/">UWP Learning</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/16</span><a class="archive-post-title" href="/2017/05/16/Card-Game/">Card Game</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href="/2017/03/30/hello-world/">Hello World</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
+    
+        <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
+    
+        <span class="sidebar-tag-name" data-tags="UWP"><span class="iconfont-archer">&#xe606;</span>UWP</span>
+    
+        <span class="sidebar-tag-name" data-tags="Unity"><span class="iconfont-archer">&#xe606;</span>Unity</span>
+    
+        <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="实训"><span class="iconfont-archer">&#xe606;</span>实训</span>
+    
+        <span class="sidebar-tag-name" data-tags="Face-Recognition"><span class="iconfont-archer">&#xe606;</span>Face-Recognition</span>
+    
+        <span class="sidebar-tag-name" data-tags="Image-Understanding"><span class="iconfont-archer">&#xe606;</span>Image-Understanding</span>
+    
+        <span class="sidebar-tag-name" data-tags="SE"><span class="iconfont-archer">&#xe606;</span>SE</span>
+    
+        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+    
+        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Unity"><span class="iconfont-archer">&#xe60a;</span>Unity</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Xunyan Li"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->    
+     
+    </body>
+</html>
+
+
