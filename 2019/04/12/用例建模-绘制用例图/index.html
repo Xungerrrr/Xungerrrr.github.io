@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.1k</span>Reading time: <span class="post-count reading-time">3 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.3k</span>Reading time: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -477,19 +477,99 @@ height:50vh;
 <p>猫眼电影订票系统</p>
 <img src="/2019/04/12/用例建模-绘制用例图/Cat.png" title="Cat">
 </li>
-<li><p>然后，回答下列问题：</p>
-<ul>
-<li><p>为什么相似系统的用例图是相似的？</p>
+<li><p>为什么相似系统的用例图是相似的？<br>相似的系统具有相似的需求，因此系统的功能和结构也非常相似，导致了用例图的相似性。</p>
 </li>
-<li><p>如果是定旅馆业务，请对比Asg_RH用例图，简述如何利用不同时代、不同地区产品的用例图，展现、突出创新业务和技术。</p>
-</li>
-<li><p>如何利用用例图定位创新思路（业务创新、或技术创新、或商业模式创新）在系统中的作用。</p>
-</li>
+<li>如何利用用例图定位创新思路（业务创新、或技术创新、或商业模式创新）在系统中的作用。<br>根据创新点在用例图中的位置来判断。</li>
 <li>请使用SCRUM方法，选择一个用例图，编制某定旅馆开发的需求（backlog）开发计划表。</li>
-<li>根据任务4，参考 使用用例点估算软件成本，给出项目用例点的估算</li>
 </ul>
-</li>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ID</th>
+<th style="text-align:center">Name</th>
+<th style="text-align:center">Imp</th>
+<th style="text-align:center">Est</th>
+<th style="text-align:center">How to demo</th>
+<th style="text-align:center">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">登录注册</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">可以选择登录或注册；输入已注册的账户和密码进行登录；使用手机验证码进行注册</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">搜索旅馆</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">输入地点和时间进行搜索，生成酒店列表，然后可以选择按照价格、类型、评分等排序</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">预定旅馆</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">用户点击酒店，选择房型，然后跳转到支付页面。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">管理订单</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">在订单页面显示历史订单，用户可以修改订单的时间、房型，或者取消订单</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>根据任务4，参考使用用例点估算软件成本，给出项目用例点的估算</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">用例</th>
+<th style="text-align:center">事务</th>
+<th style="text-align:center">计算</th>
+<th style="text-align:center">原因</th>
+<th style="text-align:center">权重</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">登录注册</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">搜索旅馆</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">预定旅馆</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">管理订单</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
 
     </article>
     <!-- license  -->
@@ -643,24 +723,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1232,19 +1294,19 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Unity"><span class="iconfont-archer">&#xe606;</span>Unity</span>
     
-        <span class="sidebar-tag-name" data-tags="SE"><span class="iconfont-archer">&#xe606;</span>SE</span>
-    
-        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
-    
         <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
     
         <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
     
         <span class="sidebar-tag-name" data-tags="实训"><span class="iconfont-archer">&#xe606;</span>实训</span>
     
+        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+    
         <span class="sidebar-tag-name" data-tags="Face-Recognition"><span class="iconfont-archer">&#xe606;</span>Face-Recognition</span>
     
         <span class="sidebar-tag-name" data-tags="Image-Understanding"><span class="iconfont-archer">&#xe606;</span>Image-Understanding</span>
+    
+        <span class="sidebar-tag-name" data-tags="SE"><span class="iconfont-archer">&#xe606;</span>SE</span>
     
         <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
     
