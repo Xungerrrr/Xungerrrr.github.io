@@ -11,7 +11,7 @@
 
 
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="author" content="Xunyan Li">
     <meta name="renderer" content="webkit">
@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Xungerrrr&#39;s Blog</title>
+    <title>用例建模 - 绘制用例图 · Xungerrrr&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -198,17 +198,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
     <!-- 百度统计  -->
     
-    <!-- 谷歌统计  -->
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 </head>
 
     
+        <body class="post-body">
     
-<header class="header">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Xungerrrr&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">用例建模 - 绘制用例图</a>
+            </div>
+    </div>
     
     <a class="home-link" href="/">Xungerrrr's Blog</a>
 </header>
@@ -220,24 +231,76 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            用例建模 - 绘制用例图
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+                系统分析与设计 Homework 4
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="SE">SE</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">1.1k</span>Reading time: <span class="post-count reading-time">3 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/04/12</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,130 +401,127 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2018/03/31/Unity-3D-基础概念/">
-            
-                <span>Unity 3D - 基础概念</span>
-        </a>
-        <div class="abstract-content">
-            3D 游戏编程与设计 第三周简答
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/31</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Unity">Unity</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="简答题"><a href="#简答题" class="headerlink" title="简答题"></a>简答题</h2><ul>
+<li><p>用例的概念</p>
+<ul>
+<li>用例是描述参与者使用系统去达到某种目的一系列相关的成功和失败情景。</li>
+<li>用例是文本文档而不是图，即用例建模的过程主要是文本编写，而不是制图。</li>
+<li>用例与面向对象无关。</li>
+<li>用例是经典面向对象分析与设计的一个关键需求输入。</li>
+<li>用例是表现系统功能的功能性或行为性需求。</li>
+</ul>
+</li>
+<li><p>用例和场景的关系？什么是主场景或happy path？</p>
+<ul>
+<li>一个用例代表了多个场景，包括主场景和其他可选场景。</li>
+<li>主场景对应主要的系统交互，通常是成功场景。</li>
+<li>可选场景对应较少的交互和异常情况。</li>
+</ul>
+</li>
+<li><p>用例有哪些形式？</p>
+<ul>
+<li>Brief：一段精炼的总结，通常是主场景。</li>
+<li>Casual：非正式的段落格式，多个段落对应多个场景。</li>
+<li>Fully：详细说明所有的步骤和变化。</li>
+</ul>
+</li>
+<li><p>对于复杂业务，为什么编制完整用例非常难？</p>
+<p>复杂业务的业务流程很复杂，涉及很多的场景，场景之间的关联也非常多，很难将所有的用例和场景按照一定顺序列举出来。同时，如果用例编写者对各个业务流程的理解存在偏差，用例的准确性和完整性就难以保证。</p>
+</li>
+<li><p>什么是用例图？</p>
+<p>用例图是指由参与者（Actor）、用例（Use Case），边界以及它们之间的关系构成的用于描述系统功能的视图，也是外部用户所能观察到的系统功能的模型图。</p>
+</li>
+<li><p>用例图的基本符号与元素？</p>
+<ul>
+<li>小人（参与者）<img src="/2019/04/12/用例建模-绘制用例图/actor.png" title="actor"></li>
+<li>椭圆（用例）<img src="/2019/04/12/用例建模-绘制用例图/usecase.png" title="usecase"></li>
+<li>矩形（系统边界）<img src="/2019/04/12/用例建模-绘制用例图/system.png" title="system"></li>
+<li>关系<ul>
+<li>直线（关联关系）<img src="/2019/04/12/用例建模-绘制用例图/association.png" title="association"></li>
+<li>&lt;<includes>&gt;箭头（包含关系）<img src="/2019/04/12/用例建模-绘制用例图/includes.png" title="includes"></includes></li>
+<li>&lt;<extends>&gt;箭头（扩展关系）<img src="/2019/04/12/用例建模-绘制用例图/extends.png" title="extends"></extends></li>
+<li>空心箭头（泛化关系）<img src="/2019/04/12/用例建模-绘制用例图/generalization.png" title="generalisation">
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>用例图的画法与步骤</p>
+<ol>
+<li>绘制系统边界。</li>
+<li>绘制参与者，将参与者画在所有系统边界以外。</li>
+<li>绘制用例，考虑每一个参与者是如何使用系统的，将相应的用例画在对应的系统中，用线将用例和参与者关联起来。</li>
+<li>绘制用例间的关系：如包含关系、扩展关系和泛化关系。</li>
+<li>绘制关联的外部支持系统，用线将支持系统和对应的用例关联起来。</li>
+</ol>
+</li>
+<li><p>用例图给利益相关人与开发者的价值有哪些？</p>
+<ul>
+<li>利益相关人<br>用例图清晰地展示了系统的功能组成，客户可以清楚地看到系统设计与自己的要求是否相符。同时，客户可以简单修改用例图来表达需求变更的想法。</li>
+<li>开发者<br>用例图明确地表达了用户的需求，因此系统架构的设计可以更加准确，同时系统的工作量评估也变得方便。</li>
+</ul>
+</li>
+</ul>
+<h2 id="建模练习题（用例模型）"><a href="#建模练习题（用例模型）" class="headerlink" title="建模练习题（用例模型）"></a>建模练习题（用例模型）</h2><ul>
+<li><p>选择2-3个你熟悉的类似业务的在线服务系统（或移动APP），如定旅馆（携程、去哪儿等）、定电影票、背单词APP等，分别绘制它们用例图。并满足以下要求：</p>
+<ul>
+<li>请使用用户的视角，描述用户目标或系统提供的服务<br>订电影票</li>
+<li>粒度达到子用例级别，并用include和exclude关联它们</li>
+<li>请用色彩标注出你认为创新（区别于竞争对手的）用例或子用例</li>
+<li>尽可能识别外部系统和服务</li>
+</ul>
+<p>淘票票电影订票系统</p>
+<img src="/2019/04/12/用例建模-绘制用例图/Tao.png" title="Tao">
+<p>猫眼电影订票系统</p>
+<img src="/2019/04/12/用例建模-绘制用例图/Cat.png" title="Cat">
+</li>
+<li><p>然后，回答下列问题：</p>
+<ul>
+<li><p>为什么相似系统的用例图是相似的？</p>
+</li>
+<li><p>如果是定旅馆业务，请对比Asg_RH用例图，简述如何利用不同时代、不同地区产品的用例图，展现、突出创新业务和技术。</p>
+</li>
+<li><p>如何利用用例图定位创新思路（业务创新、或技术创新、或商业模式创新）在系统中的作用。</p>
+</li>
+<li>请使用SCRUM方法，选择一个用例图，编制某定旅馆开发的需求（backlog）开发计划表。</li>
+<li>根据任务4，参考 使用用例点估算软件成本，给出项目用例点的估算</li>
+</ul>
+</li>
+</ul>
+
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2018/03/30/Unity-3D-Learning/">
-            
-                <span>Unity 3D Learning</span>
-        </a>
-        <div class="abstract-content">
-            这是中山大学 2018 春季学期「3D 游戏编程与设计」的课程博客。以此系列博客记录本人 3D 编程学习的过程和收获。
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Unity">Unity</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2018/03/29/UWP-MyList/">
-            
-                <span>UWP - MyList</span>
-        </a>
-        <div class="abstract-content">
-            UWP - Homework 1
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="UWP">UWP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2018/03/29/UWP-Learning/">
-            
-                <span>UWP Learning</span>
-        </a>
-        <div class="abstract-content">
-            这是中山大学 2018 春季学期「现代操作系统应用开发」的课程博客。以此系列博客记录本人 UWP 编程学习的过程和收获。
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="UWP">UWP</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/04/09/Transformation/" title="Transformation">
+                    <div class="prevTitle">Transformation</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/2018/">&#60; PREV</a><a class="page-number" href="/archives/2018/">1</a><span class="page-number current">2</span>
-    </nav>
     
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -554,6 +614,24 @@
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简答题"><span class="toc-number">1.</span> <span class="toc-text">简答题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建模练习题（用例模型）"><span class="toc-number">2.</span> <span class="toc-text">建模练习题（用例模型）</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1237,6 +1315,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->    
      
     </body>
 </html>
