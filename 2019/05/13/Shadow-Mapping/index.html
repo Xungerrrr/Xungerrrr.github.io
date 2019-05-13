@@ -11,7 +11,7 @@
 
 
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="author" content="Xunyan Li">
     <meta name="renderer" content="webkit">
@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Xungerrrr&#39;s Blog</title>
+    <title>Shadow Mapping · Xungerrrr&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -198,17 +198,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
     <!-- 百度统计  -->
     
-    <!-- 谷歌统计  -->
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 </head>
 
     
+        <body class="post-body">
     
-<header class="header">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Xungerrrr&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Shadow Mapping</a>
+            </div>
+    </div>
     
     <a class="home-link" href="/">Xungerrrr's Blog</a>
 </header>
@@ -220,24 +231,76 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/2080ti.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            Shadow Mapping
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+                Compute Graphics - Homework 7
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Computer Graphics">Computer Graphics</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">1.3k</span>Reading time: <span class="post-count reading-time">5 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/05/13</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,213 +401,98 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/05/13/Shadow-Mapping/">
-            
-                <span>Shadow Mapping</span>
-        </a>
-        <div class="abstract-content">
-            Compute Graphics - Homework 7
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/13</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Computer Graphics">Computer Graphics</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="Shadow-Mapping阴影渲染"><a href="#Shadow-Mapping阴影渲染" class="headerlink" title="Shadow Mapping阴影渲染"></a>Shadow Mapping阴影渲染</h2><p>Shadow Mapping阴影渲染分为两个步骤：</p>
+<ol>
+<li>以光源视角渲染场景，得到深度图（Shadow Map)，存储为纹理；</li>
+<li>以观察视角再次渲染场景，将每个点的深度值和Shadow Map中的深度值进行比较，判断点是否在阴影内。</li>
+</ol>
+<h3 id="获取Shadow-Map"><a href="#获取Shadow-Map" class="headerlink" title="获取Shadow Map"></a>获取Shadow Map</h3><h4 id="着色器"><a href="#着色器" class="headerlink" title="着色器"></a>着色器</h4><p>首先来设计着色器。因为要在光源视角渲染场景，所以顶点着色器只需要将坐标变换到光源视角空间并输出即可。使用一个变换矩阵即可完成变换。</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line"><span class="keyword">layout</span> (<span class="keyword">location</span> = <span class="number">0</span>) <span class="keyword">in</span> <span class="type">vec3</span> aPos;</span><br><span class="line"></span><br><span class="line"><span class="keyword">uniform</span> <span class="type">mat4</span> lightSpaceMatrix;</span><br><span class="line"><span class="keyword">uniform</span> <span class="type">mat4</span> model;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> main() &#123;</span><br><span class="line">    <span class="built_in">gl_Position</span> = lightSpaceMatrix * model * <span class="type">vec4</span>(aPos, <span class="number">1.0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>至于片段着色器，因为只需要获取深度信息而不需要颜色信息，所以可以使用一个空的片段着色器。</p>
+<h4 id="存储Shadow-Map"><a href="#存储Shadow-Map" class="headerlink" title="存储Shadow Map"></a>存储Shadow Map</h4><p>为了获得Shadow Map，我们需要将渲染的深度信息存到一个2D纹理中。需要借助帧缓冲对象和纹理来实现。</p>
+<p>首先，创建一个2D纹理。因为我们只需要存储深度值，所以将纹理格式设置为GL_DEPTH_COMPONENT。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> depthMap;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> SHADOW_WIDTH = <span class="number">4096</span>, SHADOW_HEIGHT = <span class="number">4096</span>;</span><br><span class="line">glGenTextures(<span class="number">1</span>, &amp;depthMap);</span><br><span class="line">glBindTexture(GL_TEXTURE_2D, depthMap);</span><br><span class="line">glTexImage2D(GL_TEXTURE_2D, <span class="number">0</span>, GL_DEPTH_COMPONENT,</span><br><span class="line">    SHADOW_WIDTH, SHADOW_HEIGHT, <span class="number">0</span>, GL_DEPTH_COMPONENT, GL_FLOAT, <span class="literal">NULL</span>);</span><br><span class="line">glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);</span><br><span class="line">glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);</span><br><span class="line">glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);</span><br><span class="line">glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);</span><br></pre></td></tr></table></figure>
+<p>然后，创建一个帧缓冲对象，将纹理绑定为帧缓冲的深度缓冲。因为不需要颜色缓冲，所以通过调用glDrawBuffer(GL_NONE)和glReadBuffer(GL_NONE)说明不用颜色进行渲染。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> depthMapFBO;</span><br><span class="line">glGenFramebuffers(<span class="number">1</span>, &amp;depthMapFBO);</span><br><span class="line">glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);</span><br><span class="line">glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, <span class="number">0</span>);</span><br><span class="line">glDrawBuffer(GL_NONE);</span><br><span class="line">glReadBuffer(GL_NONE);</span><br><span class="line">glBindFramebuffer(GL_FRAMEBUFFER, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="光源空间变换"><a href="#光源空间变换" class="headerlink" title="光源空间变换"></a>光源空间变换</h4><p>在顶点着色器中，用到了一个变换矩阵，将世界坐标变换到光源视角。变换矩阵由投影矩阵和视角矩阵相乘得到。</p>
+<p>对于平行光，可以采用正交投影，通过glm::ortho定义矩阵。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> near_plane = <span class="number">1.0f</span>, far_plane = <span class="number">100.0f</span>;</span><br><span class="line">glm::mat4 lightProjection = glm::mat4(<span class="number">1.0f</span>);</span><br><span class="line">lightProjection = glm::ortho(<span class="number">-10.0f</span>, <span class="number">10.0f</span>, <span class="number">-10.0f</span>, <span class="number">10.0f</span>, near_plane, far_plane);</span><br></pre></td></tr></table></figure>
+<p>通过glm::lookAt函数，创建观察矩阵，从光源位置看向坐标原点。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">glm::<span class="function">vec3 <span class="title">lightPos</span><span class="params">(<span class="number">-3.0f</span>, <span class="number">4.0f</span>, <span class="number">-1.0f</span>)</span></span>;</span><br><span class="line">glm::mat4 lightView = glm::mat4(<span class="number">1.0f</span>);</span><br><span class="line">lightView = glm::lookAt(lightPos, glm::vec3(<span class="number">0.0f</span>), glm::vec3(<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>));</span><br></pre></td></tr></table></figure>
+<p>相乘得到变换矩阵。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">glm::mat4 lightSpaceMatrix = glm::mat4(<span class="number">1.0f</span>);</span><br><span class="line">lightSpaceMatrix = lightProjection * lightView;</span><br></pre></td></tr></table></figure>
+<h4 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h4><p>通过glBindFramebuffer绑定帧缓冲，在函数renderScene中渲染场景。渲染完成后深度信息就存储到了纹理中，得到Shadow Map。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">depthShader.use();</span><br><span class="line">depthShader.setMat4(<span class="string">"lightSpaceMatrix"</span>, lightSpaceMatrix);</span><br><span class="line"></span><br><span class="line">glViewport(<span class="number">0</span>, <span class="number">0</span>, SHADOW_WIDTH, SHADOW_HEIGHT);</span><br><span class="line">glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);</span><br><span class="line">glClear(GL_DEPTH_BUFFER_BIT);</span><br><span class="line">renderScene(depthShader, planeVAO, cubeVAO);</span><br><span class="line">glBindFramebuffer(GL_FRAMEBUFFER, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="阴影计算（Shadow-Mapping算法）"><a href="#阴影计算（Shadow-Mapping算法）" class="headerlink" title="阴影计算（Shadow Mapping算法）"></a>阴影计算（Shadow Mapping算法）</h3><p>下一步，需要从观察视角进行渲染，从光源视角对像素深度和Shadow Map中对应位置的值进行比较。如果深度大于Shadow Map的值，说明该点在其他物体后，处在阴影内。反之则不在阴影内。</p>
+<h4 id="着色器-1"><a href="#着色器-1" class="headerlink" title="着色器"></a>着色器</h4><p>顶点着色器与实现Phong光照模型的顶点着色器相似。不过，因为要比较深度值判断片段是否在阴影内，所以顶点着色器还需要输出片段变换到光源视角空间的坐标。</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vs_out.FragPosLightSpace = lightSpaceMatrix * <span class="type">vec4</span>(vs_out.FragPos, <span class="number">1.0</span>);</span><br></pre></td></tr></table></figure>
+<p>片段着色器与实现Phong光照模型的片段着色器相似。不过，片段着色器还需要计算片段是否在阴影内。</p>
+<p>首先，需要将光源视角空间的坐标进行标准化，变换到[0, 1]之间。z坐标即是当前的深度。</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">vec3</span> projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;</span><br><span class="line">projCoords = projCoords * <span class="number">0.5</span> + <span class="number">0.5</span>;</span><br><span class="line"><span class="type">float</span> currentDepth = projCoords.z;</span><br></pre></td></tr></table></figure>
+<p>然后，获取Shadow Map中的深度信息。比较当前深度和最近深度，判断片段是否在阴影内。</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> closestDepth = <span class="built_in">texture</span>(shadowMap, projCoords.xy).r; </span><br><span class="line"><span class="type">float</span> shadow = currentDepth &gt; closestDepth ? <span class="number">1.0</span> : <span class="number">0.0</span>;</span><br></pre></td></tr></table></figure>
+<p>如果在阴影内，则只显示环境光。否则按照Phong光照模型进行渲染。</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">vec3</span> lighting = (ambient + (<span class="number">1.0</span> - shadow) * (diffuse + specular)) * color;</span><br></pre></td></tr></table></figure>
+<h4 id="渲染-1"><a href="#渲染-1" class="headerlink" title="渲染"></a>渲染</h4><p>渲染的方法与之前的类似。在渲染前，需要绑定两个纹理。一个是物体的纹理，这里使用了木地板纹理。另一个是第一步得到的Shadow Map，用于计算阴影。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">glActiveTexture(GL_TEXTURE0);</span><br><span class="line">glBindTexture(GL_TEXTURE_2D, woodTexture);</span><br><span class="line">glActiveTexture(GL_TEXTURE1);</span><br><span class="line">glBindTexture(GL_TEXTURE_2D, depthMap);</span><br></pre></td></tr></table></figure>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><img src="/2019/05/13/Shadow-Mapping/1.png" title="pic1">
+<h2 id="增加光源在透视投影下的Shadow-Mapping"><a href="#增加光源在透视投影下的Shadow-Mapping" class="headerlink" title="增加光源在透视投影下的Shadow Mapping"></a>增加光源在透视投影下的Shadow Mapping</h2><p>通过ImGui选择投影方式。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ImGui::Begin(<span class="string">"Projection Type"</span>);</span><br><span class="line">ImGui::BeginGroup();</span><br><span class="line">ImGui::RadioButton(<span class="string">"Orthogonal"</span>, &amp;projectionType, <span class="number">1</span>);</span><br><span class="line">ImGui::RadioButton(<span class="string">"Perspective"</span>, &amp;projectionType, <span class="number">2</span>);</span><br><span class="line">ImGui::EndGroup();</span><br><span class="line">ImGui::End();</span><br></pre></td></tr></table></figure>
+<p>根据投影方式创建不同的投影矩阵。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (projectionType == <span class="number">1</span>)</span><br><span class="line">    lightProjection = glm::ortho(<span class="number">-10.0f</span>, <span class="number">10.0f</span>, <span class="number">-10.0f</span>, <span class="number">10.0f</span>, near_plane, far_plane);</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (projectionType == <span class="number">2</span>)</span><br><span class="line">    lightProjection = glm::perspective(glm::radians(<span class="number">120.0f</span>), <span class="number">1.0f</span>, near_plane, far_plane);</span><br></pre></td></tr></table></figure>
+<p>让光源动起来，使效果明显。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lightPos.z = <span class="built_in">sin</span>(time) * <span class="number">10.0f</span>;</span><br><span class="line">lightPos.y = <span class="built_in">sin</span>(time/ <span class="number">2.0f</span>) * <span class="number">2</span> + <span class="number">4.0f</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h3><p>正交投影：</p>
+<img src="/2019/05/13/Shadow-Mapping/2.png" title="pic2">
+<p>透视投影：</p>
+<img src="/2019/05/13/Shadow-Mapping/3.png" title="pic3">
+<h2 id="优化阴影"><a href="#优化阴影" class="headerlink" title="优化阴影"></a>优化阴影</h2><h3 id="失真"><a href="#失真" class="headerlink" title="失真"></a>失真</h3><p>通过加入偏移量，避免了由于Shadow Map分辨率不足导致的阴影失真。</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> bias = <span class="number">0.005</span>;</span><br><span class="line"><span class="type">float</span> shadow = currentDepth - bias  &gt; closestDepth ? <span class="number">1.0</span> : <span class="number">0.0</span>;</span><br></pre></td></tr></table></figure>
+<p>优化前：</p>
+<img src="/2019/05/13/Shadow-Mapping/4.png" title="pic4">
+<p>优化后：</p>
+<img src="/2019/05/13/Shadow-Mapping/5.png" title="pic5">
+<h3 id="悬浮"><a href="#悬浮" class="headerlink" title="悬浮"></a>悬浮</h3><p>在渲染Shadow Map的时候，通过正面剔除，减轻了悬浮的现象。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">glCullFace(GL_FRONT);</span><br><span class="line">renderScene(depthShader, planeVAO, cubeVAO);</span><br><span class="line">glCullFace(GL_BACK);</span><br></pre></td></tr></table></figure>
+<h3 id="锯齿"><a href="#锯齿" class="headerlink" title="锯齿"></a>锯齿</h3><p>通过使用5*5的模板进行均值滤波，减轻了阴影的锯齿化现象。</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">vec2</span> texelSize = <span class="number">1.0</span> / <span class="built_in">textureSize</span>(shadowMap, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> x = <span class="number">-2</span>; x &lt;= <span class="number">2</span>; ++x) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> y = <span class="number">-2</span>; y &lt;= <span class="number">2</span>; ++y) &#123;</span><br><span class="line">        <span class="type">float</span> pcfDepth = <span class="built_in">texture</span>(shadowMap, projCoords.xy + <span class="type">vec2</span>(x, y) * texelSize).r;</span><br><span class="line">        shadow += currentDepth - bias &gt; pcfDepth ? <span class="number">1.0</span> : <span class="number">0.0</span>;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">shadow /= <span class="number">25.0</span>;</span><br></pre></td></tr></table></figure>
+<p>优化前：</p>
+<img src="/2019/05/13/Shadow-Mapping/6.png" title="pic6">
+<p>优化后：</p>
+<img src="/2019/05/13/Shadow-Mapping/7.png" title="pic7">
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/05/07/Lights-and-Shading/">
-            
-                <span>Lights and Shading</span>
-        </a>
-        <div class="abstract-content">
-            Compute Graphics - Homework 6
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/07</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Computer Graphics">Computer Graphics</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/04/17/Camera/">
-            
-                <span>Camera</span>
-        </a>
-        <div class="abstract-content">
-            Compute Graphics - Homework 5
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Computer Graphics">Computer Graphics</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/04/09/Transformation/">
-            
-                <span>Transformation</span>
-        </a>
-        <div class="abstract-content">
-            Compute Graphics - Homework 4
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/09</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Computer Graphics">Computer Graphics</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/03/26/Draw-Line/">
-            
-                <span>Draw Line</span>
-        </a>
-        <div class="abstract-content">
-            Compute Graphics - Homework 3
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/26</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Computer Graphics">Computer Graphics</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/03/11/GUI-and-Draw-Simple-Graphics/">
-            
-                <span>GUI and Draw Simple Graphics</span>
-        </a>
-        <div class="abstract-content">
-            Compute Graphics - Homework 2
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Computer Graphics">Computer Graphics</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/03/04/Learn-About-CG/">
-            
-                <span>Learn About CG</span>
-        </a>
-        <div class="abstract-content">
-            Compute Graphics - Homework 1
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Computer Graphics">Computer Graphics</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/05/07/Lights-and-Shading/" title="Lights and Shading">
+                    <div class="prevTitle">Lights and Shading</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -637,6 +585,24 @@
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Shadow-Mapping阴影渲染"><span class="toc-number">1.</span> <span class="toc-text">Shadow Mapping阴影渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取Shadow-Map"><span class="toc-number">1.1.</span> <span class="toc-text">获取Shadow Map</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#着色器"><span class="toc-number">1.1.1.</span> <span class="toc-text">着色器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#存储Shadow-Map"><span class="toc-number">1.1.2.</span> <span class="toc-text">存储Shadow Map</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#光源空间变换"><span class="toc-number">1.1.3.</span> <span class="toc-text">光源空间变换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#渲染"><span class="toc-number">1.1.4.</span> <span class="toc-text">渲染</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#阴影计算（Shadow-Mapping算法）"><span class="toc-number">1.2.</span> <span class="toc-text">阴影计算（Shadow Mapping算法）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#着色器-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">着色器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#渲染-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">渲染</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#效果"><span class="toc-number">1.3.</span> <span class="toc-text">效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#增加光源在透视投影下的Shadow-Mapping"><span class="toc-number">2.</span> <span class="toc-text">增加光源在透视投影下的Shadow Mapping</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#效果-1"><span class="toc-number">2.1.</span> <span class="toc-text">效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化阴影"><span class="toc-number">3.</span> <span class="toc-text">优化阴影</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#失真"><span class="toc-number">3.1.</span> <span class="toc-text">失真</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#悬浮"><span class="toc-number">3.2.</span> <span class="toc-text">悬浮</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#锯齿"><span class="toc-number">3.3.</span> <span class="toc-text">锯齿</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1382,6 +1348,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->    
      
     </body>
 </html>
