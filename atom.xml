@@ -86,11 +86,34 @@
   </entry>
   
   <entry>
-    <title>用例建模-业务建模方法</title>
+    <title>领域建模 - 对象状态</title>
+    <link href="https://xungerrrr.github.io/2019/05/04/%E9%A2%86%E5%9F%9F%E5%BB%BA%E6%A8%A1-%E5%AF%B9%E8%B1%A1%E7%8A%B6%E6%80%81/"/>
+    <id>https://xungerrrr.github.io/2019/05/04/领域建模-对象状态/</id>
+    <published>2019-05-04T14:47:37.000Z</published>
+    <updated>2019-06-02T16:44:05.329Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="使用UMLet建模"><a href="#使用UMLet建模" class="headerlink" title="使用UMLet建模"></a>使用UMLet建模</h1><h2 id="使用类图，分别对Asg-RH文档中Make-Reservation用例以及Payment用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键"><a href="#使用类图，分别对Asg-RH文档中Make-Reservation用例以及Payment用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键" class="headerlink" title="使用类图，分别对Asg_RH文档中Make Reservation用例以及Payment用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键"></a>使用类图，分别对Asg_RH文档中Make Reservation用例以及Payment用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键</h2><blockquote><p>注意事项：</p><ul><li>对象必须是名词、特别是技术名词、报表、描述类的处理；</li><li>关联必须有多重性、部分有名称与导航方向；</li><li>属性要注意计算字段；</li><li>数据建模，为了简化描述仅需要给出表清单，例如：<ul><li>Hotel（ID/Key，Name，LoctionID/Fkey，Address…）</li></ul></li></ul></blockquote><h3 id="Make-Reservation"><a href="#Make-Reservation" class="headerlink" title="Make Reservation"></a>Make Reservation</h3><img src="/2019/05/04/领域建模-对象状态/reservation.png" title="reservation"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Traveler(TravelerID/Key, Name, EmailAdress)</span><br><span class="line">Hotel(HotelID/Key, Name, Address)</span><br><span class="line">Room(RoomID/Key, HotelID/Fkey, Type, Availability)</span><br><span class="line">ReservationItem(ReservationID/Key, RoomID/Fkey, BasketID/Fkey, CheckInDate, CheckOutDate, NumberOfAdults, NumberOfChildren, Price, IsSmoking, SpecialRequirements)</span><br><span class="line">ReservationBasket(BasketID/Key, TravelerID/FKey)</span><br><span class="line">RoomDescription(DescriptionID/FKey, Total, Price, Description)</span><br></pre></td></tr></table></figure><h3 id="Payment"><a href="#Payment" class="headerlink" title="Payment"></a>Payment</h3><img src="/2019/05/04/领域建模-对象状态/payment.png" title="payment"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Payment(PaymentID/Key, ReservationID/Fkey, CardID/Fkey, price)</span><br><span class="line">ReservationItem(ReservationID/Key, PaymentID/Fkey, RoomID/Fkey, BasketID/Fkey, CheckInDate, CheckOutDate, NumberOfAdults, NumberOfChildren, Price, IsSmoking, SpecialRequirements)</span><br><span class="line">CreditCard(CardID/Key, CardHolderID/Fkey, Type, CardNumber, CardSecurityCode, ExpiryDate)</span><br><span class="line">CardHolder(CardHolderID/key, Title, FirstName, LastName, Address1, Address2, City, CountyOrState, Country, Postcode, DaytimeTelephone, EveningTelephone)</span><br></pre></td></tr></table></figure><h2 id="使用UML-State-Model，对每个订单对象生命周期建模"><a href="#使用UML-State-Model，对每个订单对象生命周期建模" class="headerlink" title="使用UML State Model，对每个订单对象生命周期建模"></a>使用UML State Model，对每个订单对象生命周期建模</h2><blockquote><p>建模对象： 参考Asg_RH文档， 对Reservation/Order对象建模。<br>建模要求： 参考练习不能提供足够信息帮助你对订单对象建模，请参考现在定旅馆的旅游网站，尽可能分析围绕订单发生的各种情况，直到订单通过销售事件（柜台销售）结束订单。</p></blockquote><img src="/2019/05/04/领域建模-对象状态/activity.png" title="activity">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;使用UMLet建模&quot;&gt;&lt;a href=&quot;#使用UMLet建模&quot; class=&quot;headerlink&quot; title=&quot;使用UMLet建模&quot;&gt;&lt;/a&gt;使用UMLet建模&lt;/h1&gt;&lt;h2 id=&quot;使用类图，分别对Asg-RH文档中Make-Reservation用例以及
+      
+    
+    </summary>
+    
+    
+      <category term="SE" scheme="https://xungerrrr.github.io/tags/SE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用例建模 - 业务建模方法</title>
     <link href="https://xungerrrr.github.io/2019/05/04/%E7%94%A8%E4%BE%8B%E5%BB%BA%E6%A8%A1-%E4%B8%9A%E5%8A%A1%E5%BB%BA%E6%A8%A1%E6%96%B9%E6%B3%95/"/>
     <id>https://xungerrrr.github.io/2019/05/04/用例建模-业务建模方法/</id>
     <published>2019-05-04T02:08:40.000Z</published>
-    <updated>2019-06-02T14:38:59.541Z</updated>
+    <updated>2019-06-02T16:44:04.016Z</updated>
     
     <content type="html"><![CDATA[<h1 id="使用-UMLet-建模"><a href="#使用-UMLet-建模" class="headerlink" title="使用 UMLet 建模"></a>使用 UMLet 建模</h1><h2 id="根据订旅馆建模文档，Asg-RH-pdf："><a href="#根据订旅馆建模文档，Asg-RH-pdf：" class="headerlink" title="根据订旅馆建模文档，Asg-RH.pdf："></a>根据订旅馆建模文档，<a href="https://sysu-swsad.github.io/swad-guide/material/Asg_RH.pdf" target="_blank" rel="noopener">Asg-RH.pdf</a>：</h2><h3 id="绘制用例图模型（到子用例）"><a href="#绘制用例图模型（到子用例）" class="headerlink" title="绘制用例图模型（到子用例）"></a>绘制用例图模型（到子用例）</h3><img src="/2019/05/04/用例建模-业务建模方法/usecase.png" title="usecase"><h3 id="给出make-reservation用例的活动图"><a href="#给出make-reservation用例的活动图" class="headerlink" title="给出make reservation用例的活动图"></a>给出make reservation用例的活动图</h3><img src="/2019/05/04/用例建模-业务建模方法/activity.png" title="activity"><h2 id="根据课程练习“投递员使用投递箱给收件人快递包裹”的业务场景"><a href="#根据课程练习“投递员使用投递箱给收件人快递包裹”的业务场景" class="headerlink" title="根据课程练习“投递员使用投递箱给收件人快递包裹”的业务场景"></a>根据课程练习“投递员使用投递箱给收件人快递包裹”的业务场景</h2><h3 id="分别用多泳道图建模三个场景的业务过程"><a href="#分别用多泳道图建模三个场景的业务过程" class="headerlink" title="分别用多泳道图建模三个场景的业务过程"></a>分别用多泳道图建模三个场景的业务过程</h3><h4 id="x科技公司发明了投递柜，它们自建了投递柜以及远程控制系统。注册的投递员在推广期免费使用投递柜。由于缺乏资源，仅能使用y移动平台向客户发送短信通知。"><a href="#x科技公司发明了投递柜，它们自建了投递柜以及远程控制系统。注册的投递员在推广期免费使用投递柜。由于缺乏资源，仅能使用y移动平台向客户发送短信通知。" class="headerlink" title="x科技公司发明了投递柜，它们自建了投递柜以及远程控制系统。注册的投递员在推广期免费使用投递柜。由于缺乏资源，仅能使用y移动平台向客户发送短信通知。"></a>x科技公司发明了投递柜，它们自建了投递柜以及远程控制系统。注册的投递员在推广期免费使用投递柜。由于缺乏资源，仅能使用y移动平台向客户发送短信通知。</h4><img src="/2019/05/04/用例建模-业务建模方法/case1.png" title="case1"><h4 id="随着产品推广，x公司与各大快递z公司达成协议。x公司在快递柜上添加了二维码扫描装置，z公司的快递员不仅可在快递柜上登陆（由z公司提供认证服务），且可扫描快递单号，投递入柜后自动由z公司发短信给客户。客户取件后，自动发送给z公司投递完成。"><a href="#随着产品推广，x公司与各大快递z公司达成协议。x公司在快递柜上添加了二维码扫描装置，z公司的快递员不仅可在快递柜上登陆（由z公司提供认证服务），且可扫描快递单号，投递入柜后自动由z公司发短信给客户。客户取件后，自动发送给z公司投递完成。" class="headerlink" title="随着产品推广，x公司与各大快递z公司达成协议。x公司在快递柜上添加了二维码扫描装置，z公司的快递员不仅可在快递柜上登陆（由z公司提供认证服务），且可扫描快递单号，投递入柜后自动由z公司发短信给客户。客户取件后，自动发送给z公司投递完成。"></a>随着产品推广，x公司与各大快递z公司达成协议。x公司在快递柜上添加了二维码扫描装置，z公司的快递员不仅可在快递柜上登陆（由z公司提供认证服务），且可扫描快递单号，投递入柜后自动由z公司发短信给客户。客户取件后，自动发送给z公司投递完成。</h4><img src="/2019/05/04/用例建模-业务建模方法/case2.png" title="case2"><h4 id="x公司进一步优化服务，开发了微信小程序实现扫码取快递。如果用户关注了该公司公众号，直接通过过公众号推送给用户取件码等信息。不再发送短信。"><a href="#x公司进一步优化服务，开发了微信小程序实现扫码取快递。如果用户关注了该公司公众号，直接通过过公众号推送给用户取件码等信息。不再发送短信。" class="headerlink" title="x公司进一步优化服务，开发了微信小程序实现扫码取快递。如果用户关注了该公司公众号，直接通过过公众号推送给用户取件码等信息。不再发送短信。"></a>x公司进一步优化服务，开发了微信小程序实现扫码取快递。如果用户关注了该公司公众号，直接通过过公众号推送给用户取件码等信息。不再发送短信。</h4><img src="/2019/05/04/用例建模-业务建模方法/case3.png" title="case3"><h3 id="根据上述流程，给出快递柜系统最终的用例图模型"><a href="#根据上述流程，给出快递柜系统最终的用例图模型" class="headerlink" title="根据上述流程，给出快递柜系统最终的用例图模型"></a>根据上述流程，给出快递柜系统最终的用例图模型</h3><p>用正常色彩表示第一个业务流程反映的用例，用绿色背景表述第二个业务场景添加或修改的用例，以及支持Actor，用黄色背景表述第三个业务场景添加或修改的用例，以及支持Actor。</p><img src="/2019/05/04/用例建模-业务建模方法/usecase2.png" title="usecase2">]]></content>
     
@@ -464,30 +487,6 @@
         &lt;h2 id=&quot;实验步骤&quot;&gt;&lt;a href=&quot;#实验步骤&quot; class=&quot;headerlink&quot; title=&quot;实验步骤&quot;&gt;&lt;/a&gt;实验步骤&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;在Visual Studio中新建Media Player项目，创建Player页面；&lt;/li&gt;
 &lt;li&gt;在Pl
-      
-    
-    </summary>
-    
-    
-      <category term="UWP" scheme="https://xungerrrr.github.io/tags/UWP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>UWP - Networking</title>
-    <link href="https://xungerrrr.github.io/2018/05/05/UWP-Networking/"/>
-    <id>https://xungerrrr.github.io/2018/05/05/UWP-Networking/</id>
-    <published>2018-05-05T06:54:11.000Z</published>
-    <updated>2019-03-14T17:52:26.511Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><ol><li>在Visual Studio中新建Networking项目，创建MainPage、Weather和Finance三个空白页面。在MainPage中放置两个AppBarButton，分别导航到Weather和Finance页面；</li><li>在Weather页面上放置TextBox控件用于输入城市名称，并添加两个AppBarButton，分别进行JSON查询和XML查询；在Finance页面，放置两个ComboBox，用于选择需要查询汇率的两种货币，并添加两个AppBarButton，分别进行JSON查询和XML查询；</li><li>在cs文件中，使用HttpClient请求url“<a href="http://api.k780.com”，完成对天气或汇率的查询，再用系统自带解析器分别解析收到的JSON和XML，将信息呈现在页面上。" target="_blank" rel="noopener">http://api.k780.com”，完成对天气或汇率的查询，再用系统自带解析器分别解析收到的JSON和XML，将信息呈现在页面上。</a></li></ol><h2 id="关键步骤截图"><a href="#关键步骤截图" class="headerlink" title="关键步骤截图"></a>关键步骤截图</h2><p>图1. 天气查询示例</p><img src="/2018/05/05/UWP-Networking/1.png" title="demo1"><p>图2. 汇率查询示例</p><img src="/2018/05/05/UWP-Networking/2.png" title="demo2"><h2 id="亮点与改进"><a href="#亮点与改进" class="headerlink" title="亮点与改进"></a>亮点与改进</h2><ol><li><p>完成了两种API，并且分别完成对JSON和XML的解析</p><p>实现了天气查询和汇率查询两种功能，并且都分别采用了两种解析方式。</p></li></ol><h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul><li><p>问题：请求返回的XML存在中文乱码的问题</p><p>  解决方案：查阅相关资料后，将命名空间Windows.Web.Http更改为命名空间System.Net.Http，成功解决问题。</p></li></ul><h2 id="思考与总结"><a href="#思考与总结" class="headerlink" title="思考与总结"></a>思考与总结</h2><p>在本次实验中，我实现了UWP应用的网络访问功能，能够查询天气和货币汇率。</p><p>在实验中，我学到了许多有趣而实用的知识，例如http请求、XML和JSON解析等等，很好地锻炼了标记语言解析能力。经过这次实验，我的应用摆脱了简单的本地文本内容，进入了互联网世界，具有了更好的实用性和可扩展性。</p><h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p><a href="https://github.com/Xungerrrr/SYSU-UWP/tree/master/Networking" target="_blank" rel="noopener">https://github.com/Xungerrrr/SYSU-UWP/tree/master/Networking</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;实验步骤&quot;&gt;&lt;a href=&quot;#实验步骤&quot; class=&quot;headerlink&quot; title=&quot;实验步骤&quot;&gt;&lt;/a&gt;实验步骤&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;在Visual Studio中新建Networking项目，创建MainPage、Weather和Finance
       
     
     </summary>
