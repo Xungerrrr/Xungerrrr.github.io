@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xungerrrr.github.io/"/>
-  <updated>2019-05-29T11:13:06.728Z</updated>
+  <updated>2019-06-30T09:32:17.181Z</updated>
   <id>https://xungerrrr.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用例建模总结</title>
+    <link href="https://xungerrrr.github.io/2019/06/30/%E7%94%A8%E4%BE%8B%E5%BB%BA%E6%A8%A1%E6%80%BB%E7%BB%93/"/>
+    <id>https://xungerrrr.github.io/2019/06/30/用例建模总结/</id>
+    <published>2019-06-30T05:22:24.000Z</published>
+    <updated>2019-06-30T09:32:17.181Z</updated>
+    
+    <content type="html"><![CDATA[<p>需求分析是软件生命周期的一项重要内容，它是每一次项目迭代的开端，奠定了软件设计的基础。在系统分析与设计的课程项目“挣闲钱”中，我使用了用例建模的方法进行需求分析。在项目中，我第一次接触系统性的需求分析方法，了解到了用例建模的重要性。本文对项目中的用例建模方法进行了总结。</p><h2 id="用例建模的制品"><a href="#用例建模的制品" class="headerlink" title="用例建模的制品"></a>用例建模的制品</h2><p>相对于传统的软件需求规约，用例建模的优点是能够从用户的角度出发，使用自然语言文本和图表来描述系统业务的功能，清晰表达系统需求。用例建模一般包含以下制品：</p><ul><li>系统上下文图</li><li>用例描述<ul><li>用例文本</li><li>业务流程</li><li>故事板</li></ul></li></ul><p>在本项目中，系统上下文图采用了面向对象的UML用例图。业务流程使用UML活动图表示。由于我没有参与UI设计，因此故事板部分不展开描述。</p><h2 id="UML用例图"><a href="#UML用例图" class="headerlink" title="UML用例图"></a>UML用例图</h2><p>用例图使用<a href="https://www.umlet.com/" target="_blank" rel="noopener">UMLet</a>绘制。</p><p>绘制用例图是一个识别需求的过程，能够帮助组织确定系统的范围、对象、外部系统，也能够方便工作量的评估。</p><p>用例图的绘制分为以下几个步骤：</p><ol><li>确定系统</li></ol><p>系统是我们研究问题的边界，应包含涉及到的所有用例。在“挣闲钱”项目中，我们的系统命名为挣闲钱系统。</p><ol start="2"><li>识别Actors</li></ol><p>系统参与者，用actor符号表示，放在系统左边。挣闲钱系统的受众是大学生，用户既可以发布任务也可以接受任务，因此我们的用例图只有一类参与者。</p><p>外部系统，用NeighbourSystem框表示。一个系统不可能是大而全的，它应该只包含与核心功能直接相关的用例，其余逻辑交由外部系统来完成。在我的建模中，用户管理和交易管理两部分比较复杂，因此抽离出来成为独立的外部系统。</p><ol start="3"><li>识别用例</li></ol><p>首先要确定的是用户级别的用例，即最顶层的用例。在我们的迭代会议中，初步确定了问卷填写和有赏问答两大业务。据此我提出了一些与用户直接相关的用例，如完成问答任务、发起提问等，也考虑了一系列的manage用例，例如管理提问、管理余额等等。</p><p>接下来需要识别子功能级别的用例，一般是将父用例进行功能分解。识别过程要注意父用例和子用例的关系，一般有&lt;<include>&gt;和&lt;<extend>&gt;两种。前者表示父用例必不可少的部分，后者表示可选用例。例如在输入问卷时，添加问题是一个必须的场景，删除已经添加的问题则不是一个必做功能。</extend></include></p><ol start="4"><li>建立Actor与用例之间的关联</li></ol><p>使用无方向连线，表示双向交互的协议。</p><p>下面是我针对“挣闲钱系统”绘制的系统用例图。</p><img src="/2019/06/30/用例建模总结/use_case_v2.png" title="use_case_v2"><h2 id="用例描述"><a href="#用例描述" class="headerlink" title="用例描述"></a>用例描述</h2><p>用例图只是简单的理清了用例之间的关系。为了详细对用例进行建模，还需要对用例的描述。我主要完成了用例文本和UML活动图两部分。</p><h3 id="用例文本"><a href="#用例文本" class="headerlink" title="用例文本"></a>用例文本</h3><p>RUP用例规约模板包含以下内容：</p><ul><li><p>简要说明 (Brief Description) </p><p>简要介绍该用例的作用和目的。</p></li><li><p>事件流 (Flow of Event) </p><p>包括基本流和备选流，事件流应该表示出所有的场景。</p></li><li><p>用例场景 (Use-Case Scenario) </p><p>包括成功场景和失败场景，场景主要是由基本流和备选流组合而成的。</p></li><li><p>特殊需求 (Special Requirement) </p><p>描述与该用例相关的非功能性需求（包括性能、可靠性、可用性和可扩展性等）和设计约束（所使用的操作系统、开发工具等）。</p></li><li><p>前置条件 (Pre-Condition) </p><p>执行用例之前系统必须所处的状态。</p></li><li><p>后置条件 (Post-Condition) </p><p>用例执行完毕后系统可能处于的一组状态。</p></li></ul><p>根据该模板可以用文本详细描述一个用例。以最简单的注册登录为例，用例可以描述为：</p><table><thead><tr><th style="text-align:center">用例名称</th><th style="text-align:center">注册登录</th></tr></thead><tbody><tr><td style="text-align:center">范围</td><td style="text-align:center">Web网页</td></tr><tr><td style="text-align:center">级别</td><td style="text-align:center">用户目标</td></tr><tr><td style="text-align:center">主要参与者</td><td style="text-align:center">用户</td></tr><tr><td style="text-align:center">涉众及其关注点</td><td style="text-align:center">用户：希望能注册为挣闲钱平台的用户，登录系统发布任务或接收任务，获得收益</td></tr><tr><td style="text-align:center">前置条件</td><td style="text-align:center">用户了解登录注册的流程和需要填写的信息</td></tr><tr><td style="text-align:center">后置条件</td><td style="text-align:center">用户填写的信息无误，邮箱不与已有邮箱冲突</td></tr><tr><td style="text-align:center">主成功场景</td><td style="text-align:center">用户打开网页，填写昵称、邮箱和密码进行注册，邮箱不重复则注册成功；用户通过注册的邮箱和密码进行登录。</td></tr><tr><td style="text-align:center">扩展</td><td style="text-align:center">两次输入密码不一致，提醒密码错误；邮箱重复，提醒邮箱已注册。</td></tr><tr><td style="text-align:center">特殊需求</td><td style="text-align:center">界面美观，有明显的报错提醒</td></tr><tr><td style="text-align:center">发生频率</td><td style="text-align:center">经常发生</td></tr><tr><td style="text-align:center">未决问题</td><td style="text-align:center">邮箱验证问题</td></tr></tbody></table><h3 id="活动图"><a href="#活动图" class="headerlink" title="活动图"></a>活动图</h3><p>文本往往不能很好地描述用例的事件流，使用活动图可以更清晰地表达复杂的流程。以注册登录为例，用例涉及邮箱重复、密码不一致等判断过程，活动图表示更为直观。</p><img src="/2019/06/30/用例建模总结/register_login.png" title="register_login"><p>另外，如果用例涉及到多个角色，可以采用多泳道图来更清晰地表示角色之间的交互业务。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>用例建模从用户的角度出发，将分析和设计分离，能清晰表达系统的业务和功能需求。用例图清晰地展示了系统的功能组成，客户可以清楚地看到系统与自己的要求是否相符。同时，客户可以简单修改用例图来表达需求变更的想法。用例图明确地表达了用户的需求，因此系统架构的设计可以更加准确，同时系统的工作量评估也变得方便。在测试阶段，测试人员也可以根据用例设计测试用例，对系统进行全面的测试。</p><p>不过，用例建模需要的工作量是很大的，特别是当系统需要复杂和严谨的结构时，用例建模会花费大量的时间，在小型项目的开发上可能会降低开发效率。</p><h2 id="项目文档"><a href="#项目文档" class="headerlink" title="项目文档"></a>项目文档</h2><p><a href="https://code-flows-in-you.github.io/Dashboard/" target="_blank" rel="noopener">Earning Money</a></p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] <a href="https://sysu-swsad.github.io/swad-guide/05-first-iteration" target="_blank" rel="noopener">软件系统分析与设计指南：组织第一次迭代</a></p><p>[2] <a href="https://sysu-swsad.github.io/swad-guide/06-usecase-modeling" target="_blank" rel="noopener">软件系统分析与设计指南：用例建模 - 绘制用例图</a></p><p>[3] <a href="https://sysu-swsad.github.io/swad-guide/07-usecase-modeling" target="_blank" rel="noopener">软件系统分析与设计指南：用例建模 - 业务建模方法</a></p><p>[4] <a href="https://www.ibm.com/developerworks/cn/rational/r-usecase-atm/" target="_blank" rel="noopener">用例建模指南</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;需求分析是软件生命周期的一项重要内容，它是每一次项目迭代的开端，奠定了软件设计的基础。在系统分析与设计的课程项目“挣闲钱”中，我使用了用例建模的方法进行需求分析。在项目中，我第一次接触系统性的需求分析方法，了解到了用例建模的重要性。本文对项目中的用例建模方法进行了总结。&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="SE" scheme="https://xungerrrr.github.io/tags/SE/"/>
+    
+  </entry>
   
   <entry>
     <title>Bezier Curve</title>
@@ -468,31 +491,6 @@
     
     
       <category term="Unity" scheme="https://xungerrrr.github.io/tags/Unity/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>UWP - Media Player</title>
-    <link href="https://xungerrrr.github.io/2018/05/05/UWP-Media-Player/"/>
-    <id>https://xungerrrr.github.io/2018/05/05/UWP-Media-Player/</id>
-    <published>2018-05-05T07:31:38.000Z</published>
-    <updated>2019-03-14T17:52:50.546Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><ol><li>在Visual Studio中新建Media Player项目，创建Player页面；</li><li>在Player页面中使用Grid布局页面，第一行放置MediaPlayerElement以及包含歌曲标题和封面的StrollViewer等元素，第二行放置自行设计的媒体控制栏，其中包含媒体进度条、开始暂停按钮、停止按钮、选取文件按钮、全屏按钮等元素。</li><li>在cs文件中，使用MediaPlayer和MediaTimelineController控制媒体播放，并在相关函数中实现读取文件、提取媒体信息、绑定媒体位置与进度条位置、控制封面旋转动画等功能。</li></ol><h2 id="关键步骤截图"><a href="#关键步骤截图" class="headerlink" title="关键步骤截图"></a>关键步骤截图</h2><p>图1. 音乐播放器启动界面:</p><img src="/2018/05/05/UWP-Media-Player/1.png" title="demo1"><p>图2. 音乐播放示例:</p><img src="/2018/05/05/UWP-Media-Player/2.png" title="demo2"><p>图3. 视频播放示例:</p><img src="/2018/05/05/UWP-Media-Player/3.png" title="demo3"><h2 id="亮点与改进"><a href="#亮点与改进" class="headerlink" title="亮点与改进"></a>亮点与改进</h2><ol><li><p>选择本地媒体的功能</p><p>媒体播放器实现了选择本地媒体的功能，能够打开本地的音乐和视频进行播放。</p></li><li><p>美化界面</p><p>设计上，加入了很有质感的Acrylic材质，使应用透明化。在媒体播放器中播放音乐时，专辑封面会做毛玻璃模糊处理，使应用背景能够根据专辑封面动态改变。另外，用Acrylic材质实现了媒体控制栏颜色自动跟随系统主题颜色。</p><p>注：要实现此效果，必须使用最新版Windows 10 SDK（版本16299）生成解决方案，否则会提示找不到相关资源，无法运行。</p><img src="/2018/05/05/UWP-Media-Player/4.png" title="demo4"><img src="/2018/05/05/UWP-Media-Player/5.png" title="demo5"></li><li><p>实现封面旋转</p><p>在播放音乐时，封面旋转；播放结束时，封面复位；暂停时，封面的旋转动作暂停；在播放视频时，封面隐藏。</p></li><li><p>显示媒体的缩略图、标题、艺术家、专辑等信息</p><p>实现了媒体信息的提取，能够根据媒体动态显示标题等信息。</p></li><li><p>显示媒体时间进度</p><p>在媒体控制栏中实现了媒体当前时间和总时间的显示。</p></li><li><p>实现了应用的真正全屏效果</p><p>点击全屏按钮，应用能够真正全屏显示，而不只是将视频元素填满当前窗口。</p></li><li><p>播放音乐时，音乐信息能动态显示在磁贴上</p><img src="/2018/05/05/UWP-Media-Player/6.png" title="demo6"></li></ol><h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul><li><p>问题：请求返回的XML存在中文乱码的问题</p><p>  解决方案：查阅相关资料后，将命名空间Windows.Web.Http更改为命名空间System.Net.Http，成功解决问题。</p></li></ul><h2 id="思考与总结"><a href="#思考与总结" class="headerlink" title="思考与总结"></a>思考与总结</h2><p>在本次实验中，我实现了UWP应用的媒体播放功能，能够播放本地的媒体资源。</p><p>在实验中，我学到了许多有趣而实用的知识，例如控制媒体播放，并且参考了一些成熟的媒体播放器的设计，对播放器进行了多重美化，很好地锻炼了UI设计的能力。经过这次实验，我的应用摆脱了简单的本地文本内容，进入了多媒体的世界，具有了更好的实用性和可扩展性。</p><h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p><a href="https://github.com/Xungerrrr/SYSU-UWP/tree/master/Media%20Player" target="_blank" rel="noopener">https://github.com/Xungerrrr/SYSU-UWP/tree/master/Media%20Player</a></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://docs.microsoft.com/zh-cn/windows/uwp/design/style/acrylic" target="_blank" rel="noopener">亚克力材料</a></li><li><a href="https://docs.microsoft.com/en-us/uwp/api/Windows.Media.Playback.MediaPlayer" target="_blank" rel="noopener">MediaPlayer类</a></li><li><a href="https://docs.microsoft.com/zh-cn/uwp/api/Windows.UI.Xaml.Controls.MediaPlayerElement" target="_blank" rel="noopener">MediaPlayerElement类</a></li><li><a href="https://docs.microsoft.com/en-us/uwp/api/windows.storage.fileproperties.musicproperties" target="_blank" rel="noopener">MusicProperties类</a></li><li><a href="https://stackoverflow.com/questions/18807320/get-albumart-in-mp3-file-for-windows-store-app?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa" target="_blank" rel="noopener">Get Albumart in .mp3 file for Windows Store App</a></li><li><a href="https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.media.rotatetransform" target="_blank" rel="noopener">RotateTransform类</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;实验步骤&quot;&gt;&lt;a href=&quot;#实验步骤&quot; class=&quot;headerlink&quot; title=&quot;实验步骤&quot;&gt;&lt;/a&gt;实验步骤&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;在Visual Studio中新建Media Player项目，创建Player页面；&lt;/li&gt;
-&lt;li&gt;在Pl
-      
-    
-    </summary>
-    
-    
-      <category term="UWP" scheme="https://xungerrrr.github.io/tags/UWP/"/>
     
   </entry>
   
