@@ -194,6 +194,21 @@
     <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
     <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
     
+        <!-- algolia -->
+        <script>
+            
+            var hits = JSON.parse('{"per_page":10}')
+            var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"We did not find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}')
+
+            var algolia = {
+                applicationID: 'F3BF984QRQ',
+                apiKey: '93cdbe479e884008b8ce6fab85ee08ba',
+                indexName: 'MyBlog',
+                hits: hits,
+                labels: labels
+            }
+        </script>
+    
     <!-- fancybox -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
     <!-- 百度统计  -->
@@ -278,7 +293,7 @@ height:70vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">328</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.2k</span>Reading time: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -426,7 +441,48 @@ height:70vh;
 <li>用于启用麦克风访问和基于Azure云的语音服务的语音认知服务SDK</li>
 </ul>
 <p>此外，我们还可以结合使用Azure提供的认知视觉服务，为应用赋予强大的视觉感知能力。</p>
-<h1 id="一些基本概念"><a href="#一些基本概念" class="headerlink" title="一些基本概念"></a>一些基本概念</h1><h2 id="深度相机"><a href="#深度相机" class="headerlink" title="深度相机"></a>深度相机</h2><h1 id="传感器SDK"><a href="#传感器SDK" class="headerlink" title="传感器SDK"></a>传感器SDK</h1><h1 id="人体追踪SDK"><a href="#人体追踪SDK" class="headerlink" title="人体追踪SDK"></a>人体追踪SDK</h1>
+<h1 id="一些基本概念"><a href="#一些基本概念" class="headerlink" title="一些基本概念"></a>一些基本概念</h1><h2 id="深度相机的原理"><a href="#深度相机的原理" class="headerlink" title="深度相机的原理"></a>深度相机的原理</h2><p>深度相机的原理是调幅连续波(AMCW)时差测距(ToF)。相机向场景中发射近红外(IR)频谱中的调制光，然后测量光线经场景反射后返回的时间差，从而获取到场景的深度信息。深度相机将原始的调制IR图像传输到电脑主机，电脑通过GPU加速的深度引擎软件将原始信号转换为深度图。深度图是图像每个像素的一组Z坐标值，以毫米为单位。</p>
+<img src="/2019/09/27/当计算机视觉遇上Azure-Kinect-DK/IR.gif" title="IR">
+<p>Azure Kinect的深度相机支持窄视场(NFOV)和宽视场(WFOV)两种视场模式。窄视场适合X、Y维度范围较小，但Z维度范围较大的场景。宽视场适合X、Y维度范围较大，但Z维度范围较小的场景。</p>
+<img src="/2019/09/27/当计算机视觉遇上Azure-Kinect-DK/FOV.jpg" title="FOV">
+<h1 id="结合深度相机和RGB相机能做些什么"><a href="#结合深度相机和RGB相机能做些什么" class="headerlink" title="结合深度相机和RGB相机能做些什么"></a>结合深度相机和RGB相机能做些什么</h1><p>让我们通过一份示例代码来看两个例子。要使用Azure Kinect DK，首先需要下载和安装<a href="https://docs.microsoft.com/zh-cn/azure/kinect-dk/sensor-sdk-download" target="_blank" rel="noopener">传感器SDK</a>。安装后，从<a href="https://github.com/microsoft/Azure-Kinect-Samples/tree/master/build2019/csharp" target="_blank" rel="noopener">GitHub</a>下载C#示例代码。</p>
+<h2 id="获取图像"><a href="#获取图像" class="headerlink" title="获取图像"></a>获取图像</h2><p>首先，最基本的操作是从Kinect设备中获取图像。目录1 - AcquiringImages中的工程演示了这一过程。一般来说，从Kinect中获取图像（RGB图像或深度图），可以分为以下四个步骤：</p>
+<ol>
+<li><p>找到并打开设备</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Open the default device</span></span><br><span class="line"><span class="keyword">this</span>.kinect = Device.Open();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置并启动相机</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Configure camera modes</span></span><br><span class="line"><span class="keyword">this</span>.kinect.StartCameras(<span class="keyword">new</span> DeviceConfiguration</span><br><span class="line">&#123;</span><br><span class="line">    ColorFormat = ImageFormat.ColorBGRA32,</span><br><span class="line">    ColorResolution = ColorResolution.R1080p,</span><br><span class="line">    DepthMode = DepthMode.NFOV_2x2Binned,</span><br><span class="line">    SynchronizedImagesOnly = <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从设备获取捕获(Capture)</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Capture capture = <span class="keyword">await</span> Task.Run(() =&gt; &#123; <span class="keyword">return</span> <span class="keyword">this</span>.kinect.GetCapture(); &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从捕获中获取图像</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> color = capture.Color;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>捕获与图像的关系：图像是以关联的方式捕获的，每一个捕获包含了关联的深度图、IR图像和彩色图像。</p>
+<img src="/2019/09/27/当计算机视觉遇上Azure-Kinect-DK/1-AcquiringImages.png" title="1-AcquiringImages">
+<h2 id="图像转换"><a href="#图像转换" class="headerlink" title="图像转换"></a>图像转换</h2><p>因为深度相机和彩色相机是相互独立的传感器，所以它们有各自独立的坐标系，视角和视野范围也会有所不同。通常，我们希望将两种图像的数据结合起来使用。图像转换的目的就是通过一定的变换，将一个相机的视点转换到另一个相机的视点上。</p>
+<p>Azure Kinect DK的SDK提供了这样的转换函数。目录2 - TransformDepthToColor中的工程演示了从深度相机到彩色相机的视点转换。</p>
+<ol>
+<li><p>首先，引入Azure Kinect的图像转换引擎</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> Azure Kinect transformation engine</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">readonly</span> Transformation transform = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化图像，用来存放转换后的图像</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Image transformedDepth = <span class="keyword">new</span> Image(</span><br><span class="line">    ImageFormat.Depth16, colorWidth, colorHeight, colorWidth * <span class="keyword">sizeof</span>(UInt16))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用SDK函数，传入捕获进行转换</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.transform.DepthImageToColorCamera(capture, transformedDepth);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样就可以生成彩色相机视点下的深度图像。</p>
+<img src="/2019/09/27/当计算机视觉遇上Azure-Kinect-DK/2-TransformDepthToColor.png" title="2-TransformDepthToColor">
+<h2 id="图像分割"><a href="#图像分割" class="headerlink" title="图像分割"></a>图像分割</h2><p>利用上面得到的彩色图像和转换后的深度图像，我们可以做什么呢。一个容易想到的例子是前景背景的分割。目录3 - SegmentColor中的工程演示了分割图像前景的过程。</p>
+<p>由于拥有深度信息，我们可以设置一个距离阈值。当像素的深度值小于阈值，则认为其属于前景。反之则属于背景，将其置为0。这样就实现了简单的前景分割。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.colorHeight * <span class="keyword">this</span>.colorWidth; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (depthPixels[i] &lt; <span class="number">1000</span> &amp;&amp;</span><br><span class="line">        depthPixels[i] != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    colorPixels[i] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2019/09/27/当计算机视觉遇上Azure-Kinect-DK/3-SegmentColor.png" title="3-SegmentColor">
+<h1 id="人体追踪SDK"><a href="#人体追踪SDK" class="headerlink" title="人体追踪SDK"></a>人体追踪SDK</h1>
     </article>
     <!-- license  -->
     
@@ -566,7 +622,7 @@ top:70vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Azure-Kinect-DK概述"><span class="toc-number">1.</span> <span class="toc-text">Azure Kinect DK概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kinect设备"><span class="toc-number">1.1.</span> <span class="toc-text">Kinect设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件开发工具包"><span class="toc-number">1.2.</span> <span class="toc-text">软件开发工具包</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些基本概念"><span class="toc-number">2.</span> <span class="toc-text">一些基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#深度相机"><span class="toc-number">2.1.</span> <span class="toc-text">深度相机</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传感器SDK"><span class="toc-number">3.</span> <span class="toc-text">传感器SDK</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#人体追踪SDK"><span class="toc-number">4.</span> <span class="toc-text">人体追踪SDK</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Azure-Kinect-DK概述"><span class="toc-number">1.</span> <span class="toc-text">Azure Kinect DK概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kinect设备"><span class="toc-number">1.1.</span> <span class="toc-text">Kinect设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件开发工具包"><span class="toc-number">1.2.</span> <span class="toc-text">软件开发工具包</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些基本概念"><span class="toc-number">2.</span> <span class="toc-text">一些基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#深度相机的原理"><span class="toc-number">2.1.</span> <span class="toc-text">深度相机的原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结合深度相机和RGB相机能做些什么"><span class="toc-number">3.</span> <span class="toc-text">结合深度相机和RGB相机能做些什么</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取图像"><span class="toc-number">3.1.</span> <span class="toc-text">获取图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像转换"><span class="toc-number">3.2.</span> <span class="toc-text">图像转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像分割"><span class="toc-number">3.3.</span> <span class="toc-text">图像分割</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#人体追踪SDK"><span class="toc-number">4.</span> <span class="toc-text">人体追踪SDK</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1094,23 +1150,15 @@ top:70vh;
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 37
         </div>
         <!-- search  -->
+        
+            <div class="site-search popup-trigger">
+                <span class="iconfont-archer search-icon">&#xe627;</span>
+            </div>
         
     </div>
     
@@ -1342,21 +1390,21 @@ top:70vh;
     
         <span class="sidebar-tag-name" data-tags="Image-Understanding"><span class="iconfont-archer">&#xe606;</span>Image-Understanding</span>
     
-        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
-    
-        <span class="sidebar-tag-name" data-tags="SE"><span class="iconfont-archer">&#xe606;</span>SE</span>
-    
         <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
     
         <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
     
         <span class="sidebar-tag-name" data-tags="实训"><span class="iconfont-archer">&#xe606;</span>实训</span>
     
+        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+    
         <span class="sidebar-tag-name" data-tags="Cloud Computing"><span class="iconfont-archer">&#xe606;</span>Cloud Computing</span>
     
         <span class="sidebar-tag-name" data-tags="Azure"><span class="iconfont-archer">&#xe606;</span>Azure</span>
     
         <span class="sidebar-tag-name" data-tags="Computer Vision"><span class="iconfont-archer">&#xe606;</span>Computer Vision</span>
+    
+        <span class="sidebar-tag-name" data-tags="SE"><span class="iconfont-archer">&#xe606;</span>SE</span>
     
         <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
     
@@ -1419,6 +1467,29 @@ jsonContent:
     <script src="/scripts/main.js"></script>
     <!-- algolia -->
     
+        <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="iconfont-archer">&#xe609;</i>
+    </span>
+  </div>
+</div>
+        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.8.0/dist/instantsearch.min.js" defer></script>
+        <script src="/scripts/search.js" defer></script>
+    
     <!-- busuanzi  -->
     
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -1428,7 +1499,24 @@ jsonContent:
     </div>
     <!-- async load share.js -->
     
-        <script src="/scripts/share.js" async></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->    
+        <script src="/scripts/share.js" async></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->    
      
     </body>
 </html>
