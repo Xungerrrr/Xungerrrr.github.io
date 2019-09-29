@@ -293,7 +293,7 @@ height:70vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2.7k</span>Reading time: <span class="post-count reading-time">10 min</span></span>
+                        <span>Word count: <span class="post-count word-count">3k</span>Reading time: <span class="post-count reading-time">11 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -505,7 +505,19 @@ height:70vh;
 <img src="/2019/09/27/当Kinect遇到Azure/bag.png" title="bag">
 <p>通过下面的3D图像会更容易理解这个过程。首先，计算机视觉服务在图片中识别出了一个背包，用矩形标记了背包的位置，即图中的黄色矩形。从深度相机（红色圆点）的角度来看，这个矩形的内部代表了三维中的一个锥形空间，即图中的红色区域，而不仅仅是一个平面。通过获取矩形中心点的深度值，我们实际上获得了图中蓝色直线的长度。</p>
 <img src="/2019/09/27/当Kinect遇到Azure/3D.png" title="3D">
-<h2 id="可能的应用场景"><a href="#可能的应用场景" class="headerlink" title="可能的应用场景"></a>可能的应用场景</h2><h1 id="人体追踪又能怎么玩"><a href="#人体追踪又能怎么玩" class="headerlink" title="人体追踪又能怎么玩"></a>人体追踪又能怎么玩</h1><p>使用Azure Kinect DK的人体追踪SDK，可以直接追踪人体骨架，不需要进行额外的训练。人体追踪SDK可以从<a href="https://docs.microsoft.com/zh-cn/azure/kinect-dk/body-sdk-download" target="_blank" rel="noopener">这里</a>下载。</p>
+<h2 id="可能的应用场景"><a href="#可能的应用场景" class="headerlink" title="可能的应用场景"></a>可能的应用场景</h2><p>从上面的例子可以看到，传感器SDK提供了对硬件传感器流的低级访问。使用SDK可以获得一些基础数据，例如深度图、音频流和陀螺仪数据等。将这些数据与Azure认知服务相结合，可以实现对场景视觉、方位、声音的理解。下面列举一些可能的应用场景。</p>
+<ul>
+<li><p>物体大小测量</p>
+<p>  在工厂流水线上，结合图像信息和认知视觉服务，可以识别出流水线上的产品，并测量产品的尺寸，用于分析产品质量、装箱规格等等。</p>
+</li>
+<li><p>文字识别</p>
+<p>  在物流仓库，结合彩色图像和文本识别服务，可以实现光学字符识别（OCR），自动识别出包裹的运单信息，快速分发包裹。</p>
+</li>
+<li><p>环境三维重建</p>
+<p>  通过多个Kinect设备，多次采集场景数据，快速生成场景的三维模型。</p>
+</li>
+</ul>
+<h1 id="人体追踪又能怎么玩"><a href="#人体追踪又能怎么玩" class="headerlink" title="人体追踪又能怎么玩"></a>人体追踪又能怎么玩</h1><p>使用Azure Kinect DK的人体追踪SDK，可以直接追踪人体骨架，不需要进行额外的训练。人体追踪SDK可以从<a href="https://docs.microsoft.com/zh-cn/azure/kinect-dk/body-sdk-download" target="_blank" rel="noopener">这里</a>下载。</p>
 <h2 id="人体追踪演示"><a href="#人体追踪演示" class="headerlink" title="人体追踪演示"></a>人体追踪演示</h2><p>安装好SDK后，我们就可以直接运行其附带的工具来演示追踪过程。工具位于安装目录下的tools/k4abt_simple_3d_viewer.exe。</p>
 <img src="/2019/09/27/当Kinect遇到Azure/bt.gif" title="bt">
 <h2 id="人体追踪的操作过程"><a href="#人体追踪的操作过程" class="headerlink" title="人体追踪的操作过程"></a>人体追踪的操作过程</h2><p>以下用C++代码来说明操作过程。一般来说，Azure Kinect DK的人体追踪分为以下步骤：</p>
@@ -698,20 +710,6 @@ top:70vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1453,9 +1451,9 @@ top:70vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
-    
         <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
+    
+        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
     
         <span class="sidebar-tag-name" data-tags="UWP"><span class="iconfont-archer">&#xe606;</span>UWP</span>
     
@@ -1467,11 +1465,11 @@ top:70vh;
     
         <span class="sidebar-tag-name" data-tags="实训"><span class="iconfont-archer">&#xe606;</span>实训</span>
     
-        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
-    
         <span class="sidebar-tag-name" data-tags="Face-Recognition"><span class="iconfont-archer">&#xe606;</span>Face-Recognition</span>
     
         <span class="sidebar-tag-name" data-tags="Image-Understanding"><span class="iconfont-archer">&#xe606;</span>Image-Understanding</span>
+    
+        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
     
         <span class="sidebar-tag-name" data-tags="SE"><span class="iconfont-archer">&#xe606;</span>SE</span>
     
