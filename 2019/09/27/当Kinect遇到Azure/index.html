@@ -293,7 +293,7 @@ height:70vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2.2k</span>Reading time: <span class="post-count reading-time">8 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2.7k</span>Reading time: <span class="post-count reading-time">10 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -445,7 +445,9 @@ height:70vh;
 <img src="/2019/09/27/当Kinect遇到Azure/IR.gif" title="IR">
 <p>Azure Kinect的深度相机支持窄视场(NFOV)和宽视场(WFOV)两种视场模式。窄视场适合X、Y维度范围较小，但Z维度范围较大的场景。宽视场适合X、Y维度范围较大，但Z维度范围较小的场景。</p>
 <img src="/2019/09/27/当Kinect遇到Azure/FOV.jpg" title="FOV">
-<h1 id="结合深度相机和RGB相机能做些什么"><a href="#结合深度相机和RGB相机能做些什么" class="headerlink" title="结合深度相机和RGB相机能做些什么"></a>结合深度相机和RGB相机能做些什么</h1><p>让我们通过一份示例代码来看两个例子。要使用Azure Kinect DK，首先需要下载和安装<a href="https://docs.microsoft.com/zh-cn/azure/kinect-dk/sensor-sdk-download" target="_blank" rel="noopener">传感器SDK</a>。安装后，从<a href="https://github.com/microsoft/Azure-Kinect-Samples/tree/master/build2019/csharp" target="_blank" rel="noopener">GitHub</a>下载C#示例代码。需要在工程中包含所安装的库，并引入<code>Microsoft.Azure.Kinect.Sensor</code>包;</p>
+<h2 id="人体追踪的关节层次结构"><a href="#人体追踪的关节层次结构" class="headerlink" title="人体追踪的关节层次结构"></a>人体追踪的关节层次结构</h2><p>骨架包括26个关节，层次结构按照从人体中心向四肢的流向分布。 每个连接（骨骼）将父关节与子关节链接起来。下图演示了关节位置以及相对于人体的连接。</p>
+<img src="/2019/09/27/当Kinect遇到Azure/joint-hierarchy.png" title="joint-hierarchy">
+<h1 id="结合深度相机和RGB相机能做些什么"><a href="#结合深度相机和RGB相机能做些什么" class="headerlink" title="结合深度相机和RGB相机能做些什么"></a>结合深度相机和RGB相机能做些什么</h1><p>让我们通过一份示例代码来看几个例子。要使用Azure Kinect DK，首先需要下载和安装<a href="https://docs.microsoft.com/zh-cn/azure/kinect-dk/sensor-sdk-download" target="_blank" rel="noopener">传感器SDK</a>。安装后，从<a href="https://github.com/microsoft/Azure-Kinect-Samples/tree/master/build2019/csharp" target="_blank" rel="noopener">GitHub</a>下载这里用到的C#示例代码。</p>
 <h2 id="获取图像"><a href="#获取图像" class="headerlink" title="获取图像"></a>获取图像</h2><p>首先，最基本的操作是从Kinect设备中获取图像。目录1 - AcquiringImages中的工程演示了这一过程。一般来说，从Kinect中获取图像（RGB图像或深度图），可以分为以下四个步骤：</p>
 <ol>
 <li><p>找到并打开设备</p>
@@ -461,7 +463,8 @@ height:70vh;
  <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> color = capture.Color;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>捕获与图像的关系：图像是以关联的方式捕获的，每一个捕获包含了关联的深度图、IR图像和彩色图像。</p>
+<p>捕获与图像的关系是，图像是以关联的方式捕获的，每一个捕获包含了关联的深度图、IR图像和彩色图像。</p>
+<p>下面是从捕获中获取的一张彩色图像。</p>
 <img src="/2019/09/27/当Kinect遇到Azure/1-AcquiringImages.png" title="1-AcquiringImages">
 <h2 id="图像转换"><a href="#图像转换" class="headerlink" title="图像转换"></a>图像转换</h2><p>因为深度相机和彩色相机是相互独立的传感器，所以它们有各自独立的坐标系，视角和视野范围也会有所不同。通常，我们希望将两种图像的数据结合起来使用。图像转换的目的就是通过一定的变换，将一个相机的视点转换到另一个相机的视点上。</p>
 <p>Azure Kinect DK的SDK提供了这样的转换函数。目录2 - TransformDepthToColor中的工程演示了从深度相机到彩色相机的视点转换。</p>
@@ -476,23 +479,20 @@ height:70vh;
  <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.transform.DepthImageToColorCamera(capture, transformedDepth);</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>这样就可以生成彩色相机视点下的深度图像。</p>
+<p>这样就可以生成彩色相机视点下的深度图像，从而为彩色图像增加了对应的深度信息。</p>
 <img src="/2019/09/27/当Kinect遇到Azure/2-TransformDepthToColor.png" title="2-TransformDepthToColor">
 <h2 id="图像分割"><a href="#图像分割" class="headerlink" title="图像分割"></a>图像分割</h2><p>利用上面得到的彩色图像和转换后的深度图像，我们可以做什么呢。一个容易想到的例子是前景背景的分割。目录3 - SegmentColor中的工程演示了分割图像前景的过程。</p>
-<p>由于拥有深度信息，我们可以设置一个距离阈值。当像素的深度值小于阈值，则认为其属于前景。反之则属于背景，将其置为0。这样就实现了简单的前景分割。</p>
+<p>由于拥有深度信息，我们可以设置一个距离阈值（如1000，单位为毫米）。当像素的深度值小于阈值，则认为其属于前景。反之则属于背景，将像素的颜色值置为0。这样就实现了简单的前景分割。</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.colorHeight * <span class="keyword">this</span>.colorWidth; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (depthPixels[i] &lt; <span class="number">1000</span> &amp;&amp;</span><br><span class="line">        depthPixels[i] != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    colorPixels[i] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <img src="/2019/09/27/当Kinect遇到Azure/3-SegmentColor.png" title="3-SegmentColor">
-<h2 id="结合Azure认知视觉服务，为应用添加智能"><a href="#结合Azure认知视觉服务，为应用添加智能" class="headerlink" title="结合Azure认知视觉服务，为应用添加智能"></a>结合Azure认知视觉服务，为应用添加智能</h2><p>有了丰富的场景数据，如果能加上一点图像理解的能力就更好了。利用Microsoft Azure上的认知服务，可以直接使用预训练好的通用视觉模型，为应用增加感知能力。目录4 - CognitiveServices中的工程演示了如何先用Microsoft Azure认知服务来分析图片，当检测到人时，计算出摄像头到人的距离。在这里，我对代码做了一点小修改，将识别人体改为识别背包，并且标识出了物体的位置。</p>
+<h2 id="结合Azure认知视觉服务，为应用添加智能"><a href="#结合Azure认知视觉服务，为应用添加智能" class="headerlink" title="结合Azure认知视觉服务，为应用添加智能"></a>结合Azure认知视觉服务，为应用添加智能</h2><p>有了丰富的场景数据，如果能加上一点图像理解的能力就更好了。利用Microsoft Azure上的认知服务，可以直接使用预训练好的通用视觉模型，为应用增加感知能力。目录4 - CognitiveServices中的工程演示了这样一个过程：首先连接到Microsoft Azure认知服务，对彩色图片进行分析，当在图片中检测到人时，利用深度信息计算出摄像头到人的距离。在这里，我对代码做了一点小修改，将识别人体改为识别背包，并且用红色矩形标识出了物体的位置。</p>
 <p>要使用Azure认知服务，需要有有效的Azure订阅，并且创建一个计算机视觉资源。之后，修改代码中的subscriptionKey和Endpoint即可。</p>
-<p>应用分为以下几个步骤：</p>
+<p>应用的逻辑可以划分为以下几个步骤：</p>
 <ol>
-<li><p>需要引入Azure认知服务计算机视觉的相关包</p>
- <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Microsoft.Azure.CognitiveServices.Vision.ComputerVision;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;</span><br></pre></td></tr></table></figure>
-</li>
 <li><p>实例化计算机视觉客户端</p>
  <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create the computer vision client</span></span><br><span class="line">computerVision = <span class="keyword">new</span> ComputerVisionClient(</span><br><span class="line">    <span class="keyword">new</span> ApiKeyServiceClientCredentials(subscriptionKey),</span><br><span class="line">    <span class="keyword">new</span> System.Net.Http.DelegatingHandler[] &#123; &#125;)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// You must use the same region as you used to get  </span></span><br><span class="line">        <span class="comment">// your subscription keys. </span></span><br><span class="line">        Endpoint = <span class="string">"YourEndpoint"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>转换深度图像</p>
+<li><p>转换深度图像到彩色相机视点</p>
  <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.transform.DepthImageToColorCamera(capture, transformedDepth);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>分析图像，获取背包物体的包围盒</p>
@@ -503,9 +503,9 @@ height:70vh;
 </li>
 </ol>
 <img src="/2019/09/27/当Kinect遇到Azure/bag.png" title="bag">
-<p>通过下面的3D图像会更容易理解这个过程。首先，计算机视觉服务识别出了一个背包，用矩形标记了背包的位置，即图中的黄色矩形。从深度相机（红色圆点）的角度来看，这个矩形代表了三维中的一个锥形空间，即图中的红色区域，而不仅仅是一个平面。通过获取矩形中心点的深度值，我们实际上获得了图中蓝色直线的长度。</p>
+<p>通过下面的3D图像会更容易理解这个过程。首先，计算机视觉服务在图片中识别出了一个背包，用矩形标记了背包的位置，即图中的黄色矩形。从深度相机（红色圆点）的角度来看，这个矩形的内部代表了三维中的一个锥形空间，即图中的红色区域，而不仅仅是一个平面。通过获取矩形中心点的深度值，我们实际上获得了图中蓝色直线的长度。</p>
 <img src="/2019/09/27/当Kinect遇到Azure/3D.png" title="3D">
-<h1 id="人体追踪又能怎么玩"><a href="#人体追踪又能怎么玩" class="headerlink" title="人体追踪又能怎么玩"></a>人体追踪又能怎么玩</h1><p>使用Azure Kinect DK的人体追踪SDK，可以直接追踪人体骨架，不需要进行额外的训练。人体追踪SDK可以从<a href="https://docs.microsoft.com/zh-cn/azure/kinect-dk/body-sdk-download" target="_blank" rel="noopener">这里</a>下载。</p>
+<h2 id="可能的应用场景"><a href="#可能的应用场景" class="headerlink" title="可能的应用场景"></a>可能的应用场景</h2><h1 id="人体追踪又能怎么玩"><a href="#人体追踪又能怎么玩" class="headerlink" title="人体追踪又能怎么玩"></a>人体追踪又能怎么玩</h1><p>使用Azure Kinect DK的人体追踪SDK，可以直接追踪人体骨架，不需要进行额外的训练。人体追踪SDK可以从<a href="https://docs.microsoft.com/zh-cn/azure/kinect-dk/body-sdk-download" target="_blank" rel="noopener">这里</a>下载。</p>
 <h2 id="人体追踪演示"><a href="#人体追踪演示" class="headerlink" title="人体追踪演示"></a>人体追踪演示</h2><p>安装好SDK后，我们就可以直接运行其附带的工具来演示追踪过程。工具位于安装目录下的tools/k4abt_simple_3d_viewer.exe。</p>
 <img src="/2019/09/27/当Kinect遇到Azure/bt.gif" title="bt">
 <h2 id="人体追踪的操作过程"><a href="#人体追踪的操作过程" class="headerlink" title="人体追踪的操作过程"></a>人体追踪的操作过程</h2><p>以下用C++代码来说明操作过程。一般来说，Azure Kinect DK的人体追踪分为以下步骤：</p>
@@ -526,15 +526,26 @@ height:70vh;
  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Obtain original capture that generates the body tracking result</span></span><br><span class="line"><span class="keyword">k4a_capture_t</span> originalCapture = k4abt_frame_get_capture(bodyFrame);</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="人体帧包含什么内容"><a href="#人体帧包含什么内容" class="headerlink" title="人体帧包含什么内容"></a>人体帧包含什么内容</h2><ol>
+<h2 id="人体帧包含的内容"><a href="#人体帧包含的内容" class="headerlink" title="人体帧包含的内容"></a>人体帧包含的内容</h2><ol>
 <li>人体结构的集合</li>
 <li>2D人体索引映射</li>
 <li>生成此结果的输入捕获</li>
 </ol>
 <img src="/2019/09/27/当Kinect遇到Azure/body-frame.png" title="body-frame">
 <h2 id="应用：跳跃分析"><a href="#应用：跳跃分析" class="headerlink" title="应用：跳跃分析"></a>应用：跳跃分析</h2><p>示例工程<a href="https://github.com/microsoft/Azure-Kinect-Samples/tree/master/body-tracking-samples/jump_analysis_sample" target="_blank" rel="noopener">jump_analysis_sample</a>展示了一个有趣的应用。这个应用通过分析跳跃过程中的人体帧数据，计算出跳跃高度、起跳下蹲距离、起跳速度和下蹲膝盖角度。同时，它还展示出在准备起跳时、最高点时的状态图，以及整个跳跃过程的动画回放。</p>
+<p>由于人体追踪产生的每一个人体帧都包含所有关节的三维坐标和时间戳信息，该应用巧妙地利用了高度（y方向）对时间的一次导数来得出速度信息。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// First derivate of height array</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">float</span>&gt; heightDerivative = DSP::FirstDerivate(heightFiltered);</span><br><span class="line"></span><br><span class="line"><span class="comment">// First derivate of timestamp array</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">float</span>&gt; timeFirstDerivate = DSP::FirstDerivate(timestamp);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Calculate unit velocity by dV/dt</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">float</span>&gt; velocityY = DSP::DivideTwoArrays(heightDerivative, timeFirstDerivate);</span><br></pre></td></tr></table></figure>
+<p>有了速度信息之后，可以进一步结合跳跃运动的特征，来得出一些有趣的信息。例如，上升过程中最大的速度即为起跳速度。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Maximum velocity</span></span><br><span class="line">IndexValueTuple maxVelocityInMmPerUsec = DSP::FindMaximum(velocityY, <span class="number">0</span>, velocityY.size());</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">float</span> UsecToSecond = <span class="number">1e-6</span>f;</span><br><span class="line"><span class="comment">// Push off velocity</span></span><br><span class="line">jumpResults.PushOffVelocity = maxVelocityInMmPerUsec.Value / UsecToSecond;</span><br></pre></td></tr></table></figure>
+<p>此外，利用关节信息，还可以用动作来控制程序运行。在这个应用中，只要将双手举过头顶，就可以控制跳跃动作捕获的开始和结束。原理很简单，将手腕关节和头部的y坐标值进行比较就可以了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Notice: y direction is pointing towards the ground! So jointA.y &lt; jointB.y means jointA is higher than jointB</span></span><br><span class="line"><span class="keyword">bool</span> bothHandsAreRaised = leftWristJoint.xyz.y &lt; headJoint.xyz.y &amp;&amp; </span><br><span class="line">                            rightWristJoint.xyz.y &lt; headJoint.xyz.y;</span><br></pre></td></tr></table></figure>
+<p>连接好Kinect，运行程序，看到下方的提示文本，就可以开始尝试啦。</p>
+<img src="/2019/09/27/当Kinect遇到Azure/tips.png" title="tips.png">
+<p>将双手举过头顶，开始录制。完成跳跃后，再次将双手举过头顶结束录制。屏幕上会显示跳跃数据、起跳点和最高点的关键帧以及跳跃回放。</p>
+<img src="/2019/09/27/当Kinect遇到Azure/jump-result.png" title="jump-result.png">
 <img src="/2019/09/27/当Kinect遇到Azure/pose.png" title="pose.png">
 <img src="/2019/09/27/当Kinect遇到Azure/replay.gif" title="replay">
+<h2 id="可能的应用场景-1"><a href="#可能的应用场景-1" class="headerlink" title="可能的应用场景"></a>可能的应用场景</h2>
     </article>
     <!-- license  -->
     
@@ -674,7 +685,7 @@ top:70vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Azure-Kinect-DK概述"><span class="toc-number">1.</span> <span class="toc-text">Azure Kinect DK概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kinect设备"><span class="toc-number">1.1.</span> <span class="toc-text">Kinect设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件开发工具包"><span class="toc-number">1.2.</span> <span class="toc-text">软件开发工具包</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些基本概念"><span class="toc-number">2.</span> <span class="toc-text">一些基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#深度相机的原理"><span class="toc-number">2.1.</span> <span class="toc-text">深度相机的原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结合深度相机和RGB相机能做些什么"><span class="toc-number">3.</span> <span class="toc-text">结合深度相机和RGB相机能做些什么</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取图像"><span class="toc-number">3.1.</span> <span class="toc-text">获取图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像转换"><span class="toc-number">3.2.</span> <span class="toc-text">图像转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像分割"><span class="toc-number">3.3.</span> <span class="toc-text">图像分割</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结合Azure认知视觉服务，为应用添加智能"><span class="toc-number">3.4.</span> <span class="toc-text">结合Azure认知视觉服务，为应用添加智能</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#人体追踪又能怎么玩"><span class="toc-number">4.</span> <span class="toc-text">人体追踪又能怎么玩</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#人体追踪演示"><span class="toc-number">4.1.</span> <span class="toc-text">人体追踪演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人体追踪的操作过程"><span class="toc-number">4.2.</span> <span class="toc-text">人体追踪的操作过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人体帧包含什么内容"><span class="toc-number">4.3.</span> <span class="toc-text">人体帧包含什么内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用：跳跃分析"><span class="toc-number">4.4.</span> <span class="toc-text">应用：跳跃分析</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Azure-Kinect-DK概述"><span class="toc-number">1.</span> <span class="toc-text">Azure Kinect DK概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kinect设备"><span class="toc-number">1.1.</span> <span class="toc-text">Kinect设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件开发工具包"><span class="toc-number">1.2.</span> <span class="toc-text">软件开发工具包</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些基本概念"><span class="toc-number">2.</span> <span class="toc-text">一些基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#深度相机的原理"><span class="toc-number">2.1.</span> <span class="toc-text">深度相机的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人体追踪的关节层次结构"><span class="toc-number">2.2.</span> <span class="toc-text">人体追踪的关节层次结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结合深度相机和RGB相机能做些什么"><span class="toc-number">3.</span> <span class="toc-text">结合深度相机和RGB相机能做些什么</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取图像"><span class="toc-number">3.1.</span> <span class="toc-text">获取图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像转换"><span class="toc-number">3.2.</span> <span class="toc-text">图像转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像分割"><span class="toc-number">3.3.</span> <span class="toc-text">图像分割</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结合Azure认知视觉服务，为应用添加智能"><span class="toc-number">3.4.</span> <span class="toc-text">结合Azure认知视觉服务，为应用添加智能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可能的应用场景"><span class="toc-number">3.5.</span> <span class="toc-text">可能的应用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#人体追踪又能怎么玩"><span class="toc-number">4.</span> <span class="toc-text">人体追踪又能怎么玩</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#人体追踪演示"><span class="toc-number">4.1.</span> <span class="toc-text">人体追踪演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人体追踪的操作过程"><span class="toc-number">4.2.</span> <span class="toc-text">人体追踪的操作过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人体帧包含的内容"><span class="toc-number">4.3.</span> <span class="toc-text">人体帧包含的内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用：跳跃分析"><span class="toc-number">4.4.</span> <span class="toc-text">应用：跳跃分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可能的应用场景-1"><span class="toc-number">4.5.</span> <span class="toc-text">可能的应用场景</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -687,6 +698,16 @@ top:70vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
