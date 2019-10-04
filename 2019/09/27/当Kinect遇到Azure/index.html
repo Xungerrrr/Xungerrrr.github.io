@@ -293,7 +293,7 @@ height:70vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">3k</span>Reading time: <span class="post-count reading-time">11 min</span></span>
+                        <span>Word count: <span class="post-count word-count">3.6k</span>Reading time: <span class="post-count reading-time">13 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -557,7 +557,21 @@ height:70vh;
 <img src="/2019/09/27/当Kinect遇到Azure/jump-result.png" title="jump-result.png">
 <img src="/2019/09/27/当Kinect遇到Azure/pose.png" title="pose.png">
 <img src="/2019/09/27/当Kinect遇到Azure/replay.gif" title="replay">
-<h2 id="可能的应用场景-1"><a href="#可能的应用场景-1" class="headerlink" title="可能的应用场景"></a>可能的应用场景</h2>
+<h2 id="可能的应用场景-1"><a href="#可能的应用场景-1" class="headerlink" title="可能的应用场景"></a>可能的应用场景</h2><p>从上面的例子可以看到，Azure Kinect DK中的人体追踪SDK可以直接用来追踪人体骨架、识别人体位置，能够实时生成关节的三维坐标和方位。不管是离线使用，还是结合Azure使用，都有着丰富的应用场景。</p>
+<ul>
+<li><p>运动员动作分析</p>
+<p>  在运动员的训练中，利用人体追踪数据分析运动动作的准确性和有效性，帮助运动员提升训练成绩。例如，帮助跨栏运动员分析跨栏高度、上栏角度等身体姿态数据。</p>
+</li>
+<li><p>病人情况监测</p>
+<p>  在医院，监测卧床病人的肢体状况，及时通知医护人员。利用关节的坐标位置，可以判断病人举手、摔下床等情况，实现自动化监测。</p>
+</li>
+<li><p>危险动作监测</p>
+<p>  在工程车间，监测工作人员的动作，避免出现不规范行为和危险操作。</p>
+</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>可能很多人都会有一个疑问：Azure Kinect DK和之前的Kinect for Windows有什么不同？一方面，Azure Kinect有着更高规格的硬件，例如更强的陀螺仪和更丰富的深度相机模式，更适合于工业使用。另一方面，Azure Kinect将基本功能集成在两个SDK中，而更高级的功能，例如人脸追踪、语音识别等，则通过与Azure认知服务连接来实现。通过Azure云计算，能够更快地进行数据分析和处理，服务的部署也更方便。</p>
+<p>从上手来看，目前Azure Kinect DK主要涉及Azure认知服务的视觉和语音服务，但是，深度相机和云的结合还不是很密切。深度信息的分析和处理，例如深度图和人体帧的生成，都是在本地运算生成。官网给出的样例中，视觉服务只用于分析彩色图片，没有利用到深度图片，而且还没有人体追踪与Azure结合的相关案例。将深度数据与认知服务结合，可能会有更多的应用前景，例如，利用人体追踪数据与机器学习，对人体动作进行预测。相信随着SDK的不断完善，Azure Kinect DK会在工业落地实际应用中发挥更大的潜力。</p>
+
     </article>
     <!-- license  -->
     
@@ -697,7 +711,7 @@ top:70vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Azure-Kinect-DK概述"><span class="toc-number">1.</span> <span class="toc-text">Azure Kinect DK概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kinect设备"><span class="toc-number">1.1.</span> <span class="toc-text">Kinect设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件开发工具包"><span class="toc-number">1.2.</span> <span class="toc-text">软件开发工具包</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些基本概念"><span class="toc-number">2.</span> <span class="toc-text">一些基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#深度相机的原理"><span class="toc-number">2.1.</span> <span class="toc-text">深度相机的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人体追踪的关节层次结构"><span class="toc-number">2.2.</span> <span class="toc-text">人体追踪的关节层次结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结合深度相机和RGB相机能做些什么"><span class="toc-number">3.</span> <span class="toc-text">结合深度相机和RGB相机能做些什么</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取图像"><span class="toc-number">3.1.</span> <span class="toc-text">获取图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像转换"><span class="toc-number">3.2.</span> <span class="toc-text">图像转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像分割"><span class="toc-number">3.3.</span> <span class="toc-text">图像分割</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结合Azure认知视觉服务，为应用添加智能"><span class="toc-number">3.4.</span> <span class="toc-text">结合Azure认知视觉服务，为应用添加智能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可能的应用场景"><span class="toc-number">3.5.</span> <span class="toc-text">可能的应用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#人体追踪又能怎么玩"><span class="toc-number">4.</span> <span class="toc-text">人体追踪又能怎么玩</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#人体追踪演示"><span class="toc-number">4.1.</span> <span class="toc-text">人体追踪演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人体追踪的操作过程"><span class="toc-number">4.2.</span> <span class="toc-text">人体追踪的操作过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人体帧包含的内容"><span class="toc-number">4.3.</span> <span class="toc-text">人体帧包含的内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用：跳跃分析"><span class="toc-number">4.4.</span> <span class="toc-text">应用：跳跃分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可能的应用场景-1"><span class="toc-number">4.5.</span> <span class="toc-text">可能的应用场景</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Azure-Kinect-DK概述"><span class="toc-number">1.</span> <span class="toc-text">Azure Kinect DK概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kinect设备"><span class="toc-number">1.1.</span> <span class="toc-text">Kinect设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件开发工具包"><span class="toc-number">1.2.</span> <span class="toc-text">软件开发工具包</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些基本概念"><span class="toc-number">2.</span> <span class="toc-text">一些基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#深度相机的原理"><span class="toc-number">2.1.</span> <span class="toc-text">深度相机的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人体追踪的关节层次结构"><span class="toc-number">2.2.</span> <span class="toc-text">人体追踪的关节层次结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结合深度相机和RGB相机能做些什么"><span class="toc-number">3.</span> <span class="toc-text">结合深度相机和RGB相机能做些什么</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取图像"><span class="toc-number">3.1.</span> <span class="toc-text">获取图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像转换"><span class="toc-number">3.2.</span> <span class="toc-text">图像转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像分割"><span class="toc-number">3.3.</span> <span class="toc-text">图像分割</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结合Azure认知视觉服务，为应用添加智能"><span class="toc-number">3.4.</span> <span class="toc-text">结合Azure认知视觉服务，为应用添加智能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可能的应用场景"><span class="toc-number">3.5.</span> <span class="toc-text">可能的应用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#人体追踪又能怎么玩"><span class="toc-number">4.</span> <span class="toc-text">人体追踪又能怎么玩</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#人体追踪演示"><span class="toc-number">4.1.</span> <span class="toc-text">人体追踪演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人体追踪的操作过程"><span class="toc-number">4.2.</span> <span class="toc-text">人体追踪的操作过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人体帧包含的内容"><span class="toc-number">4.3.</span> <span class="toc-text">人体帧包含的内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用：跳跃分析"><span class="toc-number">4.4.</span> <span class="toc-text">应用：跳跃分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可能的应用场景-1"><span class="toc-number">4.5.</span> <span class="toc-text">可能的应用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -710,6 +724,48 @@ top:70vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1451,9 +1507,9 @@ top:70vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
-    
         <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
+    
+        <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
     
         <span class="sidebar-tag-name" data-tags="UWP"><span class="iconfont-archer">&#xe606;</span>UWP</span>
     
@@ -1465,13 +1521,13 @@ top:70vh;
     
         <span class="sidebar-tag-name" data-tags="实训"><span class="iconfont-archer">&#xe606;</span>实训</span>
     
-        <span class="sidebar-tag-name" data-tags="Face-Recognition"><span class="iconfont-archer">&#xe606;</span>Face-Recognition</span>
-    
-        <span class="sidebar-tag-name" data-tags="Image-Understanding"><span class="iconfont-archer">&#xe606;</span>Image-Understanding</span>
-    
         <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
     
         <span class="sidebar-tag-name" data-tags="SE"><span class="iconfont-archer">&#xe606;</span>SE</span>
+    
+        <span class="sidebar-tag-name" data-tags="Face-Recognition"><span class="iconfont-archer">&#xe606;</span>Face-Recognition</span>
+    
+        <span class="sidebar-tag-name" data-tags="Image-Understanding"><span class="iconfont-archer">&#xe606;</span>Image-Understanding</span>
     
         <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
     
