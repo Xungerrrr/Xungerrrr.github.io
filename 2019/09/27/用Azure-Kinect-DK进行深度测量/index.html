@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Xunyan Li">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Xunyan Li">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>用Azure Kinect DK进行深度测量 · Xungerrrr&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/Xungerrrr.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+        <!-- algolia -->
+        <script>
+            
+            var hits = JSON.parse('{"per_page":10}')
+            var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"We did not find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}')
+
+            var algolia = {
+                applicationID: 'F3BF984QRQ',
+                apiKey: '93cdbe479e884008b8ce6fab85ee08ba',
+                indexName: 'MyBlog',
+                hits: hits,
+                labels: labels
+            }
+        </script>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Xungerrrr&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">用Azure Kinect DK进行深度测量</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Xungerrrr's Blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:70vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/Azure-Kinect-DK.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            用Azure Kinect DK进行深度测量
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+                深度相机与云计算能碰出怎么样的火花？Azure Kinect DK上手试玩。
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Azure">Azure</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Computer Vision">Computer Vision</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">3.5k</span>Reading time: <span class="post-count reading-time">12 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/09/27</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>你可能曾经听说过Kinect，它最初是由微软推出的一款体感外设，主要用在Xbox上，为游戏带来体感交互功能。在2019年，微软更新了Kinect的产品线，推出了全新的Azure Kinect DK。与之前的Kinect不同，Azure Kinect DK并不是针对普通消费者和游戏场景推出，而是专注于商用领域的应用开发，并且强调与AI的融合。</p>
+<p>目前，现有的Kinect for Windows v2应用程序不能直接与Azure Kinect DK配合工作，需要移植到新的SDK。因此，开发者需要了解和学习使用新的SDK。下面，我们先了解一下Azure Kinect DK的基本内容，然后围绕深度测量这一主题来进行探索和学习。</p>
+<h1 id="Azure-Kinect-DK概述"><a href="#Azure-Kinect-DK概述" class="headerlink" title="Azure Kinect DK概述"></a>Azure Kinect DK概述</h1><p>Azure Kinect DK是微软推出的一款开发人员工具包，由配有先进AI传感器的Kinect设备和配套的软件开发工具包（SDK）组成。</p>
+<h2 id="Kinect设备"><a href="#Kinect设备" class="headerlink" title="Kinect设备"></a>Kinect设备</h2><img src="/2019/09/27/用Azure-Kinect-DK进行深度测量/kinect-dk.jpg" title="kinect-dk">
+<p>Azure Kinect DK硬件主要包含以下的内容：</p>
+<ol>
+<li>100万像素深度传感器，具有宽、窄视场角(FOV)选项，可获取场景的深度数据</li>
+<li>7麦克风阵列，可用于远场语音和声音捕获</li>
+<li>1200万像素RGB摄像头，提供和深度数据匹配的彩色图像数据流</li>
+<li>加速计和陀螺仪(IMU)，可用于传感器方向和空间跟踪</li>
+<li>外部同步引脚，可轻松同步多个Kinect设备的传感器数据流</li>
+</ol>
+<img src="/2019/09/27/用Azure-Kinect-DK进行深度测量/whats-inside.jpg" title="whats-inside">
+<p>与Kinect for Windows相比，Azure Kinect设备具有更高的硬件规格，同时具备音频、视频、深度和运动传感器，可以全方位感知环境，构建丰富的解决方案。在本文中，我们只关注深度相机和RGB相机的使用。</p>
+<h2 id="软件开发工具包"><a href="#软件开发工具包" class="headerlink" title="软件开发工具包"></a>软件开发工具包</h2><p>Azure Kinect DK的开发环境包含以下的内容：</p>
+<ul>
+<li>用于访问低级别传感器和设备的<a href="https://docs.microsoft.com/zh-cn/azure/kinect-dk/sensor-sdk-download" target="_blank" rel="noopener">传感器SDK</a></li>
+<li>用于跟踪3D人体的<a href="https://docs.microsoft.com/zh-cn/azure/kinect-dk/body-sdk-download" target="_blank" rel="noopener">人体跟踪SDK</a></li>
+<li>用于启用麦克风访问和基于Azure云的语音服务的语音认知服务SDK</li>
+</ul>
+<p>此外，我们还可以结合使用Azure提供的认知视觉服务，为应用赋予强大的视觉感知能力。在本文中，我们只使用了传感器SDK和Azure认知视觉服务。</p>
+<h1 id="深度相机的原理"><a href="#深度相机的原理" class="headerlink" title="深度相机的原理"></a>深度相机的原理</h1><p>深度相机有很多种，Azure Kinect配备的深度相机使用了调幅连续波(AMCW)进行时差测距(ToF)。相机向场景中发射近红外(IR)频谱中的调制光，然后测量光线经场景反射后返回的时间差，从而获取到场景的深度信息。深度相机将原始的调制IR图像传输到电脑主机，电脑通过GPU加速的深度引擎软件将原始信号转换为深度图。深度图是图像每个像素的一组Z坐标值，以毫米为单位。</p>
+<img src="/2019/09/27/用Azure-Kinect-DK进行深度测量/IR.gif" title="IR">
+<p>Azure Kinect的深度相机支持窄视场(NFOV)和宽视场(WFOV)两种视场模式。窄视场适合X、Y维度范围较小，但Z维度范围较大的场景。宽视场适合X、Y维度范围较大，但Z维度范围较小的场景。如下图，左为窄视场，右为宽视场。</p>
+<img src="/2019/09/27/用Azure-Kinect-DK进行深度测量/FOV.jpg" title="FOV">
+<h1 id="深度测量"><a href="#深度测量" class="headerlink" title="深度测量"></a>深度测量</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>要使用Azure Kinect DK，首先需要下载和安装<a href="https://docs.microsoft.com/zh-cn/azure/kinect-dk/sensor-sdk-download" target="_blank" rel="noopener">传感器SDK</a>。</p>
+<p>安装完成后，我们通过一份示例代码来演示深度测量的过程。从<a href="https://github.com/microsoft/Azure-Kinect-Samples/tree/master/build2019/csharp" target="_blank" rel="noopener">GitHub</a>下载这里用到的C#示例代码。</p>
+<h2 id="获取图像"><a href="#获取图像" class="headerlink" title="获取图像"></a>获取图像</h2><p>深度测量的第一步是获取图像。通常，深度测量需要用到彩色照片，以便人们直观地理解深度信息与场景内容的对应关系，因此，我们首先要从Kinect设备中获取彩色图像。目录1 - AcquiringImages中的代码演示了这一过程。一般来说，从Kinect中获取图像（彩色图像或深度图），可以分为以下四个步骤。</p>
+<ol>
+<li><p>找到并打开设备</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Open the default device</span></span><br><span class="line"><span class="keyword">this</span>.kinect = Device.Open();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置并启动相机</p>
+<p> 这一步主要进行相机的初始化配置，例如颜色空间、分辨率、深度取景模式等等。</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Configure camera modes</span></span><br><span class="line"><span class="keyword">this</span>.kinect.StartCameras(<span class="keyword">new</span> DeviceConfiguration</span><br><span class="line">&#123;</span><br><span class="line">    ColorFormat = ImageFormat.ColorBGRA32,</span><br><span class="line">    ColorResolution = ColorResolution.R1080p,</span><br><span class="line">    DepthMode = DepthMode.NFOV_2x2Binned,</span><br><span class="line">    SynchronizedImagesOnly = <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从设备获取捕获(Capture)</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Capture capture = <span class="keyword">await</span> Task.Run(() =&gt; &#123; <span class="keyword">return</span> <span class="keyword">this</span>.kinect.GetCapture(); &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从捕获中获取图像</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> color = capture.Color;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>捕获和图像的关系是什么呢？简单来说，捕获包含了图像。图像是以关联的方式捕获的，每一个捕获包含了一个时间戳所对应的一组深度图、IR图像和彩色图像。下面是从捕获中获取的一张彩色图像。</p>
+<img src="/2019/09/27/用Azure-Kinect-DK进行深度测量/1-AcquiringImages.png" title="1-AcquiringImages">
+<h2 id="图像转换"><a href="#图像转换" class="headerlink" title="图像转换"></a>图像转换</h2><p>深度相机和彩色相机是相互独立的传感器，因此它们有各自独立的坐标系，视角和视点也会有所不同。通常，我们希望将两种图像的数据结合起来使用，以方便理解深度信息。图像转换的目的就是通过一定的变换，将一个相机的视点转换到另一个相机的视点上。</p>
+<p>传感器SDK为我们提供了这样的转换函数。目录2 - TransformDepthToColor中的代码演示了从深度相机到彩色相机的视点转换。这个过程可以大致分为以下三个步骤。</p>
+<ol>
+<li><p>首先，加载Azure Kinect的图像转换引擎</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> Azure Kinect transformation engine</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">readonly</span> Transformation transform = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化一个空图像，用来存放转换后的深度图</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Image transformedDepth = <span class="keyword">new</span> Image(</span><br><span class="line">    ImageFormat.Depth16, colorWidth, colorHeight, colorWidth * <span class="keyword">sizeof</span>(UInt16))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用SDK函数DepthImageToColorCamera，传入捕获和空图像进行转换</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.transform.DepthImageToColorCamera(capture, transformedDepth);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样就可以将深度图像变换到彩色相机的视点上，使深度图和彩色图的像素能够一一对应。下面是转换后的深度图。</p>
+<img src="/2019/09/27/用Azure-Kinect-DK进行深度测量/2-TransformDepthToColor.png" title="2-TransformDepthToColor">
+<p>有了转换后的深度图像和对应的彩色图像，我们就可以开始进行深度测量了。通过深度图的像素值，我们就可以获取彩色图上任意一点(x, y)的深度了！像这样：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transformedDepth.GetPixel&lt;<span class="keyword">ushort</span>&gt;(y, x)</span><br></pre></td></tr></table></figure>
+<h2 id="简单的深度测量应用"><a href="#简单的深度测量应用" class="headerlink" title="简单的深度测量应用"></a>简单的深度测量应用</h2><h3 id="图像分割"><a href="#图像分割" class="headerlink" title="图像分割"></a>图像分割</h3><p>利用深度信息，一个简单的应用是前景背景的分割。目录3 - SegmentColor中的代码演示了分割图像前景的过程。</p>
+<p>由于拥有深度信息，我们可以设置一个距离阈值（如1000，单位为毫米）。当像素的深度值小于阈值，则认为其属于前景，保持像素颜色不变。反之则属于背景，将像素的颜色值置为0。这样就实现了简单的前景分割。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.colorHeight * <span class="keyword">this</span>.colorWidth; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (depthPixels[i] &lt; <span class="number">1000</span> &amp;&amp;</span><br><span class="line">        depthPixels[i] != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    colorPixels[i] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就能将前景分割出来啦。</p>
+<img src="/2019/09/27/用Azure-Kinect-DK进行深度测量/3-SegmentColor.png" title="3-SegmentColor">
+<h3 id="测量物体的距离"><a href="#测量物体的距离" class="headerlink" title="测量物体的距离"></a>测量物体的距离</h3><p>有了丰富的场景数据，如果能加上一点图像理解的能力就更好了。使用微软Azure的认知服务，能够很方便地为应用添加智能。在这里，我们使用Azure上的计算机视觉服务，可以直接使用预训练好的通用视觉模型，为应用增加视觉感知能力。</p>
+<p>目录4 - CognitiveServices中的工程演示了一个测量人体距离的应用。要测量人体距离，当然需要先进行人体检测。使用认知视觉服务，对彩色图片进行分析，可以轻松进行物体检测。当在图片中检测到人体时，利用深度信息就可以计算出摄像头到人的距离了。为了方便拍摄，我对识别的目标做了一点小修改，将识别人体改为识别背包。同时，为了方便理解，我将视觉服务返回的物体位置用红色矩形标记了出来。</p>
+<p>如果你想要自己跑这个程序，需要有有效的Azure订阅，并且创建一个计算机视觉资源。之后，还要将代码中的subscriptionKey和Endpoint替换为自己资源中的信息。</p>
+<p>应用的逻辑可以划分为以下几个步骤：</p>
+<ol>
+<li><p>实例化计算机视觉客户端</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create the computer vision client</span></span><br><span class="line">computerVision = <span class="keyword">new</span> ComputerVisionClient(</span><br><span class="line">    <span class="keyword">new</span> ApiKeyServiceClientCredentials(subscriptionKey),</span><br><span class="line">    <span class="keyword">new</span> System.Net.Http.DelegatingHandler[] &#123; &#125;)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// You must use the same region as you used to get  </span></span><br><span class="line">        <span class="comment">// your subscription keys. </span></span><br><span class="line">        Endpoint = <span class="string">"YourEndpoint"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>转换深度图像到彩色相机视点</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.transform.DepthImageToColorCamera(capture, transformedDepth);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分析图像，获取背包物体的包围盒</p>
+<p> 在图像分析的结果里，有一个物体的集合，里面包含了检测出的所有物体。每一个物体都有一个属性和表示位置的矩形，这里我用”Luggage and bags”属性来检测背包，并且将矩形绘制出来。</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">_ = computerVision.AnalyzeImageInStreamAsync(stream, MainWindow.features).ContinueWith((Task&lt;ImageAnalysis&gt; analysis) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> analysis.Result.Objects)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (item.ObjectProperty == <span class="string">"Luggage and bags"</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">this</span>.boundingBox = item.Rectangle;</span><br><span class="line">                rectangle.Rect = <span class="keyword">new</span> Rect(<span class="keyword">this</span>.boundingBox.X, <span class="keyword">this</span>.boundingBox.Y, <span class="keyword">this</span>.boundingBox.W, <span class="keyword">this</span>.boundingBox.H);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (System.Exception ex)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>.StatusText = ex.ToString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, TaskScheduler.FromCurrentSynchronizationContext());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>取包围盒的中心点的深度值，得到摄像头到背包的距离</p>
+<p> 从计算过程来看，x和y分别是矩形中心的横坐标和纵坐标。通过获取这个坐标的深度值，就得到了背包的距离。</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (boundingBox != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> y = (boundingBox.Y + boundingBox.H / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">int</span> x = (boundingBox.X + boundingBox.W / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.StatusText = <span class="string">"The bag is: "</span> + transformedDepth.GetPixel&lt;<span class="keyword">ushort</span>&gt;(y, x) + <span class="string">"mm away"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>最终的显示效果是这样的，红色矩形标识了背包的位置，下方的文字显示背包距离摄像头601毫米。</p>
+<img src="/2019/09/27/用Azure-Kinect-DK进行深度测量/bag.png" title="bag">
+<p>通过下面的3D图像能更容易理解这个过程。首先，计算机视觉服务在二维图片中识别出了一个背包，用矩形标记了背包的位置。我们可能会将这个矩形想象成一个平面图形，即图中的黄色矩形。但是，从深度相机（红色圆点）的角度来看，这个矩形包含了三维中的一个锥形空间，即图中的红色区域。红色圆点到白色曲面上不同点的距离，组成了场景的深度信息。通过获取矩形中心点的深度值，我们实际上获得了图中蓝色线段的长度。</p>
+<img src="/2019/09/27/用Azure-Kinect-DK进行深度测量/3D.png" title="3D">
+<h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><p>从上面的例子可以看到，传感器SDK提供了对硬件传感器流的低级访问，使用SDK可以获得一些基础数据，例如深度图、音频流和陀螺仪数据等。利用转换后的深度图，我们可以进行深度测量、图像分割，结合Azure认知服务还可以测量特定物体的距离。在实际的商用领域中，深度测量能有怎样的应用场景呢？下面给出一些设想和实现思路。</p>
+<h2 id="物流信息自动识别"><a href="#物流信息自动识别" class="headerlink" title="物流信息自动识别"></a>物流信息自动识别</h2><p>在物流仓库，可以结合Azure的计算机视觉服务，自动测量包裹的尺寸。将Kinect设置在物流流水线上，持续将捕获画面上传到云端进行分析。当有包裹经过时，云端会返回物体识别的结果，包括包裹的边缘位置信息。利用包裹的边缘位置，深度相机可以获取包裹四个顶点的深度值，然后计算出包裹的长宽大小。根据测量的大小，可以统计出所有包裹的尺寸，合理设置车辆的装箱方案。</p>
+<p>此外，可以结合文本识别服务，实现光学字符识别（OCR），自动识别出包裹的运单信息，快速分发包裹。例如，某物流公司的运单信息都贴在包裹的一个指定位置上。当有包裹经过时，我们将包裹图片上传到文本识别服务。云服务可以针对运单信息的部分进行字符识别，并返回识别结果。这样，可以自动将包裹分类，提高物流管理速度。</p>
+<img src="/2019/09/27/用Azure-Kinect-DK进行深度测量/shipment.png" title="shipment">
+<h2 id="环境三维重建"><a href="#环境三维重建" class="headerlink" title="环境三维重建"></a>环境三维重建</h2><p>仅通过一个Kinect设备在一个角度进行采集，获得的数据是不足够的。在某些情况下，深度测量会出现失效，例如多径干扰、信号饱和或信号强度过低。通过多个Kinect设备，多次采集场景数据，能够避免出现测量死角。</p>
+<img src="/2019/09/27/用Azure-Kinect-DK进行深度测量/capture-3D.png" title="capture-3D">
+<p>将多次测量的深度数据整合起来，甚至可以重建场景的三维模型。这对于文物保存、建筑评估等领域是非常有用的。</p>
+<img src="/2019/09/27/用Azure-Kinect-DK进行深度测量/reconstruction.jpeg" title="reconstruction">
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Azure Kinect DK和之前的Kinect for Windows有什么不同？一方面，Azure Kinect有着更高规格的硬件，例如更强的陀螺仪和更丰富的深度相机模式，更适合于工业使用。另一方面，Azure Kinect将基本功能集成在两个SDK中，而更高级的功能，例如人脸追踪、语音识别等，则通过与Azure认知服务连接来实现。通过Azure云计算，能够更快地进行数据分析和处理，服务的部署也更方便。</p>
+<p>从上手来看，目前Azure Kinect DK主要涉及Azure认知服务的视觉和语音服务，但是，深度相机和云的结合还不是很密切。深度信息的分析和处理，例如深度图的生成，都是在本地运算生成。官网给出的样例中，视觉服务只用于分析彩色图片，没有利用到深度图片。将深度数据与认知服务结合，可能会有更多的应用前景，例如，利用深度数据的变化预测物体的运动轨迹。相信随着SDK的不断完善，Azure Kinect DK会在工业落地实际应用中发挥更大的潜力。</p>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2019/10/08/用Azure-Kinect-DK追踪人体运动/" title= "用Azure Kinect DK追踪人体运动">
+                    <div class="nextTitle">用Azure Kinect DK追踪人体运动</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/06/30/用例建模总结/" title= "用例建模总结">
+                    <div class="prevTitle">用例建模总结</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="https://github.com/Xungerrrr" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/wechat.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.facebook.com/profile.php?id=100025222894249" class="iconfont-archer facebook" target="_blank" title=facebook></a>
+            
+        
+    
+        
+    
+        
+            
+                <a href="https://www.instagram.com/xungerrrr/" class="iconfont-archer instagram" target="_blank" title=instagram></a>
+            
+        
+    
+        
+            
+                <a href="mailto:hellolixy@icloud.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:70vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Azure-Kinect-DK概述"><span class="toc-number">1.</span> <span class="toc-text">Azure Kinect DK概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kinect设备"><span class="toc-number">1.1.</span> <span class="toc-text">Kinect设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件开发工具包"><span class="toc-number">1.2.</span> <span class="toc-text">软件开发工具包</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#深度相机的原理"><span class="toc-number">2.</span> <span class="toc-text">深度相机的原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#深度测量"><span class="toc-number">3.</span> <span class="toc-text">深度测量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备工作"><span class="toc-number">3.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取图像"><span class="toc-number">3.2.</span> <span class="toc-text">获取图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像转换"><span class="toc-number">3.3.</span> <span class="toc-text">图像转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的深度测量应用"><span class="toc-number">3.4.</span> <span class="toc-text">简单的深度测量应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图像分割"><span class="toc-number">3.4.1.</span> <span class="toc-text">图像分割</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测量物体的距离"><span class="toc-number">3.4.2.</span> <span class="toc-text">测量物体的距离</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#应用场景"><span class="toc-number">4.</span> <span class="toc-text">应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#物流信息自动识别"><span class="toc-number">4.1.</span> <span class="toc-text">物流信息自动识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境三维重建"><span class="toc-number">4.2.</span> <span class="toc-text">环境三维重建</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 39
+        </div>
+        <!-- search  -->
+        
+            <div class="site-search popup-trigger">
+                <span class="iconfont-archer search-icon">&#xe627;</span>
+            </div>
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/11</span><a class="archive-post-title" href= "/2019/10/11/单镜头也能测深度？/" >单镜头也能测深度？</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/08</span><a class="archive-post-title" href= "/2019/10/08/用Azure-Kinect-DK追踪人体运动/" >用Azure Kinect DK追踪人体运动</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/27</span><a class="archive-post-title" href= "/2019/09/27/用Azure-Kinect-DK进行深度测量/" >用Azure Kinect DK进行深度测量</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/30</span><a class="archive-post-title" href= "/2019/06/30/用例建模总结/" >用例建模总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/29</span><a class="archive-post-title" href= "/2019/05/29/Bezier-Curve/" >Bezier Curve</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/13</span><a class="archive-post-title" href= "/2019/05/13/Shadow-Mapping/" >Shadow Mapping</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/07</span><a class="archive-post-title" href= "/2019/05/07/Lights-and-Shading/" >Lights and Shading</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href= "/2019/05/04/领域建模-对象状态/" >领域建模 - 对象状态</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href= "/2019/05/04/用例建模-业务建模方法/" >用例建模 - 业务建模方法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/17</span><a class="archive-post-title" href= "/2019/04/17/Camera/" >Camera</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/12</span><a class="archive-post-title" href= "/2019/04/12/用例建模-绘制用例图/" >用例建模 - 绘制用例图</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2019/04/09/Transformation/" >Transformation</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2019/04/01/软件项目过程模型与规划/" >软件项目过程模型与规划</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/26</span><a class="archive-post-title" href= "/2019/03/26/Draw-Line/" >Draw Line</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2019/03/11/GUI-and-Draw-Simple-Graphics/" >GUI and Draw Simple Graphics</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2019/03/10/软件项目与知识团队管理基础/" >软件项目与知识团队管理基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2019/03/04/Learn-About-CG/" >Learn About CG</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2019/03/03/软件的本质与软件工程科学/" >软件的本质与软件工程科学</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/16</span><a class="archive-post-title" href= "/2018/09/16/Git日常使用总结/" >Git日常使用总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/10</span><a class="archive-post-title" href= "/2018/09/10/Android-Learning/" >Android Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/19</span><a class="archive-post-title" href= "/2018/06/19/Unity-3D-人机坦克大战/" >Unity 3D - 人机坦克大战</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/29</span><a class="archive-post-title" href= "/2018/05/29/Unity-3D-汽车尾气模拟/" >Unity 3D - 汽车尾气模拟</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2018/05/11/Unity-3D-智能巡逻兵/" >Unity 3D - 智能巡逻兵</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href= "/2018/05/05/UWP-Media-Player/" >UWP - Media Player</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href= "/2018/05/05/UWP-Networking/" >UWP - Networking</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span><a class="archive-post-title" href= "/2018/04/24/Unity-3D-Hit-UFO-2-0/" >Unity 3D - Hit UFO 2.0</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/19</span><a class="archive-post-title" href= "/2018/04/19/UWP-MyList2/" >UWP - MyList2</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/17</span><a class="archive-post-title" href= "/2018/04/17/Unity-3D-Hit-UFO/" >Unity 3D - Hit UFO</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href= "/2018/04/15/Vi-Java-Ant-和-JUnit-的学习报告/" >Vi, Java, Ant 和 JUnit 的学习报告</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2018/04/10/Unity-3D-牧师与魔鬼-2-0/" >Unity 3D - 牧师与魔鬼 2.0</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/06</span><a class="archive-post-title" href= "/2018/04/06/基于稀疏表示的人脸识别/" >基于稀疏表示的人脸识别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/Unity-3D-牧师与魔鬼/" >Unity 3D - 牧师与魔鬼</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span><a class="archive-post-title" href= "/2018/03/31/Unity-3D-太阳系/" >Unity 3D - 太阳系</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span><a class="archive-post-title" href= "/2018/03/31/Unity-3D-基础概念/" >Unity 3D - 基础概念</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2018/03/30/Unity-3D-Learning/" >Unity 3D Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2018/03/29/UWP-MyList/" >UWP - MyList</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2018/03/29/UWP-Learning/" >UWP Learning</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/16</span><a class="archive-post-title" href= "/2017/05/16/Card-Game/" >Card Game</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2017/03/30/hello-world/" >Hello World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
+    
+        <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
+    
+        <span class="sidebar-tag-name" data-tags="UWP"><span class="iconfont-archer">&#xe606;</span>UWP</span>
+    
+        <span class="sidebar-tag-name" data-tags="Unity"><span class="iconfont-archer">&#xe606;</span>Unity</span>
+    
+        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+    
+        <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="实训"><span class="iconfont-archer">&#xe606;</span>实训</span>
+    
+        <span class="sidebar-tag-name" data-tags="Face-Recognition"><span class="iconfont-archer">&#xe606;</span>Face-Recognition</span>
+    
+        <span class="sidebar-tag-name" data-tags="Image-Understanding"><span class="iconfont-archer">&#xe606;</span>Image-Understanding</span>
+    
+        <span class="sidebar-tag-name" data-tags="SE"><span class="iconfont-archer">&#xe606;</span>SE</span>
+    
+        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
+    
+        <span class="sidebar-tag-name" data-tags="Azure"><span class="iconfont-archer">&#xe606;</span>Azure</span>
+    
+        <span class="sidebar-tag-name" data-tags="Computer Vision"><span class="iconfont-archer">&#xe606;</span>Computer Vision</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Unity"><span class="iconfont-archer">&#xe60a;</span>Unity</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Xunyan Li"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+        <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="iconfont-archer">&#xe609;</i>
+    </span>
+  </div>
+</div>
+        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.8.0/dist/instantsearch.min.js" defer></script>
+        <script src="/scripts/search.js" defer></script>
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->    
+     
+    </body>
+</html>
+
+
