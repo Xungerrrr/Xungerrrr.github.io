@@ -283,7 +283,7 @@ height:70vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">3.3k</span>Reading time: <span class="post-count reading-time">11 min</span></span>
+                        <span>Word count: <span class="post-count word-count">3.4k</span>Reading time: <span class="post-count reading-time">11 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -496,7 +496,8 @@ height:70vh;
 <img src="/2019/10/11/单镜头也能测深度？/test.PNG" title="test">
 <p>测量的结果显示，手机长15cm，宽7cm。手机真实的长宽为14.89cm和6.81cm。可以看出，ARKit的测量结果只有1~2毫米的误差，非常准确。</p>
 <h1 id="深度相机能被取代吗？"><a href="#深度相机能被取代吗？" class="headerlink" title="深度相机能被取代吗？"></a>深度相机能被取代吗？</h1><p>在ARKit这样强大的SDK的加持下，普通的手机摄像头也能实现深度感知了，那它们能否取代深度相机呢？我觉得，这在目前是不行的，也没有必要。</p>
-<p>从原理来看，不同的相机有不同的优缺点，自然也会有不同的适用场景。单目VIO系统确实有其独特的优点，例如制造成本低、功耗低、准确度高、分辨率高等等，但它不能在昏暗的环境下使用，面对特征不明显的场景会出现很大的误差。而且，单目VIO系统需要的计算量是很大的，导致其实时性较差。这些都是单目VIO系统无法避免的缺点。相比之下，ToF深度相机是通过物理测量获得深度信息的，因此实时性很高，同时，它不依靠特征进行测量，所以能够在昏暗和特征不明显的场景中使用，对于边缘和尺寸的测量也会更加精准。双目深度相机可以捕获更多的视觉信息，并且计算量会比单目VIO系统要小，因为两个摄像头的相对位置是固定的。</p>
+<p>从原理来看，不同的相机有不同的优缺点，自然也会有不同的适用场景。单目VIO系统确实有其独特的优点，例如制造成本低、功耗低、准确度高、分辨率高等等，但它不能在昏暗的环境下使用，面对特征不明显的场景会出现很大的误差。而且，单目VIO系统需要的计算量是很大的，导致其实时性较差。这些都是单目VIO系统无法避免的缺点。下图是我用9.7寸iPad Pro进行的测试，它配备了A9X处理器和单摄像头。当测试的线条达到这个数量时，设备已经出现了明显的卡顿和发热，可见ARKit对设备的计算能力要求很高，计算能力不足会严重影响性能。相比之下，ToF深度相机是通过物理测量获得深度信息的，因此实时性很高，同时，它不依靠特征进行测量，所以能够在昏暗和特征不明显的场景中使用，对于边缘和尺寸的测量也会更加精准。双目深度相机可以捕获更多的视觉信息，并且计算量会比单目VIO系统要小，因为两个摄像头的相对位置是固定的。</p>
+<img src="/2019/10/11/单镜头也能测深度？/lag.PNG" title="lag">
 <p>从上面的角度来看，要是想提高测量的精度，将两者结合倒是一个不错的想法。深度相机能给VIO系统带来很多好处。对于特征点不明显的场景，ToF相机能辅助进行边缘检测、平面检测和尺度检测，能够增加测量精度的稳定性。反过来，在户外光照强烈的地方，VIO系统能够弥补ToF相机的不足。添加相机的数量能增加视觉范围，捕获更多的光学特征。现在许多手机都配备了多个摄像头，通过校准这些摄像头，能够优化近距离的深度测量精度。最近，也有手机厂商开始在手机上配备ToF镜头，用来提高相机的虚化能力，以及提升AR的准确性，例如三星Note 10和华为P30 Pro。</p>
 <p>对于手机这样的小型设备来说，使用单目VIO系统已经能胜任很多使用场景了。而且，ToF深度相机的功耗相对较大，目前使用在手机上的都是小功率的型号，只能起到简单的辅助作用。这样来看，深度相机似乎可以被取代。然而，三维感知不仅用在消费级产品上，还要用在工业生产中。工业使用对环境、精度都提出更高的要求。像Azure Kinect就是一款针对商用领域的产品，其配备了高规格的ToF相机，能够提供比单目VIO系统更全面的深度感知能力。因此，即使单镜头VIO在手机上有足够多的优点，它仍无法在所有使用场景取代深度相机。</p>
 
@@ -652,20 +653,6 @@ top:70vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1441,9 +1428,9 @@ top:70vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
-    
         <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
+    
+        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
     
         <span class="sidebar-tag-name" data-tags="UWP"><span class="iconfont-archer">&#xe606;</span>UWP</span>
     
