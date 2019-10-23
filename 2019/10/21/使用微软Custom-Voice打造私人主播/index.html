@@ -281,7 +281,7 @@ height:70vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2.6k</span>Reading time: <span class="post-count reading-time">9 min</span></span>
+                        <span>Word count: <span class="post-count word-count">3.5k</span>Reading time: <span class="post-count reading-time">12 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -418,7 +418,7 @@ height:70vh;
 <p>Now…cultural diffusion is generally defined as the transmission of culture from one society to another. And by culture, we mean anything from artistic styles to, um… you know, technology, science. So, we use “culture” very broadly. A common means of this process taking place is trade, traveling merchants, or trading hubs, places where people from various areas all come together and ideas get exchanged.</p>
 <p>Let’s start with the example of the transmission of a number system, a system that used the number zero, from South Asia into Western Europe. OK, so before this cultural diffusion happened, the dominant number system in Western Europe was the Roman numeral system. The Roman numeral system developed primarily as a means of record keeping, as a way to keep track of commercial transactions, um, taxes, census records, things of that sort. As a consequence, this system started with the number one.</p>
 </blockquote>
-<p>备考过托福的小伙伴可能会记得这几段内容，因为这是TPO的一个社会科学类听力材料。不过，如果你有关注过YouTube上的科技类频道，你可能会觉得这个声音似曾相似。这个在讲文化传播内容的人，怎么听起来这么像那个做科技评测Uncle Lew？</p>
+<p>备考过托福的小伙伴可能会记得这几段内容，因为这是TPO的一个社会科学类听力材料。不过，如果你有关注过YouTube上的科技类频道，你可能会觉得这个声音似曾相似。这个在讲文化传播内容的人，怎么听起来这么像那个做科技评测的Uncle Lew？</p>
 <p>没错，你没听错，这是Lewis George Hilsenteger的声音。他是YouTube上的著名科技博主，其创立的频道Unbox Therapy，粉丝数量达到了惊人的1560万。一个科技博主怎么会讲社会科学的内容呢？实际上，这一切都是使用微软Azure自定义语音(Custom Voice)生成出来的。借助Custom Voice，你可以创建独一无二的语音模型，并将文字转换成语音输出。不管你是想生成自己的声音，还是想让自己喜爱的主播为你朗读任何内容，只要提供一定量的声音数据，Custom Voice都能帮你做到。下面，我们就来看看具体要怎么做吧！</p>
 <h2 id="创建语音资源和项目"><a href="#创建语音资源和项目" class="headerlink" title="创建语音资源和项目"></a>创建语音资源和项目</h2><p>在进行这一步之前，要有一个有效的Azure订阅。如果还没有Azure账号，可以前往azure.com进行注册，首次注册还能获得200美元的试用额度呢。</p>
 <p>之后，前往<a href="https://speech.microsoft.com/portal" target="_blank" rel="noopener">语音服务门户</a>，点击Create new创建一个语音资源。在弹出的对话框中填入资源名称、Azure订阅、地区和定价层。创建完成后，点击Go to Studio进入对应的资源工作区。</p>
@@ -448,7 +448,11 @@ height:70vh;
 <p>接下来，选择训练方式。目前，自定义语音提供了两种训练方法，一种是统计参数合成方法，另一种是拼接合成方法。只有当数据集包含的语句超过6000句时，才能够使用拼接合成方法。这个是由技术决定的。统计参数合成方法是在一个标准语音的基础上，通过调整模型的参数来拟合目标声音的统计特征，从而合成出相似的声音。拼接合成方法是直接采用原有声音样本中的细小片段，拼接串联形成合成的声音。因此，拼接合成方法需要更多的训练数据，能产生更自然和更清晰的结果。</p>
 <img src="/2019/10/21/使用微软Custom-Voice打造私人主播/select_training_method.png" title="select_training_method">
 <p>为了能够使用拼接合成方法，我从Lew Later频道中选择了24个视频，提取了6068句语音。之后，分别使用两种不同的方法进行训练。在选择好数据集和训练方法后，点击Train即可开始训练。训练的时间和数据量有关，6068句大约花了一天的时间。</p>
-<h2 id="测试和分析"><a href="#测试和分析" class="headerlink" title="测试和分析"></a>测试和分析</h2><p>在花了几天时间进行训练之后，终于到了有趣的测试环节。首先，我们来听一下默认测试文本的效果。</p>
+<h2 id="测试和分析"><a href="#测试和分析" class="headerlink" title="测试和分析"></a>测试和分析</h2><p>在花了几天时间进行训练之后，终于到了有趣的测试环节。切换到Testing，点击Add test，然后选择要测试的模型。</p>
+<img src="/2019/10/21/使用微软Custom-Voice打造私人主播/select_test_voice.png" title="select_test_voice">
+<p>之后，输入要测试的文本，就可以进行测试。</p>
+<img src="/2019/10/21/使用微软Custom-Voice打造私人主播/select_test_input.png" title="select_test_input">
+<p>首先，我们来听一下默认测试文本的效果。</p>
 <blockquote>
 <p>Hi, this is my custom voice.</p>
 </blockquote>
@@ -511,7 +515,64 @@ height:70vh;
 </ul>
 <p>经过上面的测试，可以看到，两种合成方法其实各有其优缺点。具体使用哪种方法，要视具体的训练数据、测试数据和使用场景而定。例如，如果训练数据比较少，对结果的清晰度要求不高，则可以使用统计参数合成方法；如果训练数据较多，测试数据包含了很多在训练数据中出现过的内容，则可以使用拼接合成方法。</p>
 <p>经过了以上的训练和测试，我们已经获得了一个非常好的自定义语音模型。只要输入任何你想要聆听的内容，你的私人主播就会为你朗读！文章开头的托福听力就是使用这个拼接合成模型生成的！</p>
-<h2 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h2><h2 id="中文怎么样"><a href="#中文怎么样" class="headerlink" title="中文怎么样"></a>中文怎么样</h2>
+<p>除了在门户里进行测试，我们还可以将训练好的语音模型部署到终结点上，通过API进行访问。部署页面提供了简单的检查按钮和示例代码。不过，我们目前不能将模型保存到本地，或者转发给他人，导致服务还欠缺一些灵活性和通用性。</p>
+<img src="/2019/10/21/使用微软Custom-Voice打造私人主播/deplyment_detail.png" title="deplyment_detail">
+<h2 id="中文怎么样"><a href="#中文怎么样" class="headerlink" title="中文怎么样"></a>中文怎么样</h2><p>试过了英文，当然还要尝试一下中文自定义语音的效果。这里，我使用了微软智慧云拓展总监兼客服兼非著名主播Grace Peng的声音进行训练，语句大约是1200句，使用了统计参数合成训练方法。下面先来看看默认测试语音。</p>
+<blockquote>
+<p>你好，这是我的自定义语音。</p>
+</blockquote>
+<audio controls height="100" width="100"><br>    <source src="grace_1.wav"><br></audio>
+
+<p>和英文相比，合成出来的中文感觉偏生硬一些。使用同样数量的语句训练的英语语音模型，音调会更加自然一点。</p>
+<p>和Grace的声音比较起来会怎么样呢？下面来听听。</p>
+<blockquote>
+<p>上云这件事我们其实已经谈了很多年，大家都知道云计算是非常有好处的，可以解决很多问题。可是，从开始到现在，一直都没人能完全发自内心的说，上云这件事情绝对没有问题！我们都知道，想要踏踏实实的认可一件事，你必须得先解开心里的结，对于上云，这个结便是“安全”。</p>
+</blockquote>
+<ul>
+<li><p>Grace</p>
+  <audio controls height="100" width="100"><br>      <source src="grace_ori_2.mp3"><br>  </audio>
+</li>
+<li><p>合成</p>
+  <audio controls height="100" width="100"><br>      <source src="grace_2.wav"><br>  </audio>
+
+</li>
+</ul>
+<p>能听出来，合成的声音和真实的声音差距还是挺大的。一方面，这可能是训练集太小导致的，另一方面，语音合成技术在英语上确实会成熟一些，合成的效果也好一些。微软的Custom Voice在中文上的表现还有提高的空间。</p>
+<h2 id="影响合成效果的因素"><a href="#影响合成效果的因素" class="headerlink" title="影响合成效果的因素"></a>影响合成效果的因素</h2><p>有许多因素会影响最终结果的质量。下面来简单看看数据质量和数据数量会对结果产生什么影响。</p>
+<p>下面这个数据集包含699个语句，但是信噪比比较低，大部分都低于20。让我们来听听训练的结果是怎么样的。</p>
+<img src="/2019/10/21/使用微软Custom-Voice打造私人主播/unbox_therapy.png" title="unbox_therapy">
+<audio controls height="100" width="100"><br>    <source src="low_quality.wav"><br></audio>
+
+<p>可以听出来，这个合成音频带有明显的噪音。如果训练数据的质量较差，会严重降低合成结果的质量。</p>
+<p>数据数量对结果的影响大吗？下面来听听300句和1200句的效果。</p>
+<ul>
+<li><p>300句</p>
+  <audio controls height="100" width="100"><br>      <source src="grace_3.wav"><br>  </audio>
+</li>
+<li><p>1200句</p>
+  <audio controls height="100" width="100"><br>      <source src="grace_1.wav"><br>  </audio>
+
+</li>
+</ul>
+<p>两者的清晰度听起来差不多，不过1200句的训练结果会有更明显的音调。也就是说，数据量更大，模型能够学习到更多语音的特征，因此能够生成更相似的结果。</p>
+<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>写到这里，小编突发奇想，小冰不是都能唱歌唱京剧了么，用Custom Voice是不是能训练出来一个会唱歌的语音模型呢。抱着试一试的心态，我从A-Lin的歌曲中截取了100个背景音乐较小的句段，训练语音模型。然而，训练的结果是这样子的🤦‍。看来说话的音调和唱歌的音调学习起来完全不是一回事啊。</p>
+<blockquote>
+<p>忘记了拥抱，忘记了微笑，忘记我们曾经是那么那么样的好。</p>
+</blockquote>
+<ul>
+<li><p>A-Lin版</p>
+  <audio controls height="100" width="100"><br>      <source src="A-Lin_1.wav"><br>  </audio>
+</li>
+<li><p>合成版（慎点）</p>
+  <audio controls height="100" width="100"><br>      <source src="A-Lin_2.wav"><br>  </audio>
+
+</li>
+</ul>
+<p>时值国庆70周年，让我们用Grace迷人的声音朗诵一段《我和我的祖国》，结束今天的文章，共祝祖国生日快乐！</p>
+<blockquote>
+<p>我和我的祖国，一刻也不能分割。无论我走到哪里，都流出一首赞歌。我歌唱每一座高山，我歌唱每一条河。袅袅炊烟，小小村落，路上一道辙。</p>
+</blockquote>
+<audio controls height="100" width="100"><br>    <source src="grace_4.wav"><br></audio>
     </article>
     <!-- license  -->
     
@@ -651,7 +712,7 @@ top:70vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建语音资源和项目"><span class="toc-number">1.</span> <span class="toc-text">创建语音资源和项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备数据"><span class="toc-number">2.</span> <span class="toc-text">准备数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上传数据"><span class="toc-number">3.</span> <span class="toc-text">上传数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#训练模型"><span class="toc-number">4.</span> <span class="toc-text">训练模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试和分析"><span class="toc-number">5.</span> <span class="toc-text">测试和分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些问题"><span class="toc-number">6.</span> <span class="toc-text">一些问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中文怎么样"><span class="toc-number">7.</span> <span class="toc-text">中文怎么样</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建语音资源和项目"><span class="toc-number">1.</span> <span class="toc-text">创建语音资源和项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备数据"><span class="toc-number">2.</span> <span class="toc-text">准备数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上传数据"><span class="toc-number">3.</span> <span class="toc-text">上传数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#训练模型"><span class="toc-number">4.</span> <span class="toc-text">训练模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试和分析"><span class="toc-number">5.</span> <span class="toc-text">测试和分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中文怎么样"><span class="toc-number">6.</span> <span class="toc-text">中文怎么样</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#影响合成效果的因素"><span class="toc-number">7.</span> <span class="toc-text">影响合成效果的因素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题外话"><span class="toc-number">8.</span> <span class="toc-text">题外话</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -664,74 +725,6 @@ top:70vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1499,9 +1492,9 @@ top:70vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
-    
         <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
+    
+        <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
     
         <span class="sidebar-tag-name" data-tags="UWP"><span class="iconfont-archer">&#xe606;</span>UWP</span>
     
@@ -1515,11 +1508,11 @@ top:70vh;
     
         <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
     
-        <span class="sidebar-tag-name" data-tags="SE"><span class="iconfont-archer">&#xe606;</span>SE</span>
-    
         <span class="sidebar-tag-name" data-tags="Face-Recognition"><span class="iconfont-archer">&#xe606;</span>Face-Recognition</span>
     
         <span class="sidebar-tag-name" data-tags="Image-Understanding"><span class="iconfont-archer">&#xe606;</span>Image-Understanding</span>
+    
+        <span class="sidebar-tag-name" data-tags="SE"><span class="iconfont-archer">&#xe606;</span>SE</span>
     
         <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
     
