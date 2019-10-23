@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Xunyan Li">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Xunyan Li">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>使用微软Custom Voice打造私人主播 · Xungerrrr&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/Xungerrrr.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+        <!-- algolia -->
+        <script>
+            
+            var hits = JSON.parse('{"per_page":10}')
+            var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"We did not find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}')
+
+            var algolia = {
+                applicationID: 'F3BF984QRQ',
+                apiKey: '93cdbe479e884008b8ce6fab85ee08ba',
+                indexName: 'MyBlog',
+                hits: hits,
+                labels: labels
+            }
+        </script>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Xungerrrr&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">使用微软Custom Voice打造私人主播</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Xungerrrr's Blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:70vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/custom-voice.png)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            使用微软Custom Voice打造私人主播
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">2.6k</span>Reading time: <span class="post-count reading-time">9 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/10/21</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>开始之前，我们先来听一段英语音频。</p>
+<audio controls height="100" width="100"><br>  <source src="begin.mp3" type="audio/mpeg"><br></audio>
+
+<blockquote>
+<p>So, one of the more common topics that comes up in world history, because it’s had a pretty dramatic effect on how different societies evolve over long periods of time, is cultural diffusion.</p>
+<p>Now…cultural diffusion is generally defined as the transmission of culture from one society to another. And by culture, we mean anything from artistic styles to, um… you know, technology, science. So, we use “culture” very broadly. A common means of this process taking place is trade, traveling merchants, or trading hubs, places where people from various areas all come together and ideas get exchanged.</p>
+<p>Let’s start with the example of the transmission of a number system, a system that used the number zero, from South Asia into Western Europe. OK, so before this cultural diffusion happened, the dominant number system in Western Europe was the Roman numeral system. The Roman numeral system developed primarily as a means of record keeping, as a way to keep track of commercial transactions, um, taxes, census records, things of that sort. As a consequence, this system started with the number one.</p>
+</blockquote>
+<p>备考过托福的小伙伴可能会记得这几段内容，因为这是TPO的一个社会科学类听力材料。不过，如果你有关注过YouTube上的科技类频道，你可能会觉得这个声音似曾相似。这个在讲文化传播内容的人，怎么听起来这么像那个做科技评测Uncle Lew？</p>
+<p>没错，你没听错，这是Lewis George Hilsenteger的声音。他是YouTube上的著名科技博主，其创立的频道Unbox Therapy，粉丝数量达到了惊人的1560万。一个科技博主怎么会讲社会科学的内容呢？实际上，这一切都是使用微软Azure自定义语音(Custom Voice)生成出来的。借助Custom Voice，你可以创建独一无二的语音模型，并将文字转换成语音输出。不管你是想生成自己的声音，还是想让自己喜爱的主播为你朗读任何内容，只要提供一定量的声音数据，Custom Voice都能帮你做到。下面，我们就来看看具体要怎么做吧！</p>
+<h2 id="创建语音资源和项目"><a href="#创建语音资源和项目" class="headerlink" title="创建语音资源和项目"></a>创建语音资源和项目</h2><p>在进行这一步之前，要有一个有效的Azure订阅。如果还没有Azure账号，可以前往azure.com进行注册，首次注册还能获得200美元的试用额度呢。</p>
+<p>之后，前往<a href="https://speech.microsoft.com/portal" target="_blank" rel="noopener">语音服务门户</a>，点击Create new创建一个语音资源。在弹出的对话框中填入资源名称、Azure订阅、地区和定价层。创建完成后，点击Go to Studio进入对应的资源工作区。</p>
+<img src="/2019/10/21/使用微软Custom-Voice打造私人主播/create_resource.png" title="create_resource">
+<p>接下来，我们要做的是自定义语音，所以选择Custom Voice。</p>
+<img src="/2019/10/21/使用微软Custom-Voice打造私人主播/choose_area.png" title="choose_area">
+<p>之后，我们便进入了自定义语音的工作区。在这里，点击New Project创建一个新项目。在弹出的对话框中输入项目名称、描述、性别和语言。注意，在创建了项目之后，是不能修改性别和语言的，因此，建议为每个人创建独立的项目。创建完成后，点击项目即可进入。</p>
+<img src="/2019/10/21/使用微软Custom-Voice打造私人主播/create_project.png" title="create_project">
+<h2 id="准备数据"><a href="#准备数据" class="headerlink" title="准备数据"></a>准备数据</h2><p>数据是关键的一环，数据的数量和质量决定了模型的效果。目前，自定义语音允许使用三种数据类型，分别是短音频+脚本、长音频+脚本和仅音频。其中，后两项还处于beta测试阶段，并且只能提供给S0定价层用户使用。</p>
+<img src="/2019/10/21/使用微软Custom-Voice打造私人主播/choose_data_type.png" title="choose_data_type">
+<p>鉴于YouTube视频没有提供视频字幕，我采用了“仅音频”方案。利用一些第三方工具，可以直接将YouTube视频转换成mp3文件下载，这样就能得到丰富的声音数据了。本文使用的是Lew Later频道的视频素材。注意，mp3的比特率必须在256kbps以上。如果上传wav文件，采样率必须在16kHz以上。</p>
+<p>使用“仅音频”选项，Azure其实是使用了语音转文本服务，将语音转录成对应的文本，并将音频分段。如果音频时间很长，这个过程可能会产生很高的费用。因此，也可以采用短音频+脚本的方式来准备数据。采用这种方式时，每个语音文件必须具有唯一的文件名，使用wav格式，采样率在16kHz以上。在脚本文件中，每一行包含了音频文件名和对应的文本内容，文件名和文本用制表符(\t)分隔。下面是示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0000000001[tab] This is the waistline, and it&apos;s falling.</span><br><span class="line">0000000002[tab] We have trouble scoring.</span><br><span class="line">0000000003[tab] It was Janet Maslin.</span><br></pre></td></tr></table></figure>
+<h2 id="上传数据"><a href="#上传数据" class="headerlink" title="上传数据"></a>上传数据</h2><p>在项目界面，点击Upload data上传语音数据。首先，选择数据类型，然后输入数据的名称和描述。</p>
+<img src="/2019/10/21/使用微软Custom-Voice打造私人主播/name_dataset.png" title="name_dataset">
+<p>之后，选择文件进行上传。如果选择了前两种数据类型，则要提供音频的.zip压缩包和.txt脚本文件。如果选择了“仅音频”，则只需上传音频的.zip压缩包。</p>
+<img src="/2019/10/21/使用微软Custom-Voice打造私人主播/import_recording_and_transcripts.png" title="import_recording_and_transcripts">
+<p>确保数据符合要求的格式，最后点击Upload进行上传。上传开始后，不要关闭或者刷新页面，直到页面提示上传完成。目前，语音服务门户没有提供上传进度信息，这一点还有待改进。</p>
+<p>数据上传完成后，点击数据条目，可以看到数据的分析信息，例如音频时长、发音准确度和音频信噪比。这有助于我们了解和改善音频的质量。</p>
+<img src="/2019/10/21/使用微软Custom-Voice打造私人主播/data_detail.png" title="data_detail">
+<p>点击Download，可以下载音频文件、对应的转录文本和详细的分析报告。</p>
+<img src="/2019/10/21/使用微软Custom-Voice打造私人主播/download_data.png" title="download_data">
+<h2 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h2><p>切换到Training标签，点击Train model来新建一个模型，然后输入模型的名称和描述。</p>
+<img src="/2019/10/21/使用微软Custom-Voice打造私人主播/create_model.png" title="create_model">
+<p>接下来，选择要用于训练的数据。可以选择一个或多个数据集进行训练。不过，如果所选的数据集包含重复的音频文件名，重复的音频将会被排除掉。</p>
+<img src="/2019/10/21/使用微软Custom-Voice打造私人主播/select_training_data.png" title="select_training_data">
+<p>接下来，选择训练方式。目前，自定义语音提供了两种训练方法，一种是统计参数合成方法，另一种是拼接合成方法。只有当数据集包含的语句超过6000句时，才能够使用拼接合成方法。这个是由技术决定的。统计参数合成方法是在一个标准语音的基础上，通过调整模型的参数来拟合目标声音的统计特征，从而合成出相似的声音。拼接合成方法是直接采用原有声音样本中的细小片段，拼接串联形成合成的声音。因此，拼接合成方法需要更多的训练数据，能产生更自然和更清晰的结果。</p>
+<img src="/2019/10/21/使用微软Custom-Voice打造私人主播/select_training_method.png" title="select_training_method">
+<p>为了能够使用拼接合成方法，我从Lew Later频道中选择了24个视频，提取了6068句语音。之后，分别使用两种不同的方法进行训练。在选择好数据集和训练方法后，点击Train即可开始训练。训练的时间和数据量有关，6068句大约花了一天的时间。</p>
+<h2 id="测试和分析"><a href="#测试和分析" class="headerlink" title="测试和分析"></a>测试和分析</h2><p>在花了几天时间进行训练之后，终于到了有趣的测试环节。首先，我们来听一下默认测试文本的效果。</p>
+<blockquote>
+<p>Hi, this is my custom voice.</p>
+</blockquote>
+<ul>
+<li><p>统计参数合成</p>
+  <audio controls height="100" width="100"><br>      <source src="statistical_1.wav"><br>  </audio>
+</li>
+<li><p>拼接合成</p>
+  <audio controls height="100" width="100"><br>      <source src="concatenative_1.wav"><br>  </audio>
+
+</li>
+</ul>
+<p>虽然这两段音频都很短，但是我们已经能够听出一些区别了。使用统计参数合成得到的语音比较模糊，语调起伏较小；使用拼接合成得到的语音则比较清晰，语调较为丰富。不过，两段音频都非常像Lewis本人的声音。</p>
+<p>下面，不妨找一段训练集中存在的内容，来跟合成的音频做一个比较。</p>
+<blockquote>
+<p>If you want the unboxing video of every single version of the current pixel 4 including all the colors, go check out the video on Unbox Therapy.</p>
+</blockquote>
+<ul>
+<li><p>原音频</p>
+  <audio controls height="100" width="100"><br>      <source src="original_2.wav"><br>  </audio>
+</li>
+<li><p>统计参数合成</p>
+  <audio controls height="100" width="100"><br>      <source src="statistical_2.wav"><br>  </audio>
+</li>
+<li><p>拼接合成</p>
+  <audio controls height="100" width="100"><br>      <source src="concatenative_2.wav"><br>  </audio>
+
+</li>
+</ul>
+<p>跟之前一样，统计参数合成得到的音频较为模糊，语调平淡，而拼接合成得到的音频则比较清晰和抑扬顿挫。但是，从这里能听出拼接合成的一个缺点，就是音频会在局部出现不平滑的现象，两个音节之间跳跃很大，这是因为声音是由许许多多细小的样本片段组合而成的。</p>
+<p>下面，从测试集中选择一句话来比较一下。</p>
+<blockquote>
+<p>New York pressuring Tesla to open up the Supercharger Network.</p>
+</blockquote>
+<ul>
+<li><p>原音频</p>
+  <audio controls height="100" width="100"><br>      <source src="original_3.wav"><br>  </audio>
+</li>
+<li><p>统计参数合成</p>
+  <audio controls height="100" width="100"><br>      <source src="statistical_3.wav"><br>  </audio>
+</li>
+<li><p>拼接合成</p>
+  <audio controls height="100" width="100"><br>      <source src="concatenative_3.wav"><br>  </audio>
+
+</li>
+</ul>
+<p>在这个测试中，第三个音频的拼接痕迹就非常严重了，而第二个音频还能保持不错的流畅度。当语句中出现一些比较少见的单词时，例如Tesla、Supercharger时，训练集中可能没有与这些单词直接对应的音频，所以一个单词需要由很多部分拼接合成出来，导致了音频的拼接感严重。统计参数合成方法由于是拟合声音，所以不会出现这种情况。</p>
+<p>最后，让我们用一句他本人可能没有说过的话来进行测试。看过苹果WWDC19的同学可能会记得，苹果用了一句非常长的话来演示Siri的声音效果。我们不妨就用这句话来测试吧！</p>
+<blockquote>
+<p>Absolute zero is the lowest limit of the thermodynamic temperature scale, a state at which the enthalpy and entropy of a cooled ideal gas reach their minimum value, taken as zero kelvin.</p>
+</blockquote>
+<ul>
+<li><p>统计参数合成</p>
+  <audio controls height="100" width="100"><br>      <source src="statistical_4.wav"><br>  </audio>
+</li>
+<li><p>拼接合成</p>
+  <audio controls height="100" width="100"><br>      <source src="concatenative_4.wav"><br>  </audio>
+
+</li>
+</ul>
+<p>经过上面的测试，可以看到，两种合成方法其实各有其优缺点。具体使用哪种方法，要视具体的训练数据、测试数据和使用场景而定。例如，如果训练数据比较少，对结果的清晰度要求不高，则可以使用统计参数合成方法；如果训练数据较多，测试数据包含了很多在训练数据中出现过的内容，则可以使用拼接合成方法。</p>
+<p>经过了以上的训练和测试，我们已经获得了一个非常好的自定义语音模型。只要输入任何你想要聆听的内容，你的私人主播就会为你朗读！文章开头的托福听力就是使用这个拼接合成模型生成的！</p>
+<h2 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h2><h2 id="中文怎么样"><a href="#中文怎么样" class="headerlink" title="中文怎么样"></a>中文怎么样</h2>
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/10/11/单镜头也能测深度？/" title= "单镜头也能测深度？">
+                    <div class="prevTitle">单镜头也能测深度？</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="https://github.com/Xungerrrr" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/wechat.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.facebook.com/profile.php?id=100025222894249" class="iconfont-archer facebook" target="_blank" title=facebook></a>
+            
+        
+    
+        
+    
+        
+            
+                <a href="https://www.instagram.com/xungerrrr/" class="iconfont-archer instagram" target="_blank" title=instagram></a>
+            
+        
+    
+        
+            
+                <a href="mailto:hellolixy@icloud.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:70vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建语音资源和项目"><span class="toc-number">1.</span> <span class="toc-text">创建语音资源和项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备数据"><span class="toc-number">2.</span> <span class="toc-text">准备数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上传数据"><span class="toc-number">3.</span> <span class="toc-text">上传数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#训练模型"><span class="toc-number">4.</span> <span class="toc-text">训练模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试和分析"><span class="toc-number">5.</span> <span class="toc-text">测试和分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些问题"><span class="toc-number">6.</span> <span class="toc-text">一些问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中文怎么样"><span class="toc-number">7.</span> <span class="toc-text">中文怎么样</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 40
+        </div>
+        <!-- search  -->
+        
+            <div class="site-search popup-trigger">
+                <span class="iconfont-archer search-icon">&#xe627;</span>
+            </div>
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/使用微软Custom-Voice打造私人主播/" >使用微软Custom Voice打造私人主播</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/11</span><a class="archive-post-title" href= "/2019/10/11/单镜头也能测深度？/" >单镜头也能测深度？</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/08</span><a class="archive-post-title" href= "/2019/10/08/用Azure-Kinect-DK追踪人体运动/" >用Azure Kinect DK追踪人体运动</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/27</span><a class="archive-post-title" href= "/2019/09/27/用Azure-Kinect-DK进行深度测量/" >用Azure Kinect DK进行深度测量</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/30</span><a class="archive-post-title" href= "/2019/06/30/用例建模总结/" >用例建模总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/29</span><a class="archive-post-title" href= "/2019/05/29/Bezier-Curve/" >Bezier Curve</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/13</span><a class="archive-post-title" href= "/2019/05/13/Shadow-Mapping/" >Shadow Mapping</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/07</span><a class="archive-post-title" href= "/2019/05/07/Lights-and-Shading/" >Lights and Shading</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href= "/2019/05/04/领域建模-对象状态/" >领域建模 - 对象状态</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href= "/2019/05/04/用例建模-业务建模方法/" >用例建模 - 业务建模方法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/17</span><a class="archive-post-title" href= "/2019/04/17/Camera/" >Camera</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/12</span><a class="archive-post-title" href= "/2019/04/12/用例建模-绘制用例图/" >用例建模 - 绘制用例图</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2019/04/09/Transformation/" >Transformation</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2019/04/01/软件项目过程模型与规划/" >软件项目过程模型与规划</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/26</span><a class="archive-post-title" href= "/2019/03/26/Draw-Line/" >Draw Line</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2019/03/11/GUI-and-Draw-Simple-Graphics/" >GUI and Draw Simple Graphics</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2019/03/10/软件项目与知识团队管理基础/" >软件项目与知识团队管理基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2019/03/04/Learn-About-CG/" >Learn About CG</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2019/03/03/软件的本质与软件工程科学/" >软件的本质与软件工程科学</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/16</span><a class="archive-post-title" href= "/2018/09/16/Git日常使用总结/" >Git日常使用总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/10</span><a class="archive-post-title" href= "/2018/09/10/Android-Learning/" >Android Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/19</span><a class="archive-post-title" href= "/2018/06/19/Unity-3D-人机坦克大战/" >Unity 3D - 人机坦克大战</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/29</span><a class="archive-post-title" href= "/2018/05/29/Unity-3D-汽车尾气模拟/" >Unity 3D - 汽车尾气模拟</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2018/05/11/Unity-3D-智能巡逻兵/" >Unity 3D - 智能巡逻兵</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href= "/2018/05/05/UWP-Media-Player/" >UWP - Media Player</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href= "/2018/05/05/UWP-Networking/" >UWP - Networking</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span><a class="archive-post-title" href= "/2018/04/24/Unity-3D-Hit-UFO-2-0/" >Unity 3D - Hit UFO 2.0</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/19</span><a class="archive-post-title" href= "/2018/04/19/UWP-MyList2/" >UWP - MyList2</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/17</span><a class="archive-post-title" href= "/2018/04/17/Unity-3D-Hit-UFO/" >Unity 3D - Hit UFO</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href= "/2018/04/15/Vi-Java-Ant-和-JUnit-的学习报告/" >Vi, Java, Ant 和 JUnit 的学习报告</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2018/04/10/Unity-3D-牧师与魔鬼-2-0/" >Unity 3D - 牧师与魔鬼 2.0</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/06</span><a class="archive-post-title" href= "/2018/04/06/基于稀疏表示的人脸识别/" >基于稀疏表示的人脸识别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/Unity-3D-牧师与魔鬼/" >Unity 3D - 牧师与魔鬼</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span><a class="archive-post-title" href= "/2018/03/31/Unity-3D-太阳系/" >Unity 3D - 太阳系</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span><a class="archive-post-title" href= "/2018/03/31/Unity-3D-基础概念/" >Unity 3D - 基础概念</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2018/03/30/Unity-3D-Learning/" >Unity 3D Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2018/03/29/UWP-MyList/" >UWP - MyList</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2018/03/29/UWP-Learning/" >UWP Learning</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/16</span><a class="archive-post-title" href= "/2017/05/16/Card-Game/" >Card Game</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2017/03/30/hello-world/" >Hello World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
+    
+        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
+    
+        <span class="sidebar-tag-name" data-tags="UWP"><span class="iconfont-archer">&#xe606;</span>UWP</span>
+    
+        <span class="sidebar-tag-name" data-tags="Unity"><span class="iconfont-archer">&#xe606;</span>Unity</span>
+    
+        <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="实训"><span class="iconfont-archer">&#xe606;</span>实训</span>
+    
+        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+    
+        <span class="sidebar-tag-name" data-tags="SE"><span class="iconfont-archer">&#xe606;</span>SE</span>
+    
+        <span class="sidebar-tag-name" data-tags="Face-Recognition"><span class="iconfont-archer">&#xe606;</span>Face-Recognition</span>
+    
+        <span class="sidebar-tag-name" data-tags="Image-Understanding"><span class="iconfont-archer">&#xe606;</span>Image-Understanding</span>
+    
+        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
+    
+        <span class="sidebar-tag-name" data-tags="Azure"><span class="iconfont-archer">&#xe606;</span>Azure</span>
+    
+        <span class="sidebar-tag-name" data-tags="Computer Vision"><span class="iconfont-archer">&#xe606;</span>Computer Vision</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Unity"><span class="iconfont-archer">&#xe60a;</span>Unity</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Xunyan Li"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+        <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="iconfont-archer">&#xe609;</i>
+    </span>
+  </div>
+</div>
+        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.8.0/dist/instantsearch.min.js" defer></script>
+        <script src="/scripts/search.js" defer></script>
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->    
+     
+    </body>
+</html>
+
+
