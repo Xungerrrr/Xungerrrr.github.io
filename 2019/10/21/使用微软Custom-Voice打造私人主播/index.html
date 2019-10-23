@@ -283,7 +283,7 @@ height:70vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">3.5k</span>Reading time: <span class="post-count reading-time">12 min</span></span>
+                        <span>Word count: <span class="post-count word-count">3.6k</span>Reading time: <span class="post-count reading-time">12 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -432,7 +432,7 @@ height:70vh;
 <h2 id="准备数据"><a href="#准备数据" class="headerlink" title="准备数据"></a>准备数据</h2><p>数据是关键的一环，数据的数量和质量决定了模型的效果。目前，自定义语音允许使用三种数据类型，分别是短音频+脚本、长音频+脚本和仅音频。其中，后两项还处于beta测试阶段，并且只能提供给S0定价层用户使用。</p>
 <img src="/2019/10/21/使用微软Custom-Voice打造私人主播/choose_data_type.png" title="choose_data_type">
 <p>鉴于YouTube视频没有提供视频字幕，我采用了“仅音频”方案。利用一些第三方工具，可以直接将YouTube视频转换成mp3文件下载，这样就能得到丰富的声音数据了。本文使用的是Lew Later频道的视频素材。注意，mp3的比特率必须在256kbps以上。如果上传wav文件，采样率必须在16kHz以上。</p>
-<p>使用“仅音频”选项，Azure其实是使用了语音转文本服务，将语音转录成对应的文本，并将音频分段。如果音频时间很长，这个过程可能会产生很高的费用。因此，也可以采用短音频+脚本的方式来准备数据。采用这种方式时，每个语音文件必须具有唯一的文件名，使用wav格式，采样率在16kHz以上。在脚本文件中，每一行包含了音频文件名和对应的文本内容，文件名和文本用制表符(\t)分隔。下面是示例：</p>
+<p>使用“仅音频”选项，Azure其实是使用了语音转文本服务，将语音转录成对应的文本，并将音频分段。如果音频时间很长，这个过程可能会产生很高的费用。因此，也可以考虑手动转录，采用短音频+脚本的方式来准备数据。采用这种方式时，每个语音文件必须具有唯一的文件名，并使用wav格式，采样率在16kHz以上。在脚本文件中，每一行包含了音频文件名和对应的文本内容，文件名和文本用制表符(\t)分隔。下面是示例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0000000001[tab] This is the waistline, and it&apos;s falling.</span><br><span class="line">0000000002[tab] We have trouble scoring.</span><br><span class="line">0000000003[tab] It was Janet Maslin.</span><br></pre></td></tr></table></figure>
 <h2 id="上传数据"><a href="#上传数据" class="headerlink" title="上传数据"></a>上传数据</h2><p>在项目界面，点击Upload data上传语音数据。首先，选择数据类型，然后输入数据的名称和描述。</p>
 <img src="/2019/10/21/使用微软Custom-Voice打造私人主播/name_dataset.png" title="name_dataset">
@@ -447,10 +447,10 @@ height:70vh;
 <img src="/2019/10/21/使用微软Custom-Voice打造私人主播/create_model.png" title="create_model">
 <p>接下来，选择要用于训练的数据。可以选择一个或多个数据集进行训练。不过，如果所选的数据集包含重复的音频文件名，重复的音频将会被排除掉。</p>
 <img src="/2019/10/21/使用微软Custom-Voice打造私人主播/select_training_data.png" title="select_training_data">
-<p>接下来，选择训练方式。目前，自定义语音提供了两种训练方法，一种是统计参数合成方法，另一种是拼接合成方法。只有当数据集包含的语句超过6000句时，才能够使用拼接合成方法。这个是由技术决定的。统计参数合成方法是在一个标准语音的基础上，通过调整模型的参数来拟合目标声音的统计特征，从而合成出相似的声音。拼接合成方法是直接采用原有声音样本中的细小片段，拼接串联形成合成的声音。因此，拼接合成方法需要更多的训练数据，能产生更自然和更清晰的结果。</p>
+<p>接下来，选择训练方式。目前，自定义语音提供了两种训练方法，一种是统计参数合成方法，另一种是拼接合成方法。只有当数据集包含的语句超过6000句时，才能够使用拼接合成方法。这个是由技术特性决定的。统计参数合成方法是在一个标准语音的基础上，通过调整模型的参数来拟合目标声音的统计特征，从而合成出相似的声音。拼接合成方法是直接采用原有声音样本中的细小片段，拼接串联形成合成的声音。因此，拼接合成方法需要更多的训练数据，能产生更自然和更清晰的结果。</p>
 <img src="/2019/10/21/使用微软Custom-Voice打造私人主播/select_training_method.png" title="select_training_method">
-<p>为了能够使用拼接合成方法，我从Lew Later频道中选择了24个视频，提取了6068句语音。之后，分别使用两种不同的方法进行训练。在选择好数据集和训练方法后，点击Train即可开始训练。训练的时间和数据量有关，6068句大约花了一天的时间。</p>
-<h2 id="测试和分析"><a href="#测试和分析" class="headerlink" title="测试和分析"></a>测试和分析</h2><p>在花了几天时间进行训练之后，终于到了有趣的测试环节。切换到Testing，点击Add test，然后选择要测试的模型。</p>
+<p>为了能够使用拼接合成方法，我从Lew Later频道中选择了24个视频，提取了6068句语音。之后，分别使用两种不同的方法进行训练。在选择好数据集和训练方法后，点击Train即可开始训练。训练的时间和数据量呈正相关关系，训练6068句大约花了一天的时间。</p>
+<h2 id="测试和分析"><a href="#测试和分析" class="headerlink" title="测试和分析"></a>测试和分析</h2><p>在花了几天时间完成全部训练之后，终于到了有趣的测试环节。切换到Testing，点击Add test，然后选择要测试的模型。</p>
 <img src="/2019/10/21/使用微软Custom-Voice打造私人主播/select_test_voice.png" title="select_test_voice">
 <p>之后，输入要测试的文本，就可以进行测试。</p>
 <img src="/2019/10/21/使用微软Custom-Voice打造私人主播/select_test_input.png" title="select_test_input">
@@ -727,20 +727,6 @@ top:70vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
