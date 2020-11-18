@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>UWP - Media Player · Xungerrrr&#39;s Blog</title>
+    <title>Microsoft · Xungerrrr&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -232,7 +232,7 @@
                 <a href="/" >Xungerrrr&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">UWP - Media Player</a>
+                <a href="#" class="post-name">Microsoft</a>
             </div>
     </div>
     
@@ -256,13 +256,13 @@ height:70vh;
     <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/banners-blog-microsoft-azure.png)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            UWP - Media Player
+            Microsoft
             <!-- 404 -->
             
         </h1>
@@ -270,6 +270,8 @@ height:70vh;
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+                微软实习文章汇总
             
             <!-- 404 -->
             
@@ -279,20 +281,14 @@ height:70vh;
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
-                    <div class= post-intro-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "UWP">UWP</a>
-    
-</div>
-                
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">790</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                        <span>Word count: <span class="post-count word-count">59</span>Reading time: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2018/05/05</span>
+                    <span class="post-intro-time">2019/09/27</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -416,58 +412,18 @@ height:70vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><ol>
-<li>在Visual Studio中新建Media Player项目，创建Player页面；</li>
-<li>在Player页面中使用Grid布局页面，第一行放置MediaPlayerElement以及包含歌曲标题和封面的StrollViewer等元素，第二行放置自行设计的媒体控制栏，其中包含媒体进度条、开始暂停按钮、停止按钮、选取文件按钮、全屏按钮等元素。</li>
-<li>在cs文件中，使用MediaPlayer和MediaTimelineController控制媒体播放，并在相关函数中实现读取文件、提取媒体信息、绑定媒体位置与进度条位置、控制封面旋转动画等功能。</li>
-</ol>
-<h2 id="关键步骤截图"><a href="#关键步骤截图" class="headerlink" title="关键步骤截图"></a>关键步骤截图</h2><p>图1. 音乐播放器启动界面:</p>
-<img src="/2018/05/05/UWP-Media-Player/1.png" title="demo1">
-<p>图2. 音乐播放示例:</p>
-<img src="/2018/05/05/UWP-Media-Player/2.png" title="demo2">
-<p>图3. 视频播放示例:</p>
-<img src="/2018/05/05/UWP-Media-Player/3.png" title="demo3">
-<h2 id="亮点与改进"><a href="#亮点与改进" class="headerlink" title="亮点与改进"></a>亮点与改进</h2><ol>
-<li><p>选择本地媒体的功能</p>
-<p>媒体播放器实现了选择本地媒体的功能，能够打开本地的音乐和视频进行播放。</p>
-</li>
-<li><p>美化界面</p>
-<p>设计上，加入了很有质感的Acrylic材质，使应用透明化。在媒体播放器中播放音乐时，专辑封面会做毛玻璃模糊处理，使应用背景能够根据专辑封面动态改变。另外，用Acrylic材质实现了媒体控制栏颜色自动跟随系统主题颜色。</p>
-<p>注：要实现此效果，必须使用最新版Windows 10 SDK（版本16299）生成解决方案，否则会提示找不到相关资源，无法运行。</p>
-<img src="/2018/05/05/UWP-Media-Player/4.png" title="demo4">
-<img src="/2018/05/05/UWP-Media-Player/5.png" title="demo5">
-</li>
-<li><p>实现封面旋转</p>
-<p>在播放音乐时，封面旋转；播放结束时，封面复位；暂停时，封面的旋转动作暂停；在播放视频时，封面隐藏。</p>
-</li>
-<li><p>显示媒体的缩略图、标题、艺术家、专辑等信息</p>
-<p>实现了媒体信息的提取，能够根据媒体动态显示标题等信息。</p>
-</li>
-<li><p>显示媒体时间进度</p>
-<p>在媒体控制栏中实现了媒体当前时间和总时间的显示。</p>
-</li>
-<li><p>实现了应用的真正全屏效果</p>
-<p>点击全屏按钮，应用能够真正全屏显示，而不只是将视频元素填满当前窗口。</p>
-</li>
-<li><p>播放音乐时，音乐信息能动态显示在磁贴上</p>
-<img src="/2018/05/05/UWP-Media-Player/6.png" title="demo6">
-</li>
-</ol>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul>
-<li><p>问题：请求返回的XML存在中文乱码的问题</p>
-<p>  解决方案：查阅相关资料后，将命名空间Windows.Web.Http更改为命名空间System.Net.Http，成功解决问题。</p>
+        <h1 id="深度测量"><a href="#深度测量" class="headerlink" title="深度测量"></a>深度测量</h1><ul>
+<li><a href="/2019/09/27/用Azure-Kinect-DK进行深度测量/" title="用Azure Kinect DK进行深度测量">用Azure Kinect DK进行深度测量</a></li>
+<li><a href="/2019/10/08/用Azure-Kinect-DK追踪人体运动/" title="用Azure Kinect DK追踪人体运动">用Azure Kinect DK追踪人体运动</a></li>
+<li><a href="/2019/10/11/单镜头也能测深度？/" title="单镜头也能测深度？">单镜头也能测深度？</a>
 </li>
 </ul>
-<h2 id="思考与总结"><a href="#思考与总结" class="headerlink" title="思考与总结"></a>思考与总结</h2><p>在本次实验中，我实现了UWP应用的媒体播放功能，能够播放本地的媒体资源。</p>
-<p>在实验中，我学到了许多有趣而实用的知识，例如控制媒体播放，并且参考了一些成熟的媒体播放器的设计，对播放器进行了多重美化，很好地锻炼了UI设计的能力。经过这次实验，我的应用摆脱了简单的本地文本内容，进入了多媒体的世界，具有了更好的实用性和可扩展性。</p>
-<h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p><a href="https://github.com/Xungerrrr/SYSU-UWP/tree/master/Media%20Player" target="_blank" rel="noopener">https://github.com/Xungerrrr/SYSU-UWP/tree/master/Media%20Player</a></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://docs.microsoft.com/zh-cn/windows/uwp/design/style/acrylic" target="_blank" rel="noopener">亚克力材料</a></li>
-<li><a href="https://docs.microsoft.com/en-us/uwp/api/Windows.Media.Playback.MediaPlayer" target="_blank" rel="noopener">MediaPlayer类</a></li>
-<li><a href="https://docs.microsoft.com/zh-cn/uwp/api/Windows.UI.Xaml.Controls.MediaPlayerElement" target="_blank" rel="noopener">MediaPlayerElement类</a></li>
-<li><a href="https://docs.microsoft.com/en-us/uwp/api/windows.storage.fileproperties.musicproperties" target="_blank" rel="noopener">MusicProperties类</a></li>
-<li><a href="https://stackoverflow.com/questions/18807320/get-albumart-in-mp3-file-for-windows-store-app?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa" target="_blank" rel="noopener">Get Albumart in .mp3 file for Windows Store App</a></li>
-<li><a href="https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.media.rotatetransform" target="_blank" rel="noopener">RotateTransform类</a></li>
+<h1 id="定制语音"><a href="#定制语音" class="headerlink" title="定制语音"></a>定制语音</h1><ul>
+<li><a href="/2019/10/21/使用微软Custom-Voice打造私人主播/" title="使用微软Custom Voice打造私人主播">使用微软Custom Voice打造私人主播</a>
+</li>
+</ul>
+<h1 id="微软认证"><a href="#微软认证" class="headerlink" title="微软认证"></a>微软认证</h1><ul>
+<li><a href="/2019/10/25/微软认证知多少/" title="微软认证知多少">微软认证知多少</a></li>
 </ul>
 
     </article>
@@ -478,16 +434,16 @@ height:70vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/05/11/Unity-3D-智能巡逻兵/" title= "Unity 3D - 智能巡逻兵">
-                    <div class="nextTitle">Unity 3D - 智能巡逻兵</div>
+                <a href= "/2019/10/08/用Azure-Kinect-DK追踪人体运动/" title= "用Azure Kinect DK追踪人体运动">
+                    <div class="nextTitle">用Azure Kinect DK追踪人体运动</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2018/05/05/UWP-Networking/" title= "UWP - Networking">
-                    <div class="prevTitle">UWP - Networking</div>
+                <a href= "/2019/09/27/用Azure-Kinect-DK进行深度测量/" title= "用Azure Kinect DK进行深度测量">
+                    <div class="prevTitle">用Azure Kinect DK进行深度测量</div>
                 </a>
             
         </li>
@@ -614,7 +570,7 @@ top:70vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实验步骤"><span class="toc-number">1.</span> <span class="toc-text">实验步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关键步骤截图"><span class="toc-number">2.</span> <span class="toc-text">关键步骤截图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#亮点与改进"><span class="toc-number">3.</span> <span class="toc-text">亮点与改进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到的问题"><span class="toc-number">4.</span> <span class="toc-text">遇到的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思考与总结"><span class="toc-number">5.</span> <span class="toc-text">思考与总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub"><span class="toc-number">6.</span> <span class="toc-text">GitHub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深度测量"><span class="toc-number">1.</span> <span class="toc-text">深度测量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#定制语音"><span class="toc-number">2.</span> <span class="toc-text">定制语音</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#微软认证"><span class="toc-number">3.</span> <span class="toc-text">微软认证</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>

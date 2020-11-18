@@ -129,6 +129,28 @@
   </entry>
   
   <entry>
+    <title>Microsoft</title>
+    <link href="https://xungerrrr.github.io/2019/09/27/Microsoft/"/>
+    <id>https://xungerrrr.github.io/2019/09/27/Microsoft/</id>
+    <published>2019-09-27T12:06:16.000Z</published>
+    <updated>2020-11-18T12:16:07.923Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="深度测量"><a href="#深度测量" class="headerlink" title="深度测量"></a>深度测量</h1><ul><li><a href="/2019/09/27/用Azure-Kinect-DK进行深度测量/" title="用Azure Kinect DK进行深度测量">用Azure Kinect DK进行深度测量</a></li><li><a href="/2019/10/08/用Azure-Kinect-DK追踪人体运动/" title="用Azure Kinect DK追踪人体运动">用Azure Kinect DK追踪人体运动</a></li><li><a href="/2019/10/11/单镜头也能测深度？/" title="单镜头也能测深度？">单镜头也能测深度？</a></li></ul><h1 id="定制语音"><a href="#定制语音" class="headerlink" title="定制语音"></a>定制语音</h1><ul><li><a href="/2019/10/21/使用微软Custom-Voice打造私人主播/" title="使用微软Custom Voice打造私人主播">使用微软Custom Voice打造私人主播</a></li></ul><h1 id="微软认证"><a href="#微软认证" class="headerlink" title="微软认证"></a>微软认证</h1><ul><li><a href="/2019/10/25/微软认证知多少/" title="微软认证知多少">微软认证知多少</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;深度测量&quot;&gt;&lt;a href=&quot;#深度测量&quot; class=&quot;headerlink&quot; title=&quot;深度测量&quot;&gt;&lt;/a&gt;深度测量&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/2019/09/27/用Azure-Kinect-DK进行深度测量/&quot; title=&quot;用Az
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>用Azure Kinect DK进行深度测量</title>
     <link href="https://xungerrrr.github.io/2019/09/27/%E7%94%A8Azure-Kinect-DK%E8%BF%9B%E8%A1%8C%E6%B7%B1%E5%BA%A6%E6%B5%8B%E9%87%8F/"/>
     <id>https://xungerrrr.github.io/2019/09/27/用Azure-Kinect-DK进行深度测量/</id>
@@ -452,29 +474,6 @@
     
     
       <category term="SE" scheme="https://xungerrrr.github.io/tags/SE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Learn About CG</title>
-    <link href="https://xungerrrr.github.io/2019/03/04/Learn-About-CG/"/>
-    <id>https://xungerrrr.github.io/2019/03/04/Learn-About-CG/</id>
-    <published>2019-03-04T06:18:30.000Z</published>
-    <updated>2019-03-14T17:57:57.537Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="谈谈自己对计算机图形学的理解。"><a href="#谈谈自己对计算机图形学的理解。" class="headerlink" title="谈谈自己对计算机图形学的理解。"></a>谈谈自己对计算机图形学的理解。</h2><p>我对计算机图形学的理解是，计算机图形学是一门利用计算机对二维或三维图形进行表示、处理、计算、显示和交互的学科。通过各种建模方法，在计算机中建立几何图形的模型，这是图形的表示过程。通过渲染技术，将图形模型转换成显示器的栅格形式，或者是转换成全息图像形式，这是图形的处理、计算和显示过程。通过各种输入工具，改变图形的状态，这是交互过程。这些都是计算机图形学研究的范畴。</p><h2 id="什么是OpenGL？OpenGL-ES？Web-GL？Vulkan？DirectX？"><a href="#什么是OpenGL？OpenGL-ES？Web-GL？Vulkan？DirectX？" class="headerlink" title="什么是OpenGL？OpenGL ES？Web GL？Vulkan？DirectX？"></a>什么是OpenGL？OpenGL ES？Web GL？Vulkan？DirectX？</h2><ul><li>OpenGL是一个API（Application Programming Interface，应用程序编程接口），是跨编程语言及跨平台的接口，包含了一系列可以操作图形、图像的函数，用于渲染2D和3D图形。更确切地说，OpenGL是一个规范，规定了每个函数的用法和输出值，具体的实现一般由显卡厂商完成。</li><li>OpenGL ES（OpenGL for Embedded Systems）是OpenGL规范的子集，用于嵌入式设备的图形渲染。相比于OpenGL，OpenGL ES去除了一些非必要的特性，是OpenGL的简化版本。</li><li>WebGL是一种绘图标准，将JavaScript和OpenGL ES结合在一起，使得网页可以调用系统显卡进行硬件加速渲染，从而在浏览器中流畅地显示3D图形。</li><li>Vulkan是另一种跨平台的绘图应用程序接口，提供了许多比OpenGL更加先进的特性，性能比OpenGL要更好，是OpenGL的替代者。</li><li>DirectX是由微软开发的多媒体编程接口，提供了显示、声音、输入、网络等API，功能十分丰富，不只是一个图形编程接口，用于Windows系统多媒体应用开发。</li></ul><h2 id="gl-h-glu-h-glew-h的作用分别是什么？"><a href="#gl-h-glu-h-glew-h的作用分别是什么？" class="headerlink" title="gl.h glu.h glew.h的作用分别是什么？"></a>gl.h glu.h glew.h的作用分别是什么？</h2><ul><li>gl.h是OpenGL 1.1的基础头文件，包含了OpenGL 1.1的功能。如果需要使用新功能，需要添加OpenGL的扩展库。</li><li>glu.h是OpenGL Utilities库，包含了一些方便的函数，但是已经过时，现在一般不用。</li><li>glew.h是OpenGL Extension Wrangler Library，用于使用OpenGL的扩展功能，其中包含了gl.h。OpenGL版本众多，因此编译的时候无法将函数的位置确定下来，需要在运行时查询。借助glew.h，可以在运行时根据硬件方便地管理OpenGL的函数指针，定位函数的位置。</li></ul><h2 id="使用GLFW和freeglut的目的是什么？"><a href="#使用GLFW和freeglut的目的是什么？" class="headerlink" title="使用GLFW和freeglut的目的是什么？"></a>使用GLFW和freeglut的目的是什么？</h2><p>创建OpenGL上下文、创建显示窗口和处理用户输入，在每个系统上都有不一样的操作。作为一个跨平台API，OpenGL将这部分功能抽象出去，因此需要我们去手动处理。使用GLFW或者freeglut，可以方便地创建OpenGL上下文、定义窗口参数和处理用户输入，而不需要使用操作系统复杂的API，节省编程时间和难度。</p><h2 id="结合上述参考链接，选择一个SIGGRAPH-2017-2018上你最喜欢的专题，介绍该专题是做什么的，使用了什么CG技术？"><a href="#结合上述参考链接，选择一个SIGGRAPH-2017-2018上你最喜欢的专题，介绍该专题是做什么的，使用了什么CG技术？" class="headerlink" title="结合上述参考链接，选择一个SIGGRAPH 2017/2018上你最喜欢的专题，介绍该专题是做什么的，使用了什么CG技术？"></a>结合上述参考链接，选择一个SIGGRAPH 2017/2018上你最喜欢的专题，介绍该专题是做什么的，使用了什么CG技术？</h2><p>我对SIGGRAPH 2018中的Computational photos and videos专题比较感兴趣。这个专题做的是计算摄影方面的研究，目的是利用有限的图片信息，计算出场景的深度信息，也就是生成三维的场景。这个专题中有两篇研究论文。第一篇是<a href="http://delivery.acm.org/10.1145/3210000/3201329/a64-wadhwa.pdf?ip=120.236.174.139&amp;id=3201329&amp;acc=OPENTOC&amp;key=BF85BBA5741FDC6E%2E3D07CFA6C3F555EA%2E4D4702B0C3E38B35%2E383ADA7593775D6F&amp;__acm__=1551716722_7848def64dc95e9252115c00fad0b02f" target="_blank" rel="noopener"><em>Synthetic Depth-of-Field with a Single-Camera Mobile Phone</em></a>，实现了利用单个手机摄像头计算出照片的景深信息，得到类似于单反镜头的背景虚化效果，由Google Research团队发表，目前已用于Google Pixel系列手机中的人像模式功能。第二篇是<a href="http://delivery.acm.org/10.1145/3210000/3201323/a65-zhou.pdf?ip=120.236.174.139&amp;id=3201323&amp;acc=OPENTOC&amp;key=BF85BBA5741FDC6E%2E3D07CFA6C3F555EA%2E4D4702B0C3E38B35%2E383ADA7593775D6F&amp;__acm__=1551716806_39a7933ec8e03f668f238b0fc39fe828" target="_blank" rel="noopener"><em>Stereo Magnification: Learning view synthesis using multiplane images</em></a>，利用双镜头拍摄的两张照片，就可以生成一个动画，模拟出在三维场景中运动的场景。该专题运用了CG中的建模和渲染技术，都是先计算出场景的景深信息，构建出场景的模型，然后渲染成高真实度的照片和动画。两篇论文都涉及到基于图像的渲染技术（Image-based rendering）。</p><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p>[1] <a href="http://staff.ustc.edu.cn/~lgliu/Resources/CG/What_is_CG.htm" target="_blank" rel="noopener">什么是计算机图形学？</a><br>[2] <a href="https://learnopengl-cn.github.io/01%20Getting%20started/01%20OpenGL/" target="_blank" rel="noopener">什么是OpenGL</a><br>[3] <a href="https://www.siggraph.org//learn/conference-content" target="_blank" rel="noopener">SIGGRAGPH Conference Content</a><br>[4] <a href="http://kesen.realtimerendering.com/sig2017.html" target="_blank" rel="noopener">SIGGRAPH 2018专题与论文集合</a><br>[5] <a href="https://www.siggraph.org/sites/default/files/ACM%20Transactions%20on%20Graphics%20Volume%2037%20Issue%204%20August%202018.html" target="_blank" rel="noopener">SIGGRAPH 2018论文集</a><br>[6] <a href="https://www.leiphone.com/news/201808/fX05lhGQo2X50Wya.html" target="_blank" rel="noopener">SIGGRAPH 2018：VR凉凉？逛完展你就知道了</a><br>[7] <a href="https://zhuanlan.zhihu.com/p/38082963" target="_blank" rel="noopener">SIGGRAPH 2018 不能错过的八大精彩</a><br>[8] <a href="https://www.zhihu.com/question/60903441?from=profile_question_card://www.siggraph.org/sites/default/files/sa-17-tog-open-access.html" target="_blank" rel="noopener">SIGGRAPH 2017 有啥有意思的 project？</a><br>[9] <a href="https://www.leiphone.com/news/201707/ZSLKstyMCMgP1hO3.html" target="_blank" rel="noopener">SIGGRAPH 2017：一窥AR/VR最新趋势</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;谈谈自己对计算机图形学的理解。&quot;&gt;&lt;a href=&quot;#谈谈自己对计算机图形学的理解。&quot; class=&quot;headerlink&quot; title=&quot;谈谈自己对计算机图形学的理解。&quot;&gt;&lt;/a&gt;谈谈自己对计算机图形学的理解。&lt;/h2&gt;&lt;p&gt;我对计算机图形学的理解是，计算机图形
-      
-    
-    </summary>
-    
-    
-      <category term="Computer Graphics" scheme="https://xungerrrr.github.io/tags/Computer-Graphics/"/>
     
   </entry>
   
